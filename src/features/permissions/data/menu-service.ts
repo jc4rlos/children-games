@@ -24,6 +24,15 @@ export type MenuItemWithPermissions = MenuItem & {
   permissions: { role: string; enabled: boolean }[]
 }
 
+export type MenuItemFormValues = {
+  label: string
+  path: string
+  icon: string
+  parentId: number | null
+  sortOrder: number
+  isActive: boolean
+}
+
 type DbMenuItem = {
   id: number
   label: string
@@ -98,6 +107,54 @@ export const getAllMenuItemsWithPermissions = async (): Promise<
     ...toMenuItem(item),
     permissions: permsByItem.get(item.id) ?? [],
   }))
+}
+
+export const createMenuItem = async (
+  values: MenuItemFormValues
+): Promise<MenuItem> => {
+  const { data, error } = await supabase
+    .from('menu_item')
+    .insert({
+      label: values.label,
+      path: values.path,
+      icon: values.icon || null,
+      parent_id: values.parentId ?? null,
+      sort_order: values.sortOrder,
+      is_active: values.isActive,
+      created_by: 'system',
+    })
+    .select('id, label, path, icon, parent_id, sort_order, is_active')
+    .single()
+
+  if (error) throw new Error(error.message)
+  return toMenuItem(data as DbMenuItem)
+}
+
+export const updateMenuItem = async (
+  id: number,
+  values: MenuItemFormValues
+): Promise<MenuItem> => {
+  const { data, error } = await supabase
+    .from('menu_item')
+    .update({
+      label: values.label,
+      path: values.path,
+      icon: values.icon || null,
+      parent_id: values.parentId ?? null,
+      sort_order: values.sortOrder,
+      is_active: values.isActive,
+    })
+    .eq('id', id)
+    .select('id, label, path, icon, parent_id, sort_order, is_active')
+    .single()
+
+  if (error) throw new Error(error.message)
+  return toMenuItem(data as DbMenuItem)
+}
+
+export const deleteMenuItem = async (id: number): Promise<void> => {
+  const { error } = await supabase.from('menu_item').delete().eq('id', id)
+  if (error) throw new Error(error.message)
 }
 
 export const upsertRolePermission = async (

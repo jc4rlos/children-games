@@ -6,6 +6,16 @@ import {
   ShieldCheck,
   UtensilsCrossed,
   Users,
+  Store,
+  Baby,
+  IdCardLanyard,
+  UserStar,
+  CircleDollarSign,
+  Tags,
+  ShoppingBasket,
+  PackageSearch,
+  BookOpenText,
+  AlarmClockPlus,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -17,6 +27,16 @@ const ICON_MAP: Record<string, LucideIcon> = {
   CalendarDays,
   ClipboardList,
   ShieldCheck,
+  Store,
+  Baby,
+  IdCardLanyard,
+  UserStar,
+  CircleDollarSign,
+  Tags,
+  ShoppingBasket,
+  PackageSearch,
+  BookOpenText,
+  AlarmClockPlus,
 }
 
 export const resolveIcon = (name: string | null): LucideIcon | undefined =>

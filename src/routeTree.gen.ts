@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
@@ -21,18 +22,48 @@ import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
 import { Route as authChangePasswordRouteImport } from './routes/(auth)/change-password'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as AuthenticatedStimulationClassesIndexRouteImport } from './routes/_authenticated/stimulation-classes/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
+import { Route as AuthenticatedSessionsIndexRouteImport } from './routes/_authenticated/sessions/index'
+import { Route as AuthenticatedProductsIndexRouteImport } from './routes/_authenticated/products/index'
+import { Route as AuthenticatedProductCategoriesIndexRouteImport } from './routes/_authenticated/product-categories/index'
+import { Route as AuthenticatedPricingIndexRouteImport } from './routes/_authenticated/pricing/index'
+import { Route as AuthenticatedGuardiansIndexRouteImport } from './routes/_authenticated/guardians/index'
 import { Route as AuthenticatedEmployeesIndexRouteImport } from './routes/_authenticated/employees/index'
+import { Route as AuthenticatedCouponsIndexRouteImport } from './routes/_authenticated/coupons/index'
+import { Route as AuthenticatedChildrenIndexRouteImport } from './routes/_authenticated/children/index'
 import { Route as AuthenticatedBranchesIndexRouteImport } from './routes/_authenticated/branches/index'
+import { Route as AuthenticatedAttendanceReportIndexRouteImport } from './routes/_authenticated/attendance-report/index'
+import { Route as AuthenticatedStimulationClassesNewRouteImport } from './routes/_authenticated/stimulation-classes/new'
 import { Route as AuthenticatedSettingsPermissionsRouteImport } from './routes/_authenticated/settings/permissions'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
+import { Route as AuthenticatedSessionsNewRouteImport } from './routes/_authenticated/sessions/new'
+import { Route as AuthenticatedProductsNewRouteImport } from './routes/_authenticated/products/new'
+import { Route as AuthenticatedProductCategoriesNewRouteImport } from './routes/_authenticated/product-categories/new'
+import { Route as AuthenticatedPricingNewRouteImport } from './routes/_authenticated/pricing/new'
+import { Route as AuthenticatedGuardiansNewRouteImport } from './routes/_authenticated/guardians/new'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedCouponsNewRouteImport } from './routes/_authenticated/coupons/new'
+import { Route as AuthenticatedChildrenNewRouteImport } from './routes/_authenticated/children/new'
 import { Route as AuthenticatedBranchesNewRouteImport } from './routes/_authenticated/branches/new'
+import { Route as AuthenticatedStimulationClassesClassIdIndexRouteImport } from './routes/_authenticated/stimulation-classes/$classId/index'
+import { Route as AuthenticatedStimulationClassesClassIdEditRouteImport } from './routes/_authenticated/stimulation-classes/$classId/edit'
+import { Route as AuthenticatedProductsProductIdEditRouteImport } from './routes/_authenticated/products/$productId/edit'
+import { Route as AuthenticatedProductCategoriesCategoryIdEditRouteImport } from './routes/_authenticated/product-categories/$categoryId/edit'
+import { Route as AuthenticatedPricingPricingIdEditRouteImport } from './routes/_authenticated/pricing/$pricingId/edit'
+import { Route as AuthenticatedGuardiansGuardianIdEditRouteImport } from './routes/_authenticated/guardians/$guardianId/edit'
+import { Route as AuthenticatedCouponsCouponIdEditRouteImport } from './routes/_authenticated/coupons/$couponId/edit'
+import { Route as AuthenticatedChildrenChildIdEditRouteImport } from './routes/_authenticated/children/$childId/edit'
 import { Route as AuthenticatedBranchesBranchIdEditRouteImport } from './routes/_authenticated/branches/$branchId/edit'
 
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
@@ -93,11 +124,47 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedStimulationClassesIndexRoute =
+  AuthenticatedStimulationClassesIndexRouteImport.update({
+    id: '/stimulation-classes/',
+    path: '/stimulation-classes/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
+const AuthenticatedSessionsIndexRoute =
+  AuthenticatedSessionsIndexRouteImport.update({
+    id: '/sessions/',
+    path: '/sessions/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductsIndexRoute =
+  AuthenticatedProductsIndexRouteImport.update({
+    id: '/products/',
+    path: '/products/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductCategoriesIndexRoute =
+  AuthenticatedProductCategoriesIndexRouteImport.update({
+    id: '/product-categories/',
+    path: '/product-categories/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPricingIndexRoute =
+  AuthenticatedPricingIndexRouteImport.update({
+    id: '/pricing/',
+    path: '/pricing/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGuardiansIndexRoute =
+  AuthenticatedGuardiansIndexRouteImport.update({
+    id: '/guardians/',
+    path: '/guardians/',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedEmployeesIndexRoute =
   AuthenticatedEmployeesIndexRouteImport.update({
@@ -105,10 +172,34 @@ const AuthenticatedEmployeesIndexRoute =
     path: '/employees/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedCouponsIndexRoute =
+  AuthenticatedCouponsIndexRouteImport.update({
+    id: '/coupons/',
+    path: '/coupons/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedChildrenIndexRoute =
+  AuthenticatedChildrenIndexRouteImport.update({
+    id: '/children/',
+    path: '/children/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedBranchesIndexRoute =
   AuthenticatedBranchesIndexRouteImport.update({
     id: '/branches/',
     path: '/branches/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAttendanceReportIndexRoute =
+  AuthenticatedAttendanceReportIndexRouteImport.update({
+    id: '/attendance-report/',
+    path: '/attendance-report/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStimulationClassesNewRoute =
+  AuthenticatedStimulationClassesNewRouteImport.update({
+    id: '/stimulation-classes/new',
+    path: '/stimulation-classes/new',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedSettingsPermissionsRoute =
@@ -141,16 +232,104 @@ const AuthenticatedSettingsAccountRoute =
     path: '/account',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
+const AuthenticatedSessionsNewRoute =
+  AuthenticatedSessionsNewRouteImport.update({
+    id: '/sessions/new',
+    path: '/sessions/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductsNewRoute =
+  AuthenticatedProductsNewRouteImport.update({
+    id: '/products/new',
+    path: '/products/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductCategoriesNewRoute =
+  AuthenticatedProductCategoriesNewRouteImport.update({
+    id: '/product-categories/new',
+    path: '/product-categories/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPricingNewRoute = AuthenticatedPricingNewRouteImport.update({
+  id: '/pricing/new',
+  path: '/pricing/new',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedGuardiansNewRoute =
+  AuthenticatedGuardiansNewRouteImport.update({
+    id: '/guardians/new',
+    path: '/guardians/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedErrorsErrorRoute =
   AuthenticatedErrorsErrorRouteImport.update({
     id: '/errors/$error',
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedCouponsNewRoute = AuthenticatedCouponsNewRouteImport.update({
+  id: '/coupons/new',
+  path: '/coupons/new',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedChildrenNewRoute =
+  AuthenticatedChildrenNewRouteImport.update({
+    id: '/children/new',
+    path: '/children/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedBranchesNewRoute =
   AuthenticatedBranchesNewRouteImport.update({
     id: '/branches/new',
     path: '/branches/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStimulationClassesClassIdIndexRoute =
+  AuthenticatedStimulationClassesClassIdIndexRouteImport.update({
+    id: '/stimulation-classes/$classId/',
+    path: '/stimulation-classes/$classId/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStimulationClassesClassIdEditRoute =
+  AuthenticatedStimulationClassesClassIdEditRouteImport.update({
+    id: '/stimulation-classes/$classId/edit',
+    path: '/stimulation-classes/$classId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductsProductIdEditRoute =
+  AuthenticatedProductsProductIdEditRouteImport.update({
+    id: '/products/$productId/edit',
+    path: '/products/$productId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProductCategoriesCategoryIdEditRoute =
+  AuthenticatedProductCategoriesCategoryIdEditRouteImport.update({
+    id: '/product-categories/$categoryId/edit',
+    path: '/product-categories/$categoryId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPricingPricingIdEditRoute =
+  AuthenticatedPricingPricingIdEditRouteImport.update({
+    id: '/pricing/$pricingId/edit',
+    path: '/pricing/$pricingId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGuardiansGuardianIdEditRoute =
+  AuthenticatedGuardiansGuardianIdEditRouteImport.update({
+    id: '/guardians/$guardianId/edit',
+    path: '/guardians/$guardianId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCouponsCouponIdEditRoute =
+  AuthenticatedCouponsCouponIdEditRouteImport.update({
+    id: '/coupons/$couponId/edit',
+    path: '/coupons/$couponId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedChildrenChildIdEditRoute =
+  AuthenticatedChildrenChildIdEditRouteImport.update({
+    id: '/children/$childId/edit',
+    path: '/children/$childId/edit',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedBranchesBranchIdEditRoute =
@@ -162,6 +341,7 @@ const AuthenticatedBranchesBranchIdEditRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
+  '/portal': typeof PortalRoute
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/change-password': typeof authChangePasswordRoute
   '/forgot-password': typeof authForgotPasswordRoute
@@ -173,18 +353,44 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/branches/new': typeof AuthenticatedBranchesNewRoute
+  '/children/new': typeof AuthenticatedChildrenNewRoute
+  '/coupons/new': typeof AuthenticatedCouponsNewRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/guardians/new': typeof AuthenticatedGuardiansNewRoute
+  '/pricing/new': typeof AuthenticatedPricingNewRoute
+  '/product-categories/new': typeof AuthenticatedProductCategoriesNewRoute
+  '/products/new': typeof AuthenticatedProductsNewRoute
+  '/sessions/new': typeof AuthenticatedSessionsNewRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
+  '/stimulation-classes/new': typeof AuthenticatedStimulationClassesNewRoute
+  '/attendance-report/': typeof AuthenticatedAttendanceReportIndexRoute
   '/branches/': typeof AuthenticatedBranchesIndexRoute
+  '/children/': typeof AuthenticatedChildrenIndexRoute
+  '/coupons/': typeof AuthenticatedCouponsIndexRoute
   '/employees/': typeof AuthenticatedEmployeesIndexRoute
+  '/guardians/': typeof AuthenticatedGuardiansIndexRoute
+  '/pricing/': typeof AuthenticatedPricingIndexRoute
+  '/product-categories/': typeof AuthenticatedProductCategoriesIndexRoute
+  '/products/': typeof AuthenticatedProductsIndexRoute
+  '/sessions/': typeof AuthenticatedSessionsIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/stimulation-classes/': typeof AuthenticatedStimulationClassesIndexRoute
   '/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
+  '/children/$childId/edit': typeof AuthenticatedChildrenChildIdEditRoute
+  '/coupons/$couponId/edit': typeof AuthenticatedCouponsCouponIdEditRoute
+  '/guardians/$guardianId/edit': typeof AuthenticatedGuardiansGuardianIdEditRoute
+  '/pricing/$pricingId/edit': typeof AuthenticatedPricingPricingIdEditRoute
+  '/product-categories/$categoryId/edit': typeof AuthenticatedProductCategoriesCategoryIdEditRoute
+  '/products/$productId/edit': typeof AuthenticatedProductsProductIdEditRoute
+  '/stimulation-classes/$classId/edit': typeof AuthenticatedStimulationClassesClassIdEditRoute
+  '/stimulation-classes/$classId/': typeof AuthenticatedStimulationClassesClassIdIndexRoute
 }
 export interface FileRoutesByTo {
+  '/portal': typeof PortalRoute
   '/change-password': typeof authChangePasswordRoute
   '/forgot-password': typeof authForgotPasswordRoute
   '/sign-in': typeof authSignInRoute
@@ -196,20 +402,46 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
   '/branches/new': typeof AuthenticatedBranchesNewRoute
+  '/children/new': typeof AuthenticatedChildrenNewRoute
+  '/coupons/new': typeof AuthenticatedCouponsNewRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/guardians/new': typeof AuthenticatedGuardiansNewRoute
+  '/pricing/new': typeof AuthenticatedPricingNewRoute
+  '/product-categories/new': typeof AuthenticatedProductCategoriesNewRoute
+  '/products/new': typeof AuthenticatedProductsNewRoute
+  '/sessions/new': typeof AuthenticatedSessionsNewRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
+  '/stimulation-classes/new': typeof AuthenticatedStimulationClassesNewRoute
+  '/attendance-report': typeof AuthenticatedAttendanceReportIndexRoute
   '/branches': typeof AuthenticatedBranchesIndexRoute
+  '/children': typeof AuthenticatedChildrenIndexRoute
+  '/coupons': typeof AuthenticatedCouponsIndexRoute
   '/employees': typeof AuthenticatedEmployeesIndexRoute
+  '/guardians': typeof AuthenticatedGuardiansIndexRoute
+  '/pricing': typeof AuthenticatedPricingIndexRoute
+  '/product-categories': typeof AuthenticatedProductCategoriesIndexRoute
+  '/products': typeof AuthenticatedProductsIndexRoute
+  '/sessions': typeof AuthenticatedSessionsIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/stimulation-classes': typeof AuthenticatedStimulationClassesIndexRoute
   '/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
+  '/children/$childId/edit': typeof AuthenticatedChildrenChildIdEditRoute
+  '/coupons/$couponId/edit': typeof AuthenticatedCouponsCouponIdEditRoute
+  '/guardians/$guardianId/edit': typeof AuthenticatedGuardiansGuardianIdEditRoute
+  '/pricing/$pricingId/edit': typeof AuthenticatedPricingPricingIdEditRoute
+  '/product-categories/$categoryId/edit': typeof AuthenticatedProductCategoriesCategoryIdEditRoute
+  '/products/$productId/edit': typeof AuthenticatedProductsProductIdEditRoute
+  '/stimulation-classes/$classId/edit': typeof AuthenticatedStimulationClassesClassIdEditRoute
+  '/stimulation-classes/$classId': typeof AuthenticatedStimulationClassesClassIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/portal': typeof PortalRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/(auth)/change-password': typeof authChangePasswordRoute
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
@@ -222,21 +454,47 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/branches/new': typeof AuthenticatedBranchesNewRoute
+  '/_authenticated/children/new': typeof AuthenticatedChildrenNewRoute
+  '/_authenticated/coupons/new': typeof AuthenticatedCouponsNewRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/_authenticated/guardians/new': typeof AuthenticatedGuardiansNewRoute
+  '/_authenticated/pricing/new': typeof AuthenticatedPricingNewRoute
+  '/_authenticated/product-categories/new': typeof AuthenticatedProductCategoriesNewRoute
+  '/_authenticated/products/new': typeof AuthenticatedProductsNewRoute
+  '/_authenticated/sessions/new': typeof AuthenticatedSessionsNewRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
+  '/_authenticated/stimulation-classes/new': typeof AuthenticatedStimulationClassesNewRoute
+  '/_authenticated/attendance-report/': typeof AuthenticatedAttendanceReportIndexRoute
   '/_authenticated/branches/': typeof AuthenticatedBranchesIndexRoute
+  '/_authenticated/children/': typeof AuthenticatedChildrenIndexRoute
+  '/_authenticated/coupons/': typeof AuthenticatedCouponsIndexRoute
   '/_authenticated/employees/': typeof AuthenticatedEmployeesIndexRoute
+  '/_authenticated/guardians/': typeof AuthenticatedGuardiansIndexRoute
+  '/_authenticated/pricing/': typeof AuthenticatedPricingIndexRoute
+  '/_authenticated/product-categories/': typeof AuthenticatedProductCategoriesIndexRoute
+  '/_authenticated/products/': typeof AuthenticatedProductsIndexRoute
+  '/_authenticated/sessions/': typeof AuthenticatedSessionsIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/_authenticated/stimulation-classes/': typeof AuthenticatedStimulationClassesIndexRoute
   '/_authenticated/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
+  '/_authenticated/children/$childId/edit': typeof AuthenticatedChildrenChildIdEditRoute
+  '/_authenticated/coupons/$couponId/edit': typeof AuthenticatedCouponsCouponIdEditRoute
+  '/_authenticated/guardians/$guardianId/edit': typeof AuthenticatedGuardiansGuardianIdEditRoute
+  '/_authenticated/pricing/$pricingId/edit': typeof AuthenticatedPricingPricingIdEditRoute
+  '/_authenticated/product-categories/$categoryId/edit': typeof AuthenticatedProductCategoriesCategoryIdEditRoute
+  '/_authenticated/products/$productId/edit': typeof AuthenticatedProductsProductIdEditRoute
+  '/_authenticated/stimulation-classes/$classId/edit': typeof AuthenticatedStimulationClassesClassIdEditRoute
+  '/_authenticated/stimulation-classes/$classId/': typeof AuthenticatedStimulationClassesClassIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/portal'
     | '/settings'
     | '/change-password'
     | '/forgot-password'
@@ -248,18 +506,44 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/branches/new'
+    | '/children/new'
+    | '/coupons/new'
     | '/errors/$error'
+    | '/guardians/new'
+    | '/pricing/new'
+    | '/product-categories/new'
+    | '/products/new'
+    | '/sessions/new'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/permissions'
+    | '/stimulation-classes/new'
+    | '/attendance-report/'
     | '/branches/'
+    | '/children/'
+    | '/coupons/'
     | '/employees/'
+    | '/guardians/'
+    | '/pricing/'
+    | '/product-categories/'
+    | '/products/'
+    | '/sessions/'
     | '/settings/'
+    | '/stimulation-classes/'
     | '/branches/$branchId/edit'
+    | '/children/$childId/edit'
+    | '/coupons/$couponId/edit'
+    | '/guardians/$guardianId/edit'
+    | '/pricing/$pricingId/edit'
+    | '/product-categories/$categoryId/edit'
+    | '/products/$productId/edit'
+    | '/stimulation-classes/$classId/edit'
+    | '/stimulation-classes/$classId/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/portal'
     | '/change-password'
     | '/forgot-password'
     | '/sign-in'
@@ -271,19 +555,45 @@ export interface FileRouteTypes {
     | '/503'
     | '/'
     | '/branches/new'
+    | '/children/new'
+    | '/coupons/new'
     | '/errors/$error'
+    | '/guardians/new'
+    | '/pricing/new'
+    | '/product-categories/new'
+    | '/products/new'
+    | '/sessions/new'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/permissions'
+    | '/stimulation-classes/new'
+    | '/attendance-report'
     | '/branches'
+    | '/children'
+    | '/coupons'
     | '/employees'
+    | '/guardians'
+    | '/pricing'
+    | '/product-categories'
+    | '/products'
+    | '/sessions'
     | '/settings'
+    | '/stimulation-classes'
     | '/branches/$branchId/edit'
+    | '/children/$childId/edit'
+    | '/coupons/$couponId/edit'
+    | '/guardians/$guardianId/edit'
+    | '/pricing/$pricingId/edit'
+    | '/product-categories/$categoryId/edit'
+    | '/products/$productId/edit'
+    | '/stimulation-classes/$classId/edit'
+    | '/stimulation-classes/$classId'
   id:
     | '__root__'
     | '/_authenticated'
+    | '/portal'
     | '/_authenticated/settings'
     | '/(auth)/change-password'
     | '/(auth)/forgot-password'
@@ -296,20 +606,46 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/'
     | '/_authenticated/branches/new'
+    | '/_authenticated/children/new'
+    | '/_authenticated/coupons/new'
     | '/_authenticated/errors/$error'
+    | '/_authenticated/guardians/new'
+    | '/_authenticated/pricing/new'
+    | '/_authenticated/product-categories/new'
+    | '/_authenticated/products/new'
+    | '/_authenticated/sessions/new'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
     | '/_authenticated/settings/permissions'
+    | '/_authenticated/stimulation-classes/new'
+    | '/_authenticated/attendance-report/'
     | '/_authenticated/branches/'
+    | '/_authenticated/children/'
+    | '/_authenticated/coupons/'
     | '/_authenticated/employees/'
+    | '/_authenticated/guardians/'
+    | '/_authenticated/pricing/'
+    | '/_authenticated/product-categories/'
+    | '/_authenticated/products/'
+    | '/_authenticated/sessions/'
     | '/_authenticated/settings/'
+    | '/_authenticated/stimulation-classes/'
     | '/_authenticated/branches/$branchId/edit'
+    | '/_authenticated/children/$childId/edit'
+    | '/_authenticated/coupons/$couponId/edit'
+    | '/_authenticated/guardians/$guardianId/edit'
+    | '/_authenticated/pricing/$pricingId/edit'
+    | '/_authenticated/product-categories/$categoryId/edit'
+    | '/_authenticated/products/$productId/edit'
+    | '/_authenticated/stimulation-classes/$classId/edit'
+    | '/_authenticated/stimulation-classes/$classId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  PortalRoute: typeof PortalRoute
   authChangePasswordRoute: typeof authChangePasswordRoute
   authForgotPasswordRoute: typeof authForgotPasswordRoute
   authSignInRoute: typeof authSignInRoute
@@ -323,6 +659,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
@@ -407,12 +750,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/stimulation-classes/': {
+      id: '/_authenticated/stimulation-classes/'
+      path: '/stimulation-classes'
+      fullPath: '/stimulation-classes/'
+      preLoaderRoute: typeof AuthenticatedStimulationClassesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/settings/': {
       id: '/_authenticated/settings/'
       path: '/'
       fullPath: '/settings/'
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
+    '/_authenticated/sessions/': {
+      id: '/_authenticated/sessions/'
+      path: '/sessions'
+      fullPath: '/sessions/'
+      preLoaderRoute: typeof AuthenticatedSessionsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/products/': {
+      id: '/_authenticated/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof AuthenticatedProductsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/product-categories/': {
+      id: '/_authenticated/product-categories/'
+      path: '/product-categories'
+      fullPath: '/product-categories/'
+      preLoaderRoute: typeof AuthenticatedProductCategoriesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pricing/': {
+      id: '/_authenticated/pricing/'
+      path: '/pricing'
+      fullPath: '/pricing/'
+      preLoaderRoute: typeof AuthenticatedPricingIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/guardians/': {
+      id: '/_authenticated/guardians/'
+      path: '/guardians'
+      fullPath: '/guardians/'
+      preLoaderRoute: typeof AuthenticatedGuardiansIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/employees/': {
       id: '/_authenticated/employees/'
@@ -421,11 +806,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedEmployeesIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/coupons/': {
+      id: '/_authenticated/coupons/'
+      path: '/coupons'
+      fullPath: '/coupons/'
+      preLoaderRoute: typeof AuthenticatedCouponsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/children/': {
+      id: '/_authenticated/children/'
+      path: '/children'
+      fullPath: '/children/'
+      preLoaderRoute: typeof AuthenticatedChildrenIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/branches/': {
       id: '/_authenticated/branches/'
       path: '/branches'
       fullPath: '/branches/'
       preLoaderRoute: typeof AuthenticatedBranchesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/attendance-report/': {
+      id: '/_authenticated/attendance-report/'
+      path: '/attendance-report'
+      fullPath: '/attendance-report/'
+      preLoaderRoute: typeof AuthenticatedAttendanceReportIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/stimulation-classes/new': {
+      id: '/_authenticated/stimulation-classes/new'
+      path: '/stimulation-classes/new'
+      fullPath: '/stimulation-classes/new'
+      preLoaderRoute: typeof AuthenticatedStimulationClassesNewRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings/permissions': {
@@ -463,6 +876,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsAccountRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
+    '/_authenticated/sessions/new': {
+      id: '/_authenticated/sessions/new'
+      path: '/sessions/new'
+      fullPath: '/sessions/new'
+      preLoaderRoute: typeof AuthenticatedSessionsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/products/new': {
+      id: '/_authenticated/products/new'
+      path: '/products/new'
+      fullPath: '/products/new'
+      preLoaderRoute: typeof AuthenticatedProductsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/product-categories/new': {
+      id: '/_authenticated/product-categories/new'
+      path: '/product-categories/new'
+      fullPath: '/product-categories/new'
+      preLoaderRoute: typeof AuthenticatedProductCategoriesNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pricing/new': {
+      id: '/_authenticated/pricing/new'
+      path: '/pricing/new'
+      fullPath: '/pricing/new'
+      preLoaderRoute: typeof AuthenticatedPricingNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/guardians/new': {
+      id: '/_authenticated/guardians/new'
+      path: '/guardians/new'
+      fullPath: '/guardians/new'
+      preLoaderRoute: typeof AuthenticatedGuardiansNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/errors/$error': {
       id: '/_authenticated/errors/$error'
       path: '/errors/$error'
@@ -470,11 +918,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/coupons/new': {
+      id: '/_authenticated/coupons/new'
+      path: '/coupons/new'
+      fullPath: '/coupons/new'
+      preLoaderRoute: typeof AuthenticatedCouponsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/children/new': {
+      id: '/_authenticated/children/new'
+      path: '/children/new'
+      fullPath: '/children/new'
+      preLoaderRoute: typeof AuthenticatedChildrenNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/branches/new': {
       id: '/_authenticated/branches/new'
       path: '/branches/new'
       fullPath: '/branches/new'
       preLoaderRoute: typeof AuthenticatedBranchesNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/stimulation-classes/$classId/': {
+      id: '/_authenticated/stimulation-classes/$classId/'
+      path: '/stimulation-classes/$classId'
+      fullPath: '/stimulation-classes/$classId/'
+      preLoaderRoute: typeof AuthenticatedStimulationClassesClassIdIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/stimulation-classes/$classId/edit': {
+      id: '/_authenticated/stimulation-classes/$classId/edit'
+      path: '/stimulation-classes/$classId/edit'
+      fullPath: '/stimulation-classes/$classId/edit'
+      preLoaderRoute: typeof AuthenticatedStimulationClassesClassIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/products/$productId/edit': {
+      id: '/_authenticated/products/$productId/edit'
+      path: '/products/$productId/edit'
+      fullPath: '/products/$productId/edit'
+      preLoaderRoute: typeof AuthenticatedProductsProductIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/product-categories/$categoryId/edit': {
+      id: '/_authenticated/product-categories/$categoryId/edit'
+      path: '/product-categories/$categoryId/edit'
+      fullPath: '/product-categories/$categoryId/edit'
+      preLoaderRoute: typeof AuthenticatedProductCategoriesCategoryIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pricing/$pricingId/edit': {
+      id: '/_authenticated/pricing/$pricingId/edit'
+      path: '/pricing/$pricingId/edit'
+      fullPath: '/pricing/$pricingId/edit'
+      preLoaderRoute: typeof AuthenticatedPricingPricingIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/guardians/$guardianId/edit': {
+      id: '/_authenticated/guardians/$guardianId/edit'
+      path: '/guardians/$guardianId/edit'
+      fullPath: '/guardians/$guardianId/edit'
+      preLoaderRoute: typeof AuthenticatedGuardiansGuardianIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/coupons/$couponId/edit': {
+      id: '/_authenticated/coupons/$couponId/edit'
+      path: '/coupons/$couponId/edit'
+      fullPath: '/coupons/$couponId/edit'
+      preLoaderRoute: typeof AuthenticatedCouponsCouponIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/children/$childId/edit': {
+      id: '/_authenticated/children/$childId/edit'
+      path: '/children/$childId/edit'
+      fullPath: '/children/$childId/edit'
+      preLoaderRoute: typeof AuthenticatedChildrenChildIdEditRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/branches/$branchId/edit': {
@@ -517,21 +1035,82 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedBranchesNewRoute: typeof AuthenticatedBranchesNewRoute
+  AuthenticatedChildrenNewRoute: typeof AuthenticatedChildrenNewRoute
+  AuthenticatedCouponsNewRoute: typeof AuthenticatedCouponsNewRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
+  AuthenticatedGuardiansNewRoute: typeof AuthenticatedGuardiansNewRoute
+  AuthenticatedPricingNewRoute: typeof AuthenticatedPricingNewRoute
+  AuthenticatedProductCategoriesNewRoute: typeof AuthenticatedProductCategoriesNewRoute
+  AuthenticatedProductsNewRoute: typeof AuthenticatedProductsNewRoute
+  AuthenticatedSessionsNewRoute: typeof AuthenticatedSessionsNewRoute
+  AuthenticatedStimulationClassesNewRoute: typeof AuthenticatedStimulationClassesNewRoute
+  AuthenticatedAttendanceReportIndexRoute: typeof AuthenticatedAttendanceReportIndexRoute
   AuthenticatedBranchesIndexRoute: typeof AuthenticatedBranchesIndexRoute
+  AuthenticatedChildrenIndexRoute: typeof AuthenticatedChildrenIndexRoute
+  AuthenticatedCouponsIndexRoute: typeof AuthenticatedCouponsIndexRoute
   AuthenticatedEmployeesIndexRoute: typeof AuthenticatedEmployeesIndexRoute
+  AuthenticatedGuardiansIndexRoute: typeof AuthenticatedGuardiansIndexRoute
+  AuthenticatedPricingIndexRoute: typeof AuthenticatedPricingIndexRoute
+  AuthenticatedProductCategoriesIndexRoute: typeof AuthenticatedProductCategoriesIndexRoute
+  AuthenticatedProductsIndexRoute: typeof AuthenticatedProductsIndexRoute
+  AuthenticatedSessionsIndexRoute: typeof AuthenticatedSessionsIndexRoute
+  AuthenticatedStimulationClassesIndexRoute: typeof AuthenticatedStimulationClassesIndexRoute
   AuthenticatedBranchesBranchIdEditRoute: typeof AuthenticatedBranchesBranchIdEditRoute
+  AuthenticatedChildrenChildIdEditRoute: typeof AuthenticatedChildrenChildIdEditRoute
+  AuthenticatedCouponsCouponIdEditRoute: typeof AuthenticatedCouponsCouponIdEditRoute
+  AuthenticatedGuardiansGuardianIdEditRoute: typeof AuthenticatedGuardiansGuardianIdEditRoute
+  AuthenticatedPricingPricingIdEditRoute: typeof AuthenticatedPricingPricingIdEditRoute
+  AuthenticatedProductCategoriesCategoryIdEditRoute: typeof AuthenticatedProductCategoriesCategoryIdEditRoute
+  AuthenticatedProductsProductIdEditRoute: typeof AuthenticatedProductsProductIdEditRoute
+  AuthenticatedStimulationClassesClassIdEditRoute: typeof AuthenticatedStimulationClassesClassIdEditRoute
+  AuthenticatedStimulationClassesClassIdIndexRoute: typeof AuthenticatedStimulationClassesClassIdIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedBranchesNewRoute: AuthenticatedBranchesNewRoute,
+  AuthenticatedChildrenNewRoute: AuthenticatedChildrenNewRoute,
+  AuthenticatedCouponsNewRoute: AuthenticatedCouponsNewRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
+  AuthenticatedGuardiansNewRoute: AuthenticatedGuardiansNewRoute,
+  AuthenticatedPricingNewRoute: AuthenticatedPricingNewRoute,
+  AuthenticatedProductCategoriesNewRoute:
+    AuthenticatedProductCategoriesNewRoute,
+  AuthenticatedProductsNewRoute: AuthenticatedProductsNewRoute,
+  AuthenticatedSessionsNewRoute: AuthenticatedSessionsNewRoute,
+  AuthenticatedStimulationClassesNewRoute:
+    AuthenticatedStimulationClassesNewRoute,
+  AuthenticatedAttendanceReportIndexRoute:
+    AuthenticatedAttendanceReportIndexRoute,
   AuthenticatedBranchesIndexRoute: AuthenticatedBranchesIndexRoute,
+  AuthenticatedChildrenIndexRoute: AuthenticatedChildrenIndexRoute,
+  AuthenticatedCouponsIndexRoute: AuthenticatedCouponsIndexRoute,
   AuthenticatedEmployeesIndexRoute: AuthenticatedEmployeesIndexRoute,
+  AuthenticatedGuardiansIndexRoute: AuthenticatedGuardiansIndexRoute,
+  AuthenticatedPricingIndexRoute: AuthenticatedPricingIndexRoute,
+  AuthenticatedProductCategoriesIndexRoute:
+    AuthenticatedProductCategoriesIndexRoute,
+  AuthenticatedProductsIndexRoute: AuthenticatedProductsIndexRoute,
+  AuthenticatedSessionsIndexRoute: AuthenticatedSessionsIndexRoute,
+  AuthenticatedStimulationClassesIndexRoute:
+    AuthenticatedStimulationClassesIndexRoute,
   AuthenticatedBranchesBranchIdEditRoute:
     AuthenticatedBranchesBranchIdEditRoute,
+  AuthenticatedChildrenChildIdEditRoute: AuthenticatedChildrenChildIdEditRoute,
+  AuthenticatedCouponsCouponIdEditRoute: AuthenticatedCouponsCouponIdEditRoute,
+  AuthenticatedGuardiansGuardianIdEditRoute:
+    AuthenticatedGuardiansGuardianIdEditRoute,
+  AuthenticatedPricingPricingIdEditRoute:
+    AuthenticatedPricingPricingIdEditRoute,
+  AuthenticatedProductCategoriesCategoryIdEditRoute:
+    AuthenticatedProductCategoriesCategoryIdEditRoute,
+  AuthenticatedProductsProductIdEditRoute:
+    AuthenticatedProductsProductIdEditRoute,
+  AuthenticatedStimulationClassesClassIdEditRoute:
+    AuthenticatedStimulationClassesClassIdEditRoute,
+  AuthenticatedStimulationClassesClassIdIndexRoute:
+    AuthenticatedStimulationClassesClassIdIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -539,6 +1118,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  PortalRoute: PortalRoute,
   authChangePasswordRoute: authChangePasswordRoute,
   authForgotPasswordRoute: authForgotPasswordRoute,
   authSignInRoute: authSignInRoute,

@@ -1,23 +1,19 @@
 import { z } from 'zod'
 
 export const employeeRoles = [
-  'WAITER',
-  'COOK',
-  'CASHIER',
-  'MANAGER',
-  'SUPERVISOR',
   'ADMIN',
+  'SUPERVISOR',
+  'RECEPTIONIST',
+  'TEACHER',
 ] as const
 
 export type EmployeeRole = (typeof employeeRoles)[number]
 
 export const employeeRoleLabels: Record<EmployeeRole, string> = {
-  WAITER: 'Mesero',
-  COOK: 'Cocinero',
-  CASHIER: 'Cajero',
-  MANAGER: 'Gerente',
-  SUPERVISOR: 'Supervisor',
   ADMIN: 'Administrador',
+  SUPERVISOR: 'Supervisor',
+  RECEPTIONIST: 'Recepcionista',
+  TEACHER: 'Instructor',
 }
 
 export const employeeSchema = z.object({

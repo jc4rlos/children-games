@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: '14.4'
+    PostgrestVersion: '14.5'
   }
   public: {
     Tables: {
@@ -56,151 +56,227 @@ export type Database = {
         }
         Relationships: []
       }
-      category: {
+      child: {
         Row: {
+          avatar: string | null
+          birth_date: string
+          branch_id: number
+          code: string
           created_at: string
           created_by: string
           deleted_at: string | null
-          description: string | null
+          full_name: string
+          gender: Database['public']['Enums']['gender']
+          guardian_id: number
           id: number
           is_active: boolean
-          name: string
+          notes: string | null
           updated_at: string | null
           updated_by: string | null
         }
         Insert: {
+          avatar?: string | null
+          birth_date: string
+          branch_id: number
+          code: string
           created_at?: string
           created_by: string
           deleted_at?: string | null
-          description?: string | null
+          full_name: string
+          gender: Database['public']['Enums']['gender']
+          guardian_id: number
           id?: number
           is_active?: boolean
-          name: string
+          notes?: string | null
           updated_at?: string | null
           updated_by?: string | null
         }
         Update: {
-          created_at?: string
-          created_by?: string
-          deleted_at?: string | null
-          description?: string | null
-          id?: number
-          is_active?: boolean
-          name?: string
-          updated_at?: string | null
-          updated_by?: string | null
-        }
-        Relationships: []
-      }
-      daily_menu: {
-        Row: {
-          branch_id: number
-          created_at: string
-          created_by: string
-          deleted_at: string | null
-          dish_id: number
-          id: number
-          is_active: boolean
-          menu_date: string
-          price: number
-          stock: number
-          updated_at: string | null
-          updated_by: string | null
-        }
-        Insert: {
-          branch_id: number
-          created_at?: string
-          created_by: string
-          deleted_at?: string | null
-          dish_id: number
-          id?: number
-          is_active?: boolean
-          menu_date: string
-          price: number
-          stock?: number
-          updated_at?: string | null
-          updated_by?: string | null
-        }
-        Update: {
+          avatar?: string | null
+          birth_date?: string
           branch_id?: number
+          code?: string
           created_at?: string
           created_by?: string
           deleted_at?: string | null
-          dish_id?: number
+          full_name?: string
+          gender?: Database['public']['Enums']['gender']
+          guardian_id?: number
           id?: number
           is_active?: boolean
-          menu_date?: string
-          price?: number
-          stock?: number
+          notes?: string | null
           updated_at?: string | null
           updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'daily_menu_branch_id_fkey'
+            foreignKeyName: 'child_branch_id_fkey'
             columns: ['branch_id']
             isOneToOne: false
             referencedRelation: 'branch'
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'daily_menu_dish_id_fkey'
-            columns: ['dish_id']
+            foreignKeyName: 'child_guardian_id_fkey'
+            columns: ['guardian_id']
             isOneToOne: false
-            referencedRelation: 'dish'
+            referencedRelation: 'guardian'
             referencedColumns: ['id']
           },
         ]
       }
-      dish: {
+      class_attendance: {
         Row: {
-          base_price: number
-          category_id: number
+          attended: boolean
+          class_date: string
+          created_at: string
+          enrollment_id: number
+          id: number
+          noted_by: number | null
+        }
+        Insert: {
+          attended?: boolean
+          class_date: string
+          created_at?: string
+          enrollment_id: number
+          id?: number
+          noted_by?: number | null
+        }
+        Update: {
+          attended?: boolean
+          class_date?: string
+          created_at?: string
+          enrollment_id?: number
+          id?: number
+          noted_by?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'class_attendance_enrollment_id_fkey'
+            columns: ['enrollment_id']
+            isOneToOne: false
+            referencedRelation: 'class_enrollment'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'class_attendance_noted_by_fkey'
+            columns: ['noted_by']
+            isOneToOne: false
+            referencedRelation: 'employee'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      class_enrollment: {
+        Row: {
+          child_id: number
+          class_id: number
+          enrolled_at: string
+          enrolled_by: number | null
+          id: number
+          is_active: boolean
+        }
+        Insert: {
+          child_id: number
+          class_id: number
+          enrolled_at?: string
+          enrolled_by?: number | null
+          id?: number
+          is_active?: boolean
+        }
+        Update: {
+          child_id?: number
+          class_id?: number
+          enrolled_at?: string
+          enrolled_by?: number | null
+          id?: number
+          is_active?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'class_enrollment_child_id_fkey'
+            columns: ['child_id']
+            isOneToOne: false
+            referencedRelation: 'child'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'class_enrollment_class_id_fkey'
+            columns: ['class_id']
+            isOneToOne: false
+            referencedRelation: 'stimulation_class'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'class_enrollment_enrolled_by_fkey'
+            columns: ['enrolled_by']
+            isOneToOne: false
+            referencedRelation: 'employee'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      coupon: {
+        Row: {
+          branch_id: number | null
+          code: string
           created_at: string
           created_by: string
           deleted_at: string | null
           description: string | null
+          discount_type: Database['public']['Enums']['discount_type']
+          discount_value: number
           id: number
-          image_url: string | null
           is_active: boolean
-          name: string
+          max_uses: number | null
           updated_at: string | null
           updated_by: string | null
+          uses_count: number
+          valid_from: string
+          valid_until: string | null
         }
         Insert: {
-          base_price: number
-          category_id: number
+          branch_id?: number | null
+          code: string
           created_at?: string
           created_by: string
           deleted_at?: string | null
           description?: string | null
+          discount_type: Database['public']['Enums']['discount_type']
+          discount_value: number
           id?: number
-          image_url?: string | null
           is_active?: boolean
-          name: string
+          max_uses?: number | null
           updated_at?: string | null
           updated_by?: string | null
+          uses_count?: number
+          valid_from?: string
+          valid_until?: string | null
         }
         Update: {
-          base_price?: number
-          category_id?: number
+          branch_id?: number | null
+          code?: string
           created_at?: string
           created_by?: string
           deleted_at?: string | null
           description?: string | null
+          discount_type?: Database['public']['Enums']['discount_type']
+          discount_value?: number
           id?: number
-          image_url?: string | null
           is_active?: boolean
-          name?: string
+          max_uses?: number | null
           updated_at?: string | null
           updated_by?: string | null
+          uses_count?: number
+          valid_from?: string
+          valid_until?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'dish_category_id_fkey'
-            columns: ['category_id']
+            foreignKeyName: 'coupon_branch_id_fkey'
+            columns: ['branch_id']
             isOneToOne: false
-            referencedRelation: 'category'
+            referencedRelation: 'branch'
             referencedColumns: ['id']
           },
         ]
@@ -223,7 +299,6 @@ export type Database = {
           role: Database['public']['Enums']['employee_role']
           updated_at: string | null
           updated_by: string | null
-          user_id: string | null
         }
         Insert: {
           auth_user_id?: string | null
@@ -242,7 +317,6 @@ export type Database = {
           role: Database['public']['Enums']['employee_role']
           updated_at?: string | null
           updated_by?: string | null
-          user_id?: string | null
         }
         Update: {
           auth_user_id?: string | null
@@ -261,7 +335,6 @@ export type Database = {
           role?: Database['public']['Enums']['employee_role']
           updated_at?: string | null
           updated_by?: string | null
-          user_id?: string | null
         }
         Relationships: [
           {
@@ -269,6 +342,122 @@ export type Database = {
             columns: ['branch_id']
             isOneToOne: false
             referencedRelation: 'branch'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      guardian: {
+        Row: {
+          created_at: string
+          created_by: string
+          deleted_at: string | null
+          document_number: string
+          email: string | null
+          full_name: string
+          id: number
+          phone: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          deleted_at?: string | null
+          document_number: string
+          email?: string | null
+          full_name: string
+          id?: number
+          phone?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          deleted_at?: string | null
+          document_number?: string
+          email?: string | null
+          full_name?: string
+          id?: number
+          phone?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      loyalty_card: {
+        Row: {
+          child_id: number
+          free_sessions: number
+          id: number
+          stamps_count: number
+          stamps_required: number
+          total_earned: number
+          updated_at: string | null
+        }
+        Insert: {
+          child_id: number
+          free_sessions?: number
+          id?: number
+          stamps_count?: number
+          stamps_required?: number
+          total_earned?: number
+          updated_at?: string | null
+        }
+        Update: {
+          child_id?: number
+          free_sessions?: number
+          id?: number
+          stamps_count?: number
+          stamps_required?: number
+          total_earned?: number
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'loyalty_card_child_id_fkey'
+            columns: ['child_id']
+            isOneToOne: true
+            referencedRelation: 'child'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      loyalty_stamp: {
+        Row: {
+          id: number
+          loyalty_card_id: number
+          note: string | null
+          play_session_id: number | null
+          stamped_at: string
+        }
+        Insert: {
+          id?: number
+          loyalty_card_id: number
+          note?: string | null
+          play_session_id?: number | null
+          stamped_at?: string
+        }
+        Update: {
+          id?: number
+          loyalty_card_id?: number
+          note?: string | null
+          play_session_id?: number | null
+          stamped_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'fk_stamp_session'
+            columns: ['play_session_id']
+            isOneToOne: false
+            referencedRelation: 'play_session'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'loyalty_stamp_loyalty_card_id_fkey'
+            columns: ['loyalty_card_id']
+            isOneToOne: false
+            referencedRelation: 'loyalty_card'
             referencedColumns: ['id']
           },
         ]
@@ -346,247 +535,402 @@ export type Database = {
           },
         ]
       }
-      order: {
+      play_session: {
         Row: {
           branch_id: number
+          check_in: string
+          check_out: string | null
+          child_id: number
+          closed_by: number | null
+          coupon_id: number | null
           created_at: string
           created_by: string
-          customer_name: string | null
-          customer_phone: string | null
           deleted_at: string | null
+          discount_amount: number | null
           id: number
+          is_free_session: boolean
+          minutes_played: number | null
           notes: string | null
-          order_type: Database['public']['Enums']['order_type']
-          ordered_at: string
-          status: Database['public']['Enums']['order_status']
-          table_id: number | null
+          play_subtotal: number | null
+          pricing_id: number
+          products_subtotal: number | null
+          registered_by: number
+          scheduled_checkout: string | null
+          status: Database['public']['Enums']['session_status']
           total_amount: number | null
           updated_at: string | null
           updated_by: string | null
-          waiter_id: number
         }
         Insert: {
           branch_id: number
+          check_in?: string
+          check_out?: string | null
+          child_id: number
+          closed_by?: number | null
+          coupon_id?: number | null
           created_at?: string
           created_by: string
-          customer_name?: string | null
-          customer_phone?: string | null
           deleted_at?: string | null
+          discount_amount?: number | null
           id?: number
+          is_free_session?: boolean
+          minutes_played?: number | null
           notes?: string | null
-          order_type?: Database['public']['Enums']['order_type']
-          ordered_at?: string
-          status?: Database['public']['Enums']['order_status']
-          table_id?: number | null
+          play_subtotal?: number | null
+          pricing_id: number
+          products_subtotal?: number | null
+          registered_by: number
+          scheduled_checkout?: string | null
+          status?: Database['public']['Enums']['session_status']
           total_amount?: number | null
           updated_at?: string | null
           updated_by?: string | null
-          waiter_id: number
         }
         Update: {
           branch_id?: number
+          check_in?: string
+          check_out?: string | null
+          child_id?: number
+          closed_by?: number | null
+          coupon_id?: number | null
           created_at?: string
           created_by?: string
-          customer_name?: string | null
-          customer_phone?: string | null
           deleted_at?: string | null
+          discount_amount?: number | null
           id?: number
+          is_free_session?: boolean
+          minutes_played?: number | null
           notes?: string | null
-          order_type?: Database['public']['Enums']['order_type']
-          ordered_at?: string
-          status?: Database['public']['Enums']['order_status']
-          table_id?: number | null
+          play_subtotal?: number | null
+          pricing_id?: number
+          products_subtotal?: number | null
+          registered_by?: number
+          scheduled_checkout?: string | null
+          status?: Database['public']['Enums']['session_status']
           total_amount?: number | null
           updated_at?: string | null
           updated_by?: string | null
-          waiter_id?: number
         }
         Relationships: [
           {
-            foreignKeyName: 'order_branch_id_fkey'
+            foreignKeyName: 'play_session_branch_id_fkey'
             columns: ['branch_id']
             isOneToOne: false
             referencedRelation: 'branch'
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'order_table_id_fkey'
-            columns: ['table_id']
+            foreignKeyName: 'play_session_child_id_fkey'
+            columns: ['child_id']
             isOneToOne: false
-            referencedRelation: 'restaurant_table'
+            referencedRelation: 'child'
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'order_waiter_id_fkey'
-            columns: ['waiter_id']
+            foreignKeyName: 'play_session_closed_by_fkey'
+            columns: ['closed_by']
+            isOneToOne: false
+            referencedRelation: 'employee'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'play_session_coupon_id_fkey'
+            columns: ['coupon_id']
+            isOneToOne: false
+            referencedRelation: 'coupon'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'play_session_pricing_id_fkey'
+            columns: ['pricing_id']
+            isOneToOne: false
+            referencedRelation: 'pricing_config'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'play_session_registered_by_fkey'
+            columns: ['registered_by']
             isOneToOne: false
             referencedRelation: 'employee'
             referencedColumns: ['id']
           },
         ]
       }
-      order_delivery: {
+      pricing_config: {
         Row: {
-          address: string | null
-          created_at: string
-          created_by: string
-          delivered_at: string | null
-          delivery_fee: number
-          district: string | null
-          estimated_at: string | null
-          id: number
-          order_id: number
-          phone: string | null
-          recipient_name: string
-          reference: string | null
-          updated_at: string | null
-          updated_by: string | null
-        }
-        Insert: {
-          address?: string | null
-          created_at?: string
-          created_by: string
-          delivered_at?: string | null
-          delivery_fee?: number
-          district?: string | null
-          estimated_at?: string | null
-          id?: number
-          order_id: number
-          phone?: string | null
-          recipient_name: string
-          reference?: string | null
-          updated_at?: string | null
-          updated_by?: string | null
-        }
-        Update: {
-          address?: string | null
-          created_at?: string
-          created_by?: string
-          delivered_at?: string | null
-          delivery_fee?: number
-          district?: string | null
-          estimated_at?: string | null
-          id?: number
-          order_id?: number
-          phone?: string | null
-          recipient_name?: string
-          reference?: string | null
-          updated_at?: string | null
-          updated_by?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: 'order_delivery_order_id_fkey'
-            columns: ['order_id']
-            isOneToOne: true
-            referencedRelation: 'order'
-            referencedColumns: ['id']
-          },
-        ]
-      }
-      order_item: {
-        Row: {
+          branch_id: number
           created_at: string
           created_by: string
           deleted_at: string | null
-          dish_id: number
+          description: string | null
           id: number
-          notes: string | null
-          order_id: number
-          quantity: number
-          subtotal: number | null
-          unit_price: number
+          minimum_charge: number
+          price_per_hour: number
+          updated_at: string | null
+          updated_by: string | null
+          valid_from: string
+          valid_until: string | null
+        }
+        Insert: {
+          branch_id: number
+          created_at?: string
+          created_by: string
+          deleted_at?: string | null
+          description?: string | null
+          id?: number
+          minimum_charge?: number
+          price_per_hour: number
+          updated_at?: string | null
+          updated_by?: string | null
+          valid_from?: string
+          valid_until?: string | null
+        }
+        Update: {
+          branch_id?: number
+          created_at?: string
+          created_by?: string
+          deleted_at?: string | null
+          description?: string | null
+          id?: number
+          minimum_charge?: number
+          price_per_hour?: number
+          updated_at?: string | null
+          updated_by?: string | null
+          valid_from?: string
+          valid_until?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'pricing_config_branch_id_fkey'
+            columns: ['branch_id']
+            isOneToOne: false
+            referencedRelation: 'branch'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      product: {
+        Row: {
+          branch_id: number | null
+          category_id: number
+          created_at: string
+          created_by: string
+          id: number
+          image_url: string | null
+          is_active: boolean
+          name: string
+          price: number
+          stock: number
           updated_at: string | null
           updated_by: string | null
         }
         Insert: {
+          branch_id?: number | null
+          category_id: number
           created_at?: string
-          created_by: string
-          deleted_at?: string | null
-          dish_id: number
+          created_by?: string
           id?: number
-          notes?: string | null
-          order_id: number
-          quantity?: number
-          subtotal?: number | null
-          unit_price: number
+          image_url?: string | null
+          is_active?: boolean
+          name: string
+          price: number
+          stock?: number
           updated_at?: string | null
           updated_by?: string | null
         }
         Update: {
+          branch_id?: number | null
+          category_id?: number
           created_at?: string
           created_by?: string
-          deleted_at?: string | null
-          dish_id?: number
           id?: number
-          notes?: string | null
-          order_id?: number
-          quantity?: number
-          subtotal?: number | null
-          unit_price?: number
+          image_url?: string | null
+          is_active?: boolean
+          name?: string
+          price?: number
+          stock?: number
           updated_at?: string | null
           updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'order_item_dish_id_fkey'
-            columns: ['dish_id']
+            foreignKeyName: 'product_branch_id_fkey'
+            columns: ['branch_id']
             isOneToOne: false
-            referencedRelation: 'dish'
+            referencedRelation: 'branch'
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'order_item_order_id_fkey'
-            columns: ['order_id']
+            foreignKeyName: 'product_category_id_fkey'
+            columns: ['category_id']
             isOneToOne: false
-            referencedRelation: 'order'
+            referencedRelation: 'product_category'
             referencedColumns: ['id']
           },
         ]
       }
-      restaurant_table: {
+      product_category: {
         Row: {
-          branch_id: number
-          capacity: number
           created_at: string
           created_by: string
           deleted_at: string | null
           id: number
           is_active: boolean
-          number: string
+          name: string
           updated_at: string | null
           updated_by: string | null
         }
         Insert: {
-          branch_id: number
-          capacity?: number
           created_at?: string
           created_by: string
           deleted_at?: string | null
           id?: number
           is_active?: boolean
-          number: string
+          name: string
           updated_at?: string | null
           updated_by?: string | null
         }
         Update: {
-          branch_id?: number
-          capacity?: number
           created_at?: string
           created_by?: string
           deleted_at?: string | null
           id?: number
           is_active?: boolean
-          number?: string
+          name?: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      session_consumption: {
+        Row: {
+          added_at: string
+          added_by: number | null
+          id: number
+          play_session_id: number
+          product_id: number
+          quantity: number
+          subtotal: number | null
+          unit_price: number
+        }
+        Insert: {
+          added_at?: string
+          added_by?: number | null
+          id?: number
+          play_session_id: number
+          product_id: number
+          quantity?: number
+          subtotal?: number | null
+          unit_price: number
+        }
+        Update: {
+          added_at?: string
+          added_by?: number | null
+          id?: number
+          play_session_id?: number
+          product_id?: number
+          quantity?: number
+          subtotal?: number | null
+          unit_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'session_consumption_added_by_fkey'
+            columns: ['added_by']
+            isOneToOne: false
+            referencedRelation: 'employee'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'session_consumption_play_session_id_fkey'
+            columns: ['play_session_id']
+            isOneToOne: false
+            referencedRelation: 'play_session'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'session_consumption_product_id_fkey'
+            columns: ['product_id']
+            isOneToOne: false
+            referencedRelation: 'product'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      stimulation_class: {
+        Row: {
+          age_max_months: number
+          age_min_months: number
+          branch_id: number
+          capacity: number
+          created_at: string
+          created_by: string
+          day_of_week: Database['public']['Enums']['class_day'][]
+          deleted_at: string | null
+          description: string | null
+          end_time: string
+          id: number
+          is_active: boolean
+          name: string
+          price: number
+          start_time: string
+          teacher_id: number | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          age_max_months?: number
+          age_min_months?: number
+          branch_id: number
+          capacity?: number
+          created_at?: string
+          created_by: string
+          day_of_week: Database['public']['Enums']['class_day'][]
+          deleted_at?: string | null
+          description?: string | null
+          end_time: string
+          id?: number
+          is_active?: boolean
+          name: string
+          price?: number
+          start_time: string
+          teacher_id?: number | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          age_max_months?: number
+          age_min_months?: number
+          branch_id?: number
+          capacity?: number
+          created_at?: string
+          created_by?: string
+          day_of_week?: Database['public']['Enums']['class_day'][]
+          deleted_at?: string | null
+          description?: string | null
+          end_time?: string
+          id?: number
+          is_active?: boolean
+          name?: string
+          price?: number
+          start_time?: string
+          teacher_id?: number | null
           updated_at?: string | null
           updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'restaurant_table_branch_id_fkey'
+            foreignKeyName: 'stimulation_class_branch_id_fkey'
             columns: ['branch_id']
             isOneToOne: false
             referencedRelation: 'branch'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'stimulation_class_teacher_id_fkey'
+            columns: ['teacher_id']
+            isOneToOne: false
+            referencedRelation: 'employee'
             referencedColumns: ['id']
           },
         ]
@@ -596,26 +940,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_user_access: { Args: never; Returns: Json }
+      [_ in never]: never
     }
     Enums: {
-      employee_role:
-        | 'WAITER'
-        | 'COOK'
-        | 'CASHIER'
-        | 'MANAGER'
-        | 'SUPERVISOR'
-        | 'ADMIN'
-      order_status:
-        | 'PENDING'
-        | 'IN_PROGRESS'
-        | 'READY'
-        | 'DELIVERED'
-        | 'CANCELLED'
-        | 'CONFIRMED'
-        | 'PREPARING'
-        | 'ON_THE_WAY'
-      order_type: 'DINE_IN' | 'DELIVERY' | 'TAKEAWAY'
+      class_day: 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
+      discount_type: 'PERCENTAGE' | 'FIXED_AMOUNT'
+      employee_role: 'ADMIN' | 'SUPERVISOR' | 'RECEPTIONIST' | 'TEACHER'
+      gender: 'MALE' | 'FEMALE'
+      session_status: 'ACTIVE' | 'CLOSED' | 'FREE'
     }
     CompositeTypes: {
       [_ in never]: never
@@ -743,25 +1075,11 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      employee_role: [
-        'WAITER',
-        'COOK',
-        'CASHIER',
-        'MANAGER',
-        'SUPERVISOR',
-        'ADMIN',
-      ],
-      order_status: [
-        'PENDING',
-        'IN_PROGRESS',
-        'READY',
-        'DELIVERED',
-        'CANCELLED',
-        'CONFIRMED',
-        'PREPARING',
-        'ON_THE_WAY',
-      ],
-      order_type: ['DINE_IN', 'DELIVERY', 'TAKEAWAY'],
+      class_day: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+      discount_type: ['PERCENTAGE', 'FIXED_AMOUNT'],
+      employee_role: ['ADMIN', 'SUPERVISOR', 'RECEPTIONIST', 'TEACHER'],
+      gender: ['MALE', 'FEMALE'],
+      session_status: ['ACTIVE', 'CLOSED', 'FREE'],
     },
   },
 } as const
