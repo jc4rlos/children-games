@@ -1,6 +1,6 @@
 import { Skeleton } from '@boilerplate/ui'
 import { Award, Gift, Stamp } from 'lucide-react'
-import { type LoyaltySummary } from '../data/dashboard-service'
+import type { LoyaltySummary } from '../data/dashboard-service'
 
 type LoyaltySummaryCardProps = {
   data: LoyaltySummary | undefined

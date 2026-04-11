@@ -1,17 +1,17 @@
-import { useEffect, useMemo, useState } from 'react'
 import {
-  type SortingState,
-  type VisibilityState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
+import { useEffect, useMemo, useState } from 'react'
 import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { createSessionColumns } from '../components/sessions-columns'
-import { type PlaySession } from '../data/schema'
+import type { PlaySession } from '../data/schema'
 
 const TODAY = new Date().toISOString().slice(0, 10)
 

@@ -1,7 +1,7 @@
 import { Skeleton } from '@boilerplate/ui'
 import { BookOpen } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { type ClassTodayRow } from '../data/dashboard-service'
+import type { ClassTodayRow } from '../data/dashboard-service'
 
 type ClassesTodayProps = {
   data: ClassTodayRow[]

@@ -1,10 +1,10 @@
 import { supabase } from '@/lib/supabase'
-import { type PlaySession, type SessionFormValues } from './schema'
+import type { PlaySession, SessionFormValues } from './schema'
 import {
+  type DbPlaySessionWithRelations,
   toDbClose,
   toDbInsert,
   toPlaySession,
-  type DbPlaySessionWithRelations,
 } from './session-mapper'
 
 const SELECT_FIELDS = [

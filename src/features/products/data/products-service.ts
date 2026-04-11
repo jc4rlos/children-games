@@ -1,11 +1,11 @@
 import { supabase } from '@/lib/supabase'
 import {
+  type DbProductWithRelations,
   toDbInsert,
   toDbUpdate,
   toProduct,
-  type DbProductWithRelations,
 } from './product-mapper'
-import { type Product, type ProductFormValues } from './schema'
+import type { Product, ProductFormValues } from './schema'
 
 const SELECT_FIELDS =
   'id, branch_id, category_id, name, price, stock, image_url, is_active, product_category(name), branch(name)'

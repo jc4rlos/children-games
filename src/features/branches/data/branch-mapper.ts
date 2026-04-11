@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type Branch, type BranchFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { Branch, BranchFormValues } from './schema'
 
 type DbBranch = Database['public']['Tables']['branch']['Row']
 type DbBranchInsert = Database['public']['Tables']['branch']['Insert']

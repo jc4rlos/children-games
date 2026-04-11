@@ -1,5 +1,5 @@
-import z from 'zod'
 import { createFileRoute } from '@tanstack/react-router'
+import z from 'zod'
 import { ProductCategories } from '@/features/product-categories'
 
 const searchSchema = z.object({

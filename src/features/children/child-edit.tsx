@@ -1,9 +1,9 @@
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button, Skeleton } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { ChildForm } from './components/child-form'
-import { type ChildFormValues } from './data/schema'
+import type { ChildFormValues } from './data/schema'
 import { useChild, useUpdateChild } from './hooks/use-children'
 
 const route = getRouteApi('/_authenticated/children/$childId/edit')

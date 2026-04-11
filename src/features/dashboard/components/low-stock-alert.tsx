@@ -1,7 +1,7 @@
 import { Skeleton } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { type LowStockProduct } from '../data/dashboard-service'
+import type { LowStockProduct } from '../data/dashboard-service'
 
 type LowStockAlertProps = {
   data: LowStockProduct[]

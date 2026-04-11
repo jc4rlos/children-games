@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { SessionCloseDialog } from './components/session-close-dialog'
 import { SessionConsumptionDialog } from './components/session-consumption-dialog'
 import { SessionsTable } from './components/sessions-table'
 import { SessionsTableSkeleton } from './components/sessions-table-skeleton'
-import { type PlaySession } from './data/schema'
+import type { PlaySession } from './data/schema'
 import { useSessions } from './hooks/use-sessions'
 
 const route = getRouteApi('/_authenticated/sessions/')

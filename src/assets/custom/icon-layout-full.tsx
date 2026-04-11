@@ -1,4 +1,4 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 export function IconLayoutFull(props: SVGProps<SVGSVGElement>) {
   return (
@@ -8,6 +8,7 @@ export function IconLayoutFull(props: SVGProps<SVGSVGElement>) {
       viewBox='0 0 79.86 51.14'
       {...props}
     >
+      <title>Full layout icon</title>
       <path
         fill='none'
         opacity={0.75}

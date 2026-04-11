@@ -1,8 +1,3 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { fonts } from '@/config/fonts'
 import {
   Button,
   buttonVariants,
@@ -16,10 +11,15 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@boilerplate/ui'
-import { showSubmittedData } from '@/lib/show-submitted-data'
-import { cn } from '@/lib/utils'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDownIcon } from '@radix-ui/react-icons'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { fonts } from '@/config/fonts'
 import { useFont } from '@/context/font-provider'
 import { useTheme } from '@/context/theme-provider'
+import { showSubmittedData } from '@/lib/show-submitted-data'
+import { cn } from '@/lib/utils'
 
 const appearanceFormSchema = z.object({
   theme: z.enum(['light', 'dark']),
@@ -44,8 +44,8 @@ export function AppearanceForm() {
   })
 
   function onSubmit(data: AppearanceFormValues) {
-    if (data.font != font) setFont(data.font)
-    if (data.theme != theme) setTheme(data.theme)
+    if (data.font !== font) setFont(data.font)
+    if (data.theme !== theme) setTheme(data.theme)
 
     showSubmittedData(data)
   }

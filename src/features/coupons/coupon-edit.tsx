@@ -1,9 +1,9 @@
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button, Skeleton } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { CouponForm } from './components/coupon-form'
-import { type CouponFormValues } from './data/schema'
+import type { CouponFormValues } from './data/schema'
 import {
   useBranchesForCoupon,
   useCoupon,

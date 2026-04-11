@@ -1,5 +1,5 @@
-import z from 'zod'
 import { createFileRoute } from '@tanstack/react-router'
+import z from 'zod'
 import { Sessions } from '@/features/sessions'
 
 const today = new Date().toISOString().slice(0, 10)

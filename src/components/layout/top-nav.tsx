@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import {
   Button,
   DropdownMenu,
@@ -6,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { Link } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
 

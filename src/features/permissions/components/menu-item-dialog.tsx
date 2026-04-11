@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
 import {
   Button,
   Dialog,
@@ -21,7 +19,9 @@ import {
   SelectValue,
   Switch,
 } from '@boilerplate/ui'
-import { type MenuItem, type MenuItemFormValues } from '../data/menu-service'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import type { MenuItem, MenuItemFormValues } from '../data/menu-service'
 
 type MenuItemDialogProps = {
   open: boolean

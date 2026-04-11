@@ -1,14 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import {
-  type GuardiansParams,
   createGuardian,
   deleteGuardian,
+  type GuardiansParams,
   getGuardianById,
   getGuardians,
   updateGuardian,
 } from '../data/guardians-service'
-import { type GuardianFormValues } from '../data/schema'
+import type { GuardianFormValues } from '../data/schema'
 
 export const guardianQueryKeys = {
   list: (params: GuardiansParams) => ['guardians', 'list', params] as const,

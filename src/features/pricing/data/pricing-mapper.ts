@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type PricingConfig, type PricingConfigFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { PricingConfig, PricingConfigFormValues } from './schema'
 
 type DbPricingConfig = Database['public']['Tables']['pricing_config']['Row']
 type DbPricingConfigInsert =

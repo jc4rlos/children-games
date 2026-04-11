@@ -1,5 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
-import { type Table } from '@tanstack/react-table'
 import {
   Badge,
   Button,
@@ -8,7 +6,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@boilerplate/ui'
+import type { Table } from '@tanstack/react-table'
 import { X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 type DataTableBulkActionsProps<TData> = {
@@ -61,9 +61,7 @@ export function DataTableBulkActions<TData>({
     const buttons = toolbarRef.current?.querySelectorAll('button')
     if (!buttons) return
 
-    const currentIndex = Array.from(buttons).findIndex(
-      (button) => button === document.activeElement
-    )
+    const currentIndex = Array.from(buttons).indexOf(document.activeElement)
 
     switch (event.key) {
       case 'ArrowRight': {

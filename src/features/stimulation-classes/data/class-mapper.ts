@@ -1,8 +1,4 @@
-import {
-  type ClassDay,
-  type ClassEnrollment,
-  type StimulationClass,
-} from './schema'
+import type { ClassDay, ClassEnrollment, StimulationClass } from './schema'
 
 export type DbStimulationClass = {
   id: number

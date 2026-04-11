@@ -1,10 +1,10 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
-import { type Branch } from '../data/schema'
+import { cn } from '@/lib/utils'
+import type { Branch } from '../data/schema'
 import { BranchRowActions } from './branch-row-actions'
 
 export const createBranchColumns = (

@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type Coupon, type CouponFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { Coupon, CouponFormValues } from './schema'
 
 type DbCoupon = Database['public']['Tables']['coupon']['Row']
 type DbCouponInsert = Database['public']['Tables']['coupon']['Insert']
@@ -12,7 +12,7 @@ export type DbCouponWithBranch = DbCoupon & {
 const parseMaxUses = (value: string | undefined): number | null => {
   if (!value?.trim()) return null
   const num = parseInt(value.trim(), 10)
-  return isNaN(num) ? null : num
+  return Number.isNaN(num) ? null : num
 }
 
 export const toCoupon = (row: DbCouponWithBranch): Coupon => ({

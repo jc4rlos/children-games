@@ -1,5 +1,3 @@
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { useNavigate } from '@tanstack/react-router'
 import {
   Button,
   DropdownMenu,
@@ -9,8 +7,10 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { useNavigate } from '@tanstack/react-router'
 import { Eye, Pencil, Trash2 } from 'lucide-react'
-import { type StimulationClass } from '../data/schema'
+import type { StimulationClass } from '../data/schema'
 
 type ClassRowActionsProps = {
   cls: StimulationClass

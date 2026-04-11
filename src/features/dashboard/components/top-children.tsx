@@ -1,7 +1,7 @@
 import { Skeleton } from '@boilerplate/ui'
 import { Star } from 'lucide-react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
-import { type TopChild } from '../data/dashboard-service'
+import type { TopChild } from '../data/dashboard-service'
 
 type TopChildrenProps = {
   data: TopChild[]

@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { ProductDeleteDialog } from './components/product-delete-dialog'
 import { ProductsTable } from './components/products-table'
 import { ProductsTableSkeleton } from './components/products-table-skeleton'
-import { type Product } from './data/schema'
+import type { Product } from './data/schema'
 import { useCategoriesForProduct, useProducts } from './hooks/use-products'
 
 const route = getRouteApi('/_authenticated/products/')

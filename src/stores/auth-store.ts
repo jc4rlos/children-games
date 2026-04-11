@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import { getCookie, setCookie, removeCookie } from '@/lib/cookies'
-import { type MenuItem } from '@/features/permissions/data/menu-service'
+import type { MenuItem } from '@/features/permissions/data/menu-service'
+import { getCookie, removeCookie, setCookie } from '@/lib/cookies'
 
 const ACCESS_TOKEN_KEY = 'thisisjustarandomstring'
 const USER_KEY = 'auth_user'

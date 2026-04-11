@@ -1,12 +1,12 @@
-import { Cross2Icon } from '@radix-ui/react-icons'
-import { type Table } from '@tanstack/react-table'
 import { Button, Input } from '@boilerplate/ui'
+import { Cross2Icon } from '@radix-ui/react-icons'
+import type { Table } from '@tanstack/react-table'
 import { DataTableFacetedFilter } from '@/components/data-table/faceted-filter'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
 import {
-  sessionStatusLabels,
-  sessionStatuses,
   type PlaySession,
+  sessionStatuses,
+  sessionStatusLabels,
 } from '../data/schema'
 
 type SessionsToolbarProps = {

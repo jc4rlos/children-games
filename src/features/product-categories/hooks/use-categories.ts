@@ -4,11 +4,11 @@ import {
   type CategoriesParams,
   createCategory,
   deleteCategory,
-  getCategoryById,
   getCategories,
+  getCategoryById,
   updateCategory,
 } from '../data/categories-service'
-import { type ProductCategoryFormValues } from '../data/schema'
+import type { ProductCategoryFormValues } from '../data/schema'
 
 export const categoryQueryKeys = {
   list: (params: CategoriesParams) =>

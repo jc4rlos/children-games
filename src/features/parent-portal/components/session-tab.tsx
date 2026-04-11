@@ -1,5 +1,5 @@
 import { Clock, Gift, Tag, Timer } from 'lucide-react'
-import { type ActiveSessionInfo } from '../data/parent-service'
+import type { ActiveSessionInfo } from '../data/parent-service'
 import { PortalCountdown } from './portal-countdown'
 
 const formatTime = (iso: string) =>

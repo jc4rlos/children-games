@@ -1,7 +1,7 @@
 import { Skeleton } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
-import { type AttendanceReportRow } from '../data/schema'
+import { cn } from '@/lib/utils'
+import type { AttendanceReportRow } from '../data/schema'
 
 type ReportTableProps = {
   data: AttendanceReportRow[]
@@ -25,8 +25,8 @@ export const ReportTable = ({
   if (isLoading) {
     return (
       <div className='space-y-3'>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Skeleton key={i} className='h-14 w-full rounded-md' />
+        {['sk-1', 'sk-2', 'sk-3', 'sk-4', 'sk-5'].map((key) => (
+          <Skeleton key={key} className='h-14 w-full rounded-md' />
         ))}
       </div>
     )

@@ -1,5 +1,3 @@
-import React from 'react'
-import { useNavigate } from '@tanstack/react-router'
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,7 +8,9 @@ import {
   CommandSeparator,
   ScrollArea,
 } from '@boilerplate/ui'
+import { useNavigate } from '@tanstack/react-router'
 import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from 'lucide-react'
+import React from 'react'
 import { useSearch } from '@/context/search-provider'
 import { useTheme } from '@/context/theme-provider'
 import { sidebarData } from './layout/data/sidebar-data'

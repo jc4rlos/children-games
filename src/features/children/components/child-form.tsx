@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -18,12 +15,15 @@ import {
   Switch,
   Textarea,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Search, X } from 'lucide-react'
-import { type Guardian } from '@/features/guardians/data/schema'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import type { Guardian } from '@/features/guardians/data/schema'
 import { useGuardian } from '@/features/guardians/hooks/use-guardians'
 import {
-  childFormSchema,
   type ChildFormValues,
+  childFormSchema,
   genderLabels,
   genderValues,
 } from '../data/schema'

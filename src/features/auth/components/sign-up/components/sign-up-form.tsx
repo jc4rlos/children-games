@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -12,9 +8,13 @@ import {
   FormMessage,
   Input,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { IconFacebook, IconGithub } from '@/assets/brand-icons'
-import { cn } from '@/lib/utils'
 import { PasswordInput } from '@/components/password-input'
+import { cn } from '@/lib/utils'
 
 const formSchema = z
   .object({
@@ -50,7 +50,8 @@ export function SignUpForm({
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true)
-    // eslint-disable-next-line no-console
+
+    // biome-ignore lint/suspicious/noConsole: Required for debugging
     console.log(data)
 
     setTimeout(() => {

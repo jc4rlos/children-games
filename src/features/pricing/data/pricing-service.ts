@@ -1,11 +1,11 @@
 import { supabase } from '@/lib/supabase'
 import {
-  toPricingConfig,
+  type DbPricingConfigWithBranch,
   toDbInsert,
   toDbUpdate,
-  type DbPricingConfigWithBranch,
+  toPricingConfig,
 } from './pricing-mapper'
-import { type PricingConfig, type PricingConfigFormValues } from './schema'
+import type { PricingConfig, PricingConfigFormValues } from './schema'
 
 const SELECT_FIELDS =
   'id, branch_id, price_per_hour, minimum_charge, valid_from, valid_until, branch(name), description'

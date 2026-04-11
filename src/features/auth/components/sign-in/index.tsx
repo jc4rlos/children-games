@@ -1,4 +1,3 @@
-import { Link, useSearch } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
@@ -7,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@boilerplate/ui'
+import { Link, useSearch } from '@tanstack/react-router'
 import { AuthLayout } from '../../layout/auth-layout'
 import { UserAuthForm } from './components/user-auth-form'
 

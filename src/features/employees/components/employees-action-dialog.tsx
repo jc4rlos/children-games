@@ -1,6 +1,3 @@
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Dialog,
@@ -23,17 +20,20 @@ import {
   SelectValue,
   Switch,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import {
-  employeeFormSchema,
+  type Employee,
   type EmployeeFormValues,
+  employeeFormSchema,
   employeeRoleLabels,
   employeeRoles,
-  type Employee,
 } from '../data/schema'
 import {
+  useBranches,
   useCreateEmployee,
   useUpdateEmployee,
-  useBranches,
 } from '../hooks/use-employees'
 
 type EmployeeActionDialogProps = {

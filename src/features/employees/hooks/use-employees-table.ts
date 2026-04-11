@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react'
 import {
   type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
+import { useEffect, useState } from 'react'
 import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { employeesColumns } from '../components/employees-columns'
-import { type Employee } from '../data/schema'
+import type { Employee } from '../data/schema'
 
 type UseEmployeesTableParams = {
   data: Employee[]

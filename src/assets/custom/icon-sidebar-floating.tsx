@@ -1,4 +1,4 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 export function IconSidebarFloating(props: SVGProps<SVGSVGElement>) {
   return (
@@ -8,6 +8,7 @@ export function IconSidebarFloating(props: SVGProps<SVGSVGElement>) {
       viewBox='0 0 79.86 51.14'
       {...props}
     >
+      <title>Floating sidebar icon</title>
       <rect
         x={5.89}
         y={5.15}

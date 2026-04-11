@@ -1,9 +1,9 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
+import { cn } from '@/lib/utils'
 import { classDayLabels, type StimulationClass } from '../data/schema'
 import { ClassRowActions } from './class-row-actions'
 

@@ -1,16 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import {
-  type EmployeesParams,
   createEmployee,
-  deleteEmployees,
   deleteEmployee,
-  getEmployees,
-  getEmployeeById,
-  updateEmployee,
+  deleteEmployees,
+  type EmployeesParams,
   getBranches,
+  getEmployeeById,
+  getEmployees,
+  updateEmployee,
 } from '../data/employees-service'
-import { type Employee } from '../data/schema'
+import type { Employee } from '../data/schema'
 
 export const employeesQueryKeys = {
   list: (params: EmployeesParams) => ['employees', 'list', params] as const,

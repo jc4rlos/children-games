@@ -1,9 +1,14 @@
-import { type ReactNode } from 'react'
-import { Link, useLocation } from '@tanstack/react-router'
 import {
+  Badge,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
@@ -13,20 +18,15 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-  Badge,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { Link, useLocation } from '@tanstack/react-router'
 import { ChevronRight } from 'lucide-react'
-import {
-  type NavCollapsible,
-  type NavItem,
-  type NavLink,
-  type NavGroup as NavGroupProps,
+import type { ReactNode } from 'react'
+import type {
+  NavCollapsible,
+  NavGroup as NavGroupProps,
+  NavItem,
+  NavLink,
 } from './types'
 
 export function NavGroup({ title, items }: NavGroupProps) {

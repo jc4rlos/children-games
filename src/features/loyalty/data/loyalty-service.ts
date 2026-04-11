@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-import { type LoyaltyCard, type LoyaltyStamp } from './schema'
+import type { LoyaltyCard, LoyaltyStamp } from './schema'
 
 const SELECT_CARD =
   'id, child_id, stamps_count, stamps_required, free_sessions, total_earned, updated_at'

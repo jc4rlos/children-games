@@ -4,12 +4,12 @@ import {
   type ChildrenParams,
   createChild,
   deleteChild,
+  getBranchesForSelect,
   getChildById,
   getChildren,
   updateChild,
-  getBranchesForSelect,
 } from '../data/children-service'
-import { type ChildFormValues } from '../data/schema'
+import type { ChildFormValues } from '../data/schema'
 
 export const childQueryKeys = {
   list: (params: ChildrenParams) => ['children', 'list', params] as const,

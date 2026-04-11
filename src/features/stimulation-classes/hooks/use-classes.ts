@@ -11,7 +11,7 @@ import {
   getTeachersForSelect,
   updateClass,
 } from '../data/classes-service'
-import { type ClassFormValues } from '../data/schema'
+import type { ClassFormValues } from '../data/schema'
 
 export const classQueryKeys = {
   list: (params: ClassesParams) =>

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Badge,
   Button,
@@ -9,9 +8,10 @@ import {
   Input,
 } from '@boilerplate/ui'
 import { Minus, Plus, Search, ShoppingCart, Trash2 } from 'lucide-react'
+import { useState } from 'react'
+import type { ProductOption } from '@/features/products/data/products-service'
 import { cn } from '@/lib/utils'
-import { type ProductOption } from '@/features/products/data/products-service'
-import { type PlaySession } from '../data/schema'
+import type { PlaySession } from '../data/schema'
 import {
   useAddConsumption,
   useProductsForConsumption,
@@ -58,7 +58,10 @@ export const SessionConsumptionDialog = ({
   const byCategory = filteredProducts.reduce<Record<string, ProductOption[]>>(
     (acc, p) => {
       const cat = p.categoryName || 'Sin categoría'
-      ;(acc[cat] ??= []).push(p)
+      if (!acc[cat]) {
+        acc[cat] = []
+      }
+      acc[cat].push(p)
       return acc
     },
     {}
@@ -216,6 +219,7 @@ export const SessionConsumptionDialog = ({
                             </div>
                             <div className='flex shrink-0 items-center gap-1.5'>
                               <button
+                                type='button'
                                 disabled={outOfStock || qty === 0}
                                 onClick={() => setQty(p, qty - 1)}
                                 className='flex h-7 w-7 items-center justify-center rounded-full border bg-background hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40'
@@ -226,6 +230,7 @@ export const SessionConsumptionDialog = ({
                                 {qty || ''}
                               </span>
                               <button
+                                type='button'
                                 disabled={
                                   outOfStock || (p.stock > 0 && qty >= p.stock)
                                 }
@@ -250,8 +255,7 @@ export const SessionConsumptionDialog = ({
                 <div className='flex items-center gap-3'>
                   <div className='flex-1 text-sm'>
                     <span className='text-muted-foreground'>
-                      {cart.length} producto{cart.length !== 1 ? 's' : ''}{' '}
-                      ·{' '}
+                      {cart.length} producto{cart.length !== 1 ? 's' : ''} ·{' '}
                     </span>
                     <span className='font-semibold text-teal-600 dark:text-teal-400'>
                       {formatCurrency(cartTotal)}
@@ -307,6 +311,7 @@ export const SessionConsumptionDialog = ({
                           {formatCurrency(item.product.price * item.quantity)}
                         </span>
                         <button
+                          type='button'
                           onClick={() => setQty(item.product, 0)}
                           className='text-muted-foreground hover:text-destructive'
                         >
@@ -343,6 +348,7 @@ export const SessionConsumptionDialog = ({
                           {formatCurrency(c.subtotal)}
                         </span>
                         <button
+                          type='button'
                           onClick={() => removeMutation.mutate(c.id)}
                           className='text-muted-foreground hover:text-destructive'
                           disabled={removeMutation.isPending}

@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import { ChevronLeft, ChevronRight, Gift, History } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useState } from 'react'
 import { formatElapsed } from '@/features/sessions/data/schema'
+import { cn } from '@/lib/utils'
 import { usePortalHistory } from '../hooks/use-parent-portal'
 
 const formatDate = (iso: string) =>
@@ -110,6 +110,7 @@ export const HistoryTab = ({ childId }: HistoryTabProps) => {
       {totalPages > 1 && (
         <div className='flex items-center justify-center gap-3 pt-2'>
           <button
+            type='button'
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
             className={cn(
@@ -123,6 +124,7 @@ export const HistoryTab = ({ childId }: HistoryTabProps) => {
             {page} / {totalPages}
           </span>
           <button
+            type='button'
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
             className={cn(

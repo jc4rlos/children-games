@@ -2,14 +2,14 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { getBranchesForSelect } from '@/features/branches/data/branches-service'
 import {
-  type PricingParams,
   createPricingConfig,
   deletePricingConfig,
   getPricingConfigById,
   getPricingConfigs,
+  type PricingParams,
   updatePricingConfig,
 } from '../data/pricing-service'
-import { type PricingConfigFormValues } from '../data/schema'
+import type { PricingConfigFormValues } from '../data/schema'
 
 export const pricingQueryKeys = {
   list: (params: PricingParams) => ['pricing', 'list', params] as const,

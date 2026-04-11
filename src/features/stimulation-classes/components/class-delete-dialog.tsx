@@ -1,7 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { type StimulationClass } from '../data/schema'
+import type { StimulationClass } from '../data/schema'
 import { useDeleteClass } from '../hooks/use-classes'
 
 type ClassDeleteDialogProps = {

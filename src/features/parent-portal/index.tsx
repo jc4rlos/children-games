@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft, History, Search, Star, Timer, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useState } from 'react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { calculateAge } from '@/features/sessions/data/schema'
+import { cn } from '@/lib/utils'
 import { HistoryTab } from './components/history-tab'
 import { SessionTab } from './components/session-tab'
 import { StampsTab } from './components/stamps-tab'
@@ -73,6 +73,7 @@ export const ParentPortal = () => {
         <div className='flex items-center gap-2 pt-3'>
           {child && (
             <button
+              type='button'
               onClick={handleClear}
               className='flex h-8 w-8 items-center justify-center rounded-full text-teal-100 hover:bg-white/20'
             >
@@ -213,6 +214,7 @@ export const ParentPortal = () => {
             {TABS.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
+                type='button'
                 onClick={() => handleTabChange(id)}
                 className={cn(
                   'flex flex-1 flex-col items-center gap-1 py-3 text-xs font-medium transition-colors',

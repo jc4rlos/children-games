@@ -1,7 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { type Guardian } from '../data/schema'
+import type { Guardian } from '../data/schema'
 import { useDeleteGuardian } from '../hooks/use-guardians'
 
 type GuardianDeleteDialogProps = {

@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { CouponDeleteDialog } from './components/coupon-delete-dialog'
 import { CouponsTable } from './components/coupons-table'
 import { CouponsTableSkeleton } from './components/coupons-table-skeleton'
-import { type Coupon } from './data/schema'
+import type { Coupon } from './data/schema'
 import { useCoupons } from './hooks/use-coupons'
 
 const route = getRouteApi('/_authenticated/coupons/')

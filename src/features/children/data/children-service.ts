@@ -1,4 +1,4 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
 import {
   toChild,
@@ -6,7 +6,7 @@ import {
   toDbInsert,
   toDbUpdate,
 } from './child-mapper'
-import { type Child, type ChildFormValues } from './schema'
+import type { Child, ChildFormValues } from './schema'
 
 type DbChild = Database['public']['Tables']['child']['Row']
 type DbBranch = Database['public']['Tables']['branch']['Row']

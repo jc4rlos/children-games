@@ -1,4 +1,3 @@
-import { format } from 'date-fns'
 import {
   Button,
   Calendar,
@@ -6,6 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@boilerplate/ui'
+import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 
 type DatePickerProps = {

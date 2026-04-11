@@ -1,9 +1,9 @@
-import { Cross2Icon } from '@radix-ui/react-icons'
-import { type Table } from '@tanstack/react-table'
 import { Button, Input } from '@boilerplate/ui'
+import { Cross2Icon } from '@radix-ui/react-icons'
+import type { Table } from '@tanstack/react-table'
 import { Search } from 'lucide-react'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
-import { type Guardian } from '../data/schema'
+import type { Guardian } from '../data/schema'
 
 type GuardiansToolbarProps = {
   table: Table<Guardian>

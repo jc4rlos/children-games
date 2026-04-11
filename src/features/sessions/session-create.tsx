@@ -1,9 +1,9 @@
-import { useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { SessionForm } from './components/session-form'
-import { type SessionFormValues } from './data/schema'
+import type { SessionFormValues } from './data/schema'
 import { useCreateSession } from './hooks/use-sessions'
 
 export const SessionCreate = () => {

@@ -1,6 +1,6 @@
 import { Gift, Star } from 'lucide-react'
+import type { LoyaltyCard } from '@/features/loyalty/data/schema'
 import { cn } from '@/lib/utils'
-import { type LoyaltyCard } from '@/features/loyalty/data/schema'
 
 type StampsTabProps = {
   card: LoyaltyCard | null | undefined

@@ -1,5 +1,3 @@
-import { useForm, type Resolver } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -17,14 +15,16 @@ import {
   Switch,
   Textarea,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { type Resolver, useForm } from 'react-hook-form'
+import type { BranchOption } from '@/features/branches/data/branches-service'
 import { cn } from '@/lib/utils'
-import { type BranchOption } from '@/features/branches/data/branches-service'
-import { type EmployeeOption } from '../data/classes-service'
+import type { EmployeeOption } from '../data/classes-service'
 import {
-  classFormSchema,
+  type ClassFormValues,
   classDayLabels,
   classDays,
-  type ClassFormValues,
+  classFormSchema,
 } from '../data/schema'
 import { useBranchesForClass, useTeachersForClass } from '../hooks/use-classes'
 

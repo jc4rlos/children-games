@@ -1,4 +1,4 @@
-import { type Gender } from './schema'
+import type { Gender } from './schema'
 
 const SEED_PREFIX: Record<Gender, string> = {
   MALE: 'hero',

@@ -1,7 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { type Branch } from '../data/schema'
+import type { Branch } from '../data/schema'
 import { useDeleteBranch } from '../hooks/use-branches'
 
 type BranchDeleteDialogProps = {

@@ -1,4 +1,3 @@
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import {
   Button,
   Card,
@@ -9,6 +8,7 @@ import {
   TabsList,
   TabsTrigger,
 } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft, Pencil } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { AttendanceTab } from './components/attendance-tab'

@@ -1,4 +1,4 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
 
 type EmployeeRole = Database['public']['Enums']['employee_role']

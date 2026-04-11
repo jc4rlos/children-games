@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { getAvatarUrl, INITIALS_COLORS } from '../data/avatar-utils'
-import { type Child } from '../data/schema'
+import type { Child } from '../data/schema'
 
 const getInitials = (name: string): string =>
   name

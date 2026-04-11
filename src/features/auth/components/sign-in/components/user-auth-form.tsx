@@ -1,6 +1,5 @@
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
+  Button,
   Form,
   FormControl,
   FormField,
@@ -8,13 +7,14 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Button,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2, LogIn } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useForm } from 'react-hook-form'
 import { PasswordInput } from '@/components/password-input'
+import { cn } from '@/lib/utils'
 import { useSignIn } from '../hooks/useSignIn'
-import { formSchema, type FormValues } from './user-auth-form.schema'
+import { type FormValues, formSchema } from './user-auth-form.schema'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
   redirectTo?: string

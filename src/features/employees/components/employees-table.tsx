@@ -1,4 +1,3 @@
-import { flexRender } from '@tanstack/react-table'
 import {
   Table,
   TableBody,
@@ -7,10 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
-import { type NavigateFn } from '@/hooks/use-table-url-state'
+import { flexRender } from '@tanstack/react-table'
 import { DataTablePagination } from '@/components/data-table'
-import { type Employee } from '../data/schema'
+import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
+import type { Employee } from '../data/schema'
 import { useEmployeesTable } from '../hooks/use-employees-table'
 import { employeesColumns as columns } from './employees-columns'
 import { EmployeesToolbar } from './employees-toolbar'

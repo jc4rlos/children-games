@@ -2,7 +2,7 @@ import { Skeleton } from '@boilerplate/ui'
 import { PlayCircle } from 'lucide-react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { SessionTimer } from '@/features/sessions/components/session-timer'
-import { type ActiveSessionRow } from '../data/dashboard-service'
+import type { ActiveSessionRow } from '../data/dashboard-service'
 
 type ActiveSessionsListProps = {
   data: ActiveSessionRow[]

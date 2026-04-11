@@ -10,7 +10,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { type DayStats } from '../data/dashboard-service'
+import type { DayStats } from '../data/dashboard-service'
 
 const formatCurrency = (v: number) =>
   new Intl.NumberFormat('es-PE', {

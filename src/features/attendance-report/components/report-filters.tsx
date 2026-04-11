@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from '@boilerplate/ui'
 import { RotateCcw } from 'lucide-react'
-import { type ClassOption } from '@/features/stimulation-classes/data/classes-service'
+import type { ClassOption } from '@/features/stimulation-classes/data/classes-service'
 
 type ReportFiltersProps = {
   classes: ClassOption[]
@@ -35,12 +35,14 @@ export const ReportFilters = ({
   return (
     <div className='flex flex-wrap items-end gap-3'>
       <div className='flex flex-col gap-1.5'>
-        <label className='text-sm font-medium'>Clase</label>
+        <label htmlFor='filter-class' className='text-sm font-medium'>
+          Clase
+        </label>
         <Select
           value={classId > 0 ? String(classId) : ''}
           onValueChange={(v) => onClassChange(Number(v))}
         >
-          <SelectTrigger className='w-64'>
+          <SelectTrigger className='w-64' id='filter-class'>
             <SelectValue placeholder='Seleccionar clase...' />
           </SelectTrigger>
           <SelectContent>
@@ -57,8 +59,11 @@ export const ReportFilters = ({
       </div>
 
       <div className='flex flex-col gap-1.5'>
-        <label className='text-sm font-medium'>Desde</label>
+        <label htmlFor='filter-date-from' className='text-sm font-medium'>
+          Desde
+        </label>
         <input
+          id='filter-date-from'
           type='date'
           value={dateFrom}
           onChange={(e) => onDateFromChange(e.target.value)}
@@ -67,8 +72,11 @@ export const ReportFilters = ({
       </div>
 
       <div className='flex flex-col gap-1.5'>
-        <label className='text-sm font-medium'>Hasta</label>
+        <label htmlFor='filter-date-to' className='text-sm font-medium'>
+          Hasta
+        </label>
         <input
+          id='filter-date-to'
           type='date'
           value={dateTo}
           onChange={(e) => onDateToChange(e.target.value)}

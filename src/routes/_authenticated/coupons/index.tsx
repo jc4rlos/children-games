@@ -1,5 +1,5 @@
-import z from 'zod'
 import { createFileRoute } from '@tanstack/react-router'
+import z from 'zod'
 import { Coupons } from '@/features/coupons'
 
 const couponsSearchSchema = z.object({

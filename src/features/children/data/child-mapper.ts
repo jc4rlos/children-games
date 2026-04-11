@@ -1,6 +1,6 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { getAvatarUrl } from './avatar-utils'
-import { type Child, type ChildFormValues } from './schema'
+import type { Child, ChildFormValues } from './schema'
 
 type DbChild = Database['public']['Tables']['child']['Row']
 type DbChildInsert = Database['public']['Tables']['child']['Insert']

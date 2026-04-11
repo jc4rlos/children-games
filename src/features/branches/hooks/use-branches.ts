@@ -8,7 +8,7 @@ import {
   getBranches,
   updateBranch,
 } from '../data/branches-service'
-import { type BranchFormValues } from '../data/schema'
+import type { BranchFormValues } from '../data/schema'
 
 export const branchQueryKeys = {
   list: (params: BranchesParams) => ['branches', 'list', params] as const,

@@ -1,7 +1,7 @@
-import { type Database } from '@/lib/database.types'
-import { supabase } from '@/lib/supabase'
 import { createAuthUser, deleteAuthUser } from '@/features/auth/auth-service'
-import { type Employee, type EmployeeRole } from './schema'
+import type { Database } from '@/lib/database.types'
+import { supabase } from '@/lib/supabase'
+import type { Employee, EmployeeRole } from './schema'
 
 type DbEmployee = Database['public']['Tables']['employee']['Row']
 type DbEmployeeInsert = Database['public']['Tables']['employee']['Insert']

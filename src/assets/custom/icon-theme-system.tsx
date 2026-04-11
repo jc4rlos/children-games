@@ -1,4 +1,4 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
 import { cn } from '@/lib/utils'
 
 export function IconThemeSystem({
@@ -17,6 +17,7 @@ export function IconThemeSystem({
       )}
       {...props}
     >
+      <title>System theme icon</title>
       <path opacity={0.2} d='M0 0.03H22.88V51.17H0z' />
       <circle
         cx={6.7}

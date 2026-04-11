@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Alert,
   AlertDescription,
@@ -14,8 +13,9 @@ import {
   SelectValue,
 } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
+import { useState } from 'react'
 import { ChildSessionPickerDialog } from '@/features/sessions/components/child-session-picker-dialog'
-import { type ChildSelectOption } from '@/features/sessions/data/sessions-service'
+import type { ChildSelectOption } from '@/features/sessions/data/sessions-service'
 import { useTeachersForClass } from '../hooks/use-classes'
 import { useEnrollChild } from '../hooks/use-enrollment'
 
@@ -80,9 +80,11 @@ export const EnrollmentDialog = ({
             )}
 
             <div className='space-y-2'>
-              <label className='text-sm font-medium'>Registrado por</label>
+              <label htmlFor='enrolled-by' className='text-sm font-medium'>
+                Registrado por
+              </label>
               <Select value={enrolledById} onValueChange={setEnrolledById}>
-                <SelectTrigger>
+                <SelectTrigger id='enrolled-by'>
                   <SelectValue placeholder='Sin especificar' />
                 </SelectTrigger>
                 <SelectContent>

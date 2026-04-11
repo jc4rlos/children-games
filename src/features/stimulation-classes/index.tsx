@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { ClassDeleteDialog } from './components/class-delete-dialog'
 import { ClassesTable } from './components/classes-table'
 import { ClassesTableSkeleton } from './components/classes-table-skeleton'
-import { type StimulationClass } from './data/schema'
+import type { StimulationClass } from './data/schema'
 import { useClasses, useEnrolledCounts } from './hooks/use-classes'
 
 const route = getRouteApi('/_authenticated/stimulation-classes/')

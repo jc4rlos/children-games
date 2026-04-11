@@ -1,10 +1,10 @@
-import { Cross2Icon } from '@radix-ui/react-icons'
-import { type Table } from '@tanstack/react-table'
 import { Button } from '@boilerplate/ui'
+import { Cross2Icon } from '@radix-ui/react-icons'
+import type { Table } from '@tanstack/react-table'
 import { DataTableFacetedFilter } from '@/components/data-table/faceted-filter'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
-import { type BranchOption } from '@/features/branches/data/branches-service'
-import { type PricingConfig } from '../data/schema'
+import type { BranchOption } from '@/features/branches/data/branches-service'
+import type { PricingConfig } from '../data/schema'
 
 type PricingToolbarProps = {
   table: Table<PricingConfig>

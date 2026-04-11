@@ -2,10 +2,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { getProductsForSelect } from '@/features/products/data/products-service'
 import {
+  type AddConsumptionPayload,
   addSessionConsumption,
   getSessionConsumptions,
   removeSessionConsumption,
-  type AddConsumptionPayload,
 } from '../data/consumption-service'
 
 export const consumptionQueryKeys = {
@@ -17,7 +17,7 @@ export const consumptionQueryKeys = {
 export const useSessionConsumptions = (sessionId: number | null) =>
   useQuery({
     queryKey: consumptionQueryKeys.list(sessionId ?? 0),
-    queryFn: () => getSessionConsumptions(sessionId!),
+    queryFn: () => getSessionConsumptions(sessionId as number),
     enabled: (sessionId ?? 0) > 0,
   })
 

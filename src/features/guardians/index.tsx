@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { GuardianDeleteDialog } from './components/guardian-delete-dialog'
 import { GuardiansTable } from './components/guardians-table'
 import { GuardiansTableSkeleton } from './components/guardians-table-skeleton'
-import { type Guardian } from './data/schema'
+import type { Guardian } from './data/schema'
 import { useGuardians } from './hooks/use-guardians'
 
 const route = getRouteApi('/_authenticated/guardians/')

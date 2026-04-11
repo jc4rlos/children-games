@@ -1,16 +1,16 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Badge, Button } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { LogOut, ShoppingCart } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { ChildAvatar } from '@/features/children/components/child-avatar'
-import { type Child } from '@/features/children/data/schema'
+import type { Child } from '@/features/children/data/schema'
+import { cn } from '@/lib/utils'
 import {
   calculateAge,
   formatElapsed,
-  sessionStatusLabels,
   type PlaySession,
   type SessionStatus,
+  sessionStatusLabels,
 } from '../data/schema'
 import { SessionTimer } from './session-timer'
 

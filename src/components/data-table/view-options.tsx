@@ -1,5 +1,3 @@
-import { MixerHorizontalIcon } from '@radix-ui/react-icons'
-import { type Table } from '@tanstack/react-table'
 import {
   Button,
   DropdownMenu,
@@ -9,6 +7,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { MixerHorizontalIcon } from '@radix-ui/react-icons'
+import type { Table } from '@tanstack/react-table'
 
 type DataTableViewOptionsProps<TData> = {
   table: Table<TData>
