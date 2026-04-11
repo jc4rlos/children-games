@@ -90,3 +90,23 @@ export const deleteBranch = async (id: number): Promise<void> => {
 
   if (error) throw new Error(error.message)
 }
+
+export type BranchOption = {
+  id: number
+  name: string
+}
+
+export const getBranchesForSelect = async (): Promise<BranchOption[]> => {
+  const { data, error } = await supabase
+    .from('branch')
+    .select('id, name')
+    .is('deleted_at', null)
+    .eq('is_active', true)
+    .order('name', { ascending: true })
+
+  if (error) throw new Error(error.message)
+  return (data as Pick<DbBranch, 'id' | 'name'>[]).map((b) => ({
+    id: b.id,
+    name: b.name,
+  }))
+}
