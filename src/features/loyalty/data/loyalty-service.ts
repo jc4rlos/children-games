@@ -1,7 +1,8 @@
 import { supabase } from '@/lib/supabase'
 import { type LoyaltyCard, type LoyaltyStamp } from './schema'
 
-const SELECT_CARD = 'id, child_id, stamps_count, stamps_required, free_sessions, total_earned, updated_at'
+const SELECT_CARD =
+  'id, child_id, stamps_count, stamps_required, free_sessions, total_earned, updated_at'
 const SELECT_STAMP = 'id, loyalty_card_id, play_session_id, stamped_at, note'
 
 const mapCard = (row: {
@@ -36,7 +37,9 @@ const mapStamp = (row: {
   note: row.note,
 })
 
-export const getOrCreateLoyaltyCard = async (childId: number): Promise<LoyaltyCard> => {
+export const getOrCreateLoyaltyCard = async (
+  childId: number
+): Promise<LoyaltyCard> => {
   const { data: existing } = await supabase
     .from('loyalty_card')
     .select(SELECT_CARD)
@@ -55,7 +58,9 @@ export const getOrCreateLoyaltyCard = async (childId: number): Promise<LoyaltyCa
   return mapCard(data as Parameters<typeof mapCard>[0])
 }
 
-export const getLoyaltyCard = async (childId: number): Promise<LoyaltyCard | null> => {
+export const getLoyaltyCard = async (
+  childId: number
+): Promise<LoyaltyCard | null> => {
   const { data } = await supabase
     .from('loyalty_card')
     .select(SELECT_CARD)
@@ -65,7 +70,9 @@ export const getLoyaltyCard = async (childId: number): Promise<LoyaltyCard | nul
   return data ? mapCard(data as Parameters<typeof mapCard>[0]) : null
 }
 
-export const getLoyaltyStamps = async (cardId: number): Promise<LoyaltyStamp[]> => {
+export const getLoyaltyStamps = async (
+  cardId: number
+): Promise<LoyaltyStamp[]> => {
   const { data, error } = await supabase
     .from('loyalty_stamp')
     .select(SELECT_STAMP)
@@ -88,7 +95,10 @@ export const decrementFreeSession = async (childId: number): Promise<void> => {
 
   const { error } = await supabase
     .from('loyalty_card')
-    .update({ free_sessions: card.free_sessions - 1, updated_at: new Date().toISOString() })
+    .update({
+      free_sessions: card.free_sessions - 1,
+      updated_at: new Date().toISOString(),
+    })
     .eq('id', card.id)
 
   if (error) throw new Error(error.message)

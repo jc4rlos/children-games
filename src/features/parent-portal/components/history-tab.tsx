@@ -12,10 +12,15 @@ const formatDate = (iso: string) =>
   })
 
 const formatTime = (iso: string) =>
-  new Date(iso).toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' })
+  new Date(iso).toLocaleTimeString('es-PE', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    value
+  )
 
 type HistoryTabProps = {
   childId: number
@@ -45,7 +50,9 @@ export const HistoryTab = ({ childId }: HistoryTabProps) => {
     return (
       <div className='flex flex-col items-center justify-center gap-3 py-16 text-center'>
         <History size={56} className='text-muted-foreground/30' />
-        <p className='text-lg font-semibold text-muted-foreground'>Sin historial</p>
+        <p className='text-lg font-semibold text-muted-foreground'>
+          Sin historial
+        </p>
         <p className='text-sm text-muted-foreground'>
           Las sesiones completadas aparecerán aquí.
         </p>
@@ -56,7 +63,8 @@ export const HistoryTab = ({ childId }: HistoryTabProps) => {
   return (
     <div className='flex flex-col gap-3 p-4'>
       <p className='text-sm text-muted-foreground'>
-        {total} sesión{total !== 1 ? 'es' : ''} registrada{total !== 1 ? 's' : ''}
+        {total} sesión{total !== 1 ? 'es' : ''} registrada
+        {total !== 1 ? 's' : ''}
       </p>
 
       {sessions.map((s) => (
@@ -106,9 +114,7 @@ export const HistoryTab = ({ childId }: HistoryTabProps) => {
             disabled={page === 1}
             className={cn(
               'flex h-9 w-9 items-center justify-center rounded-full border',
-              page === 1
-                ? 'cursor-not-allowed opacity-40'
-                : 'hover:bg-accent'
+              page === 1 ? 'cursor-not-allowed opacity-40' : 'hover:bg-accent'
             )}
           >
             <ChevronLeft size={16} />

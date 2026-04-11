@@ -128,11 +128,11 @@ export const getDailyKpis = async (): Promise<DailyKpis> => {
   ])
 
   const revenueToday = (
-    closedToday as { total_amount: number | null }[] | null ?? []
+    (closedToday as { total_amount: number | null }[] | null) ?? []
   ).reduce((sum, r) => sum + (r.total_amount ?? 0), 0)
 
   const consumptionsTodayTotal = (
-    consumptionsToday as { subtotal: number }[] | null ?? []
+    (consumptionsToday as { subtotal: number }[] | null) ?? []
   ).reduce((sum, r) => sum + r.subtotal, 0)
 
   return {
@@ -159,7 +159,12 @@ export const getActiveSessions = async (): Promise<ActiveSessionRow[]> => {
       id: number
       check_in: string
       scheduled_checkout: string | null
-      child: { full_name: string; avatar: string | null; code: string; gender: 'MALE' | 'FEMALE' }
+      child: {
+        full_name: string
+        avatar: string | null
+        code: string
+        gender: 'MALE' | 'FEMALE'
+      }
       pricing_config: { price_per_hour: number; minimum_charge: number }
     }[]
   ).map((r) => ({
@@ -190,10 +195,18 @@ export const getWeekStats = async (): Promise<DayStats[]> => {
     d.setDate(d.getDate() - (6 - i))
     const date = d.toISOString().slice(0, 10)
     const label = d.toLocaleDateString('es-PE', { weekday: 'short' })
-    return { date, label: label.charAt(0).toUpperCase() + label.slice(1, 3), sessions: 0, revenue: 0 }
+    return {
+      date,
+      label: label.charAt(0).toUpperCase() + label.slice(1, 3),
+      sessions: 0,
+      revenue: 0,
+    }
   })
 
-  for (const row of data as { check_in: string; total_amount: number | null }[]) {
+  for (const row of data as {
+    check_in: string
+    total_amount: number | null
+  }[]) {
     const date = row.check_in.slice(0, 10)
     const day = days.find((d) => d.date === date)
     if (day) {
@@ -216,10 +229,25 @@ export const getMonthTopChildren = async (): Promise<TopChild[]> => {
 
   const map = new Map<
     number,
-    { childId: number; childName: string; childAvatar: string | null; childCode: string; childGender: 'MALE' | 'FEMALE'; sessionCount: number }
+    {
+      childId: number
+      childName: string
+      childAvatar: string | null
+      childCode: string
+      childGender: 'MALE' | 'FEMALE'
+      sessionCount: number
+    }
   >()
 
-  for (const row of data as unknown as { child_id: number; child: { full_name: string; avatar: string | null; code: string; gender: 'MALE' | 'FEMALE' } }[]) {
+  for (const row of data as unknown as {
+    child_id: number
+    child: {
+      full_name: string
+      avatar: string | null
+      code: string
+      gender: 'MALE' | 'FEMALE'
+    }
+  }[]) {
     const existing = map.get(row.child_id)
     if (existing) {
       existing.sessionCount += 1
@@ -235,20 +263,30 @@ export const getMonthTopChildren = async (): Promise<TopChild[]> => {
     }
   }
 
-  return [...map.values()].sort((a, b) => b.sessionCount - a.sessionCount).slice(0, 5)
+  return [...map.values()]
+    .sort((a, b) => b.sessionCount - a.sessionCount)
+    .slice(0, 5)
 }
 
 export const getMonthTopProducts = async (): Promise<TopProduct[]> => {
   const { data, error } = await supabase
     .from('session_consumption')
-    .select('product_id, quantity, subtotal, product(name, product_category(name))')
+    .select(
+      'product_id, quantity, subtotal, product(name, product_category(name))'
+    )
     .gte('added_at', monthStart())
 
   if (error) throw new Error(error.message)
 
   const map = new Map<
     number,
-    { productId: number; productName: string; categoryName: string; totalQuantity: number; totalRevenue: number }
+    {
+      productId: number
+      productName: string
+      categoryName: string
+      totalQuantity: number
+      totalRevenue: number
+    }
   >()
 
   for (const row of data as unknown as {
@@ -272,7 +310,9 @@ export const getMonthTopProducts = async (): Promise<TopProduct[]> => {
     }
   }
 
-  return [...map.values()].sort((a, b) => b.totalQuantity - a.totalQuantity).slice(0, 5)
+  return [...map.values()]
+    .sort((a, b) => b.totalQuantity - a.totalQuantity)
+    .slice(0, 5)
 }
 
 export const getClassesToday = async (): Promise<ClassTodayRow[]> => {
@@ -356,31 +396,28 @@ export const getLoyaltySummary = async (): Promise<LoyaltySummary> => {
   const start = todayStart()
   const end = todayEnd()
 
-  const [
-    { count: freeSessionsToday },
-    { data: stamps },
-    { data: cards },
-  ] = await Promise.all([
-    supabase
-      .from('play_session')
-      .select('id', { count: 'exact', head: true })
-      .eq('is_free_session', true)
-      .in('status', ['CLOSED', 'FREE'])
-      .gte('check_out', start)
-      .lte('check_out', end),
-    supabase
-      .from('loyalty_stamp')
-      .select('id', { count: 'exact' })
-      .gte('stamped_at', start)
-      .lte('stamped_at', end),
-    supabase
-      .from('loyalty_card')
-      .select('stamps_count, stamps_required'),
-  ])
+  const [{ count: freeSessionsToday }, { data: stamps }, { data: cards }] =
+    await Promise.all([
+      supabase
+        .from('play_session')
+        .select('id', { count: 'exact', head: true })
+        .eq('is_free_session', true)
+        .in('status', ['CLOSED', 'FREE'])
+        .gte('check_out', start)
+        .lte('check_out', end),
+      supabase
+        .from('loyalty_stamp')
+        .select('id', { count: 'exact' })
+        .gte('stamped_at', start)
+        .lte('stamped_at', end),
+      supabase.from('loyalty_card').select('stamps_count, stamps_required'),
+    ])
 
   const nearCompletionCount = (
-    cards as { stamps_count: number; stamps_required: number }[] | null ?? []
-  ).filter((c) => c.stamps_count > 0 && c.stamps_count === c.stamps_required - 1).length
+    (cards as { stamps_count: number; stamps_required: number }[] | null) ?? []
+  ).filter(
+    (c) => c.stamps_count > 0 && c.stamps_count === c.stamps_required - 1
+  ).length
 
   return {
     freeSessionsToday: freeSessionsToday ?? 0,

@@ -19,9 +19,14 @@ import {
   Textarea,
 } from '@boilerplate/ui'
 import { Search, X } from 'lucide-react'
-import { useGuardian } from '@/features/guardians/hooks/use-guardians'
 import { type Guardian } from '@/features/guardians/data/schema'
-import { childFormSchema, type ChildFormValues, genderLabels, genderValues } from '../data/schema'
+import { useGuardian } from '@/features/guardians/hooks/use-guardians'
+import {
+  childFormSchema,
+  type ChildFormValues,
+  genderLabels,
+  genderValues,
+} from '../data/schema'
 import { useBranchesForChild } from '../hooks/use-children'
 import { GuardianPickerDialog } from './guardian-picker-dialog'
 
@@ -46,7 +51,9 @@ export const ChildForm = ({
   })
 
   const [pickerOpen, setPickerOpen] = useState(false)
-  const [selectedGuardian, setSelectedGuardian] = useState<Guardian | null>(null)
+  const [selectedGuardian, setSelectedGuardian] = useState<Guardian | null>(
+    null
+  )
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const guardianId = form.watch('guardianId')

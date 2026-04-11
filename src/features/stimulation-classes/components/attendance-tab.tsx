@@ -14,9 +14,9 @@ const today = () => new Date().toISOString().slice(0, 10)
 
 export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
   const [selectedDate, setSelectedDate] = useState(today)
-  const [localAttendance, setLocalAttendance] = useState<
-    Map<number, boolean>
-  >(new Map())
+  const [localAttendance, setLocalAttendance] = useState<Map<number, boolean>>(
+    new Map()
+  )
 
   const { data: enrollments = [] } = useEnrollments(classId)
   const { data: sheet = [], isLoading } = useAttendanceSheet(
@@ -78,7 +78,7 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
             type='date'
             value={selectedDate}
             onChange={(e) => handleDateChange(e.target.value)}
-            className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+            className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none'
           />
         </div>
         {sheet.length > 0 && (
@@ -103,7 +103,7 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
         </div>
       ) : sheet.length === 0 ? (
         <div className='flex flex-col items-center justify-center py-8 text-center'>
-          <p className='text-muted-foreground text-sm'>
+          <p className='text-sm text-muted-foreground'>
             No hay inscritos activos para esta fecha.
           </p>
         </div>
@@ -123,9 +123,9 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
                 <img
                   src={avatarSrc}
                   alt={record.childName}
-                  className='h-10 w-10 rounded-full object-cover shrink-0'
+                  className='h-10 w-10 shrink-0 rounded-full object-cover'
                 />
-                <p className='flex-1 font-medium min-w-0 truncate'>
+                <p className='min-w-0 flex-1 truncate font-medium'>
                   {record.childName}
                 </p>
                 <button

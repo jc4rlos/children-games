@@ -16,9 +16,9 @@ import {
 } from '@boilerplate/ui'
 import { Search, UserCheck } from 'lucide-react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
-import { useChildrenForPicker } from '../hooks/use-sessions'
 import { calculateAge } from '../data/schema'
 import { type ChildSelectOption } from '../data/sessions-service'
+import { useChildrenForPicker } from '../hooks/use-sessions'
 
 const PAGE_SIZE = 8
 

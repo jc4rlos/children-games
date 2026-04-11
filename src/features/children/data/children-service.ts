@@ -1,6 +1,11 @@
 import { type Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
-import { toChild, toChildWithLoyalty, toDbInsert, toDbUpdate } from './child-mapper'
+import {
+  toChild,
+  toChildWithLoyalty,
+  toDbInsert,
+  toDbUpdate,
+} from './child-mapper'
 import { type Child, type ChildFormValues } from './schema'
 
 type DbChild = Database['public']['Tables']['child']['Row']
@@ -56,7 +61,11 @@ export const getChildren = async (
   return {
     data: (
       data as (DbChild & {
-        loyalty_card: { stamps_count: number; stamps_required: number; free_sessions: number } | null
+        loyalty_card: {
+          stamps_count: number
+          stamps_required: number
+          free_sessions: number
+        } | null
       })[]
     ).map(toChildWithLoyalty),
     total: count ?? 0,
@@ -131,4 +140,3 @@ export const getBranchesForSelect = async (): Promise<BranchOption[]> => {
     name: b.name,
   }))
 }
-

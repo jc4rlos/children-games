@@ -10,7 +10,8 @@ import {
 
 export const consumptionQueryKeys = {
   list: (sessionId: number) => ['consumption', sessionId] as const,
-  products: (branchId?: number) => ['consumption', 'products', branchId] as const,
+  products: (branchId?: number) =>
+    ['consumption', 'products', branchId] as const,
 }
 
 export const useSessionConsumptions = (sessionId: number | null) =>
@@ -30,7 +31,8 @@ export const useProductsForConsumption = (branchId?: number) =>
 export const useAddConsumption = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (payload: AddConsumptionPayload) => addSessionConsumption(payload),
+    mutationFn: (payload: AddConsumptionPayload) =>
+      addSessionConsumption(payload),
     onSuccess: (_, payload) => {
       queryClient.invalidateQueries({
         queryKey: consumptionQueryKeys.list(payload.playSessionId),

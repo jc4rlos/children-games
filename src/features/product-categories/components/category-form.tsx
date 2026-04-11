@@ -47,11 +47,7 @@ export const CategoryForm = ({
               <FormItem>
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder='Snacks'
-                    autoComplete='off'
-                    {...field}
-                  />
+                  <Input placeholder='Snacks' autoComplete='off' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

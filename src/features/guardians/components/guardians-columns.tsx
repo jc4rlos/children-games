@@ -56,7 +56,9 @@ export const createGuardianColumns = (
       <DataTableColumnHeader column={column} title='Documento' />
     ),
     cell: ({ row }) => (
-      <span className='font-mono text-sm'>{row.getValue('documentNumber')}</span>
+      <span className='font-mono text-sm'>
+        {row.getValue('documentNumber')}
+      </span>
     ),
   },
   {

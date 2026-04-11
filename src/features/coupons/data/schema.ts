@@ -29,7 +29,9 @@ export const couponFormSchema = z.object({
   branchId: z.number().nullable().optional(),
   code: z.string().min(1, 'El código es requerido').max(50),
   description: z.string().max(200).optional(),
-  discountType: z.enum(discountTypes, { message: 'El tipo de descuento es requerido' }),
+  discountType: z.enum(discountTypes, {
+    message: 'El tipo de descuento es requerido',
+  }),
   discountValue: z.coerce.number().positive('Debe ser mayor a 0'),
   maxUses: z.string().optional(),
   validFrom: z.string().min(1, 'La fecha de inicio es requerida'),

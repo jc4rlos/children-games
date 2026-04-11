@@ -31,8 +31,14 @@ export const CouponsTable = ({
   navigate,
   onDelete,
 }: CouponsTableProps) => {
-  const { table, codeInput, setCodeInput, handleSearch, handleReset, isFiltered } =
-    useCouponsTable({ data, total, search, navigate, onDelete })
+  const {
+    table,
+    codeInput,
+    setCodeInput,
+    handleSearch,
+    handleReset,
+    isFiltered,
+  } = useCouponsTable({ data, total, search, navigate, onDelete })
 
   return (
     <div className='flex flex-1 flex-col gap-4'>
@@ -88,7 +94,10 @@ export const CouponsTable = ({
                         cell.column.columnDef.meta?.tdClassName
                       )}
                     >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>

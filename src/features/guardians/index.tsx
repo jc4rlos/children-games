@@ -15,7 +15,9 @@ export const Guardians = () => {
   const search = route.useSearch()
   const navigate = route.useNavigate()
   const rootNavigate = useNavigate()
-  const [guardianToDelete, setGuardianToDelete] = useState<Guardian | null>(null)
+  const [guardianToDelete, setGuardianToDelete] = useState<Guardian | null>(
+    null
+  )
 
   const { data, isLoading, isError, error } = useGuardians({
     page: search.page ?? 1,

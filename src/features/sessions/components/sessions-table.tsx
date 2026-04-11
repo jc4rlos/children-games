@@ -36,7 +36,15 @@ export const SessionsTable = ({
   onViewCart,
 }: SessionsTableProps) => {
   const { table, currentDate, handleDateChange, handleReset, isFiltered } =
-    useSessionsTable({ data, total, search, navigate, onClose, onAddConsumption, onViewCart })
+    useSessionsTable({
+      data,
+      total,
+      search,
+      navigate,
+      onClose,
+      onAddConsumption,
+      onViewCart,
+    })
 
   return (
     <div className='flex flex-1 flex-col gap-4'>
@@ -82,7 +90,8 @@ export const SessionsTable = ({
                   data-state={row.getIsSelected() && 'selected'}
                   className={cn(
                     'group/row',
-                    row.original.status === 'ACTIVE' && 'bg-teal-50/30 dark:bg-teal-950/20'
+                    row.original.status === 'ACTIVE' &&
+                      'bg-teal-50/30 dark:bg-teal-950/20'
                   )}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -97,7 +106,10 @@ export const SessionsTable = ({
                         cell.column.columnDef.meta?.tdClassName
                       )}
                     >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>

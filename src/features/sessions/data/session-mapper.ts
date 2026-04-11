@@ -2,8 +2,10 @@ import { type Database } from '@/lib/database.types'
 import { type PlaySession, type SessionFormValues } from './schema'
 
 type DbPlaySession = Database['public']['Tables']['play_session']['Row']
-type DbPlaySessionInsert = Database['public']['Tables']['play_session']['Insert']
-type DbPlaySessionUpdate = Database['public']['Tables']['play_session']['Update']
+type DbPlaySessionInsert =
+  Database['public']['Tables']['play_session']['Insert']
+type DbPlaySessionUpdate =
+  Database['public']['Tables']['play_session']['Update']
 
 export type DbPlaySessionWithRelations = DbPlaySession & {
   child: {
@@ -21,7 +23,9 @@ export type DbPlaySessionWithRelations = DbPlaySession & {
   session_consumption?: { id: number; subtotal: number }[]
 }
 
-export const toPlaySession = (row: DbPlaySessionWithRelations): PlaySession => ({
+export const toPlaySession = (
+  row: DbPlaySessionWithRelations
+): PlaySession => ({
   id: row.id,
   branchId: row.branch_id,
   branchName: row.branch.name,
@@ -56,7 +60,9 @@ export const toPlaySession = (row: DbPlaySessionWithRelations): PlaySession => (
 
 export const toDbInsert = (values: SessionFormValues): DbPlaySessionInsert => {
   const checkIn = new Date()
-  const scheduledCheckout = new Date(checkIn.getTime() + values.durationMinutes * 60_000)
+  const scheduledCheckout = new Date(
+    checkIn.getTime() + values.durationMinutes * 60_000
+  )
   return {
     branch_id: values.branchId,
     child_id: values.childId,
@@ -71,9 +77,7 @@ export const toDbInsert = (values: SessionFormValues): DbPlaySessionInsert => {
   } as DbPlaySessionInsert
 }
 
-export const toDbClose = (
-  session: PlaySession
-): DbPlaySessionUpdate => {
+export const toDbClose = (session: PlaySession): DbPlaySessionUpdate => {
   const checkOut = new Date()
   const minutesPlayed = Math.floor(
     (checkOut.getTime() - new Date(session.checkIn).getTime()) / 60_000

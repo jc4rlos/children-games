@@ -45,9 +45,15 @@ export const getAttendanceReport = async (
 
   if (attErr) throw new Error(attErr.message)
 
-  const attByEnrollment = new Map<number, { attended: number; absent: number }>()
-  for (const att of (attendances as unknown as DbAttendance[])) {
-    const current = attByEnrollment.get(att.enrollment_id) ?? { attended: 0, absent: 0 }
+  const attByEnrollment = new Map<
+    number,
+    { attended: number; absent: number }
+  >()
+  for (const att of attendances as unknown as DbAttendance[]) {
+    const current = attByEnrollment.get(att.enrollment_id) ?? {
+      attended: 0,
+      absent: 0,
+    }
     if (att.attended) {
       current.attended += 1
     } else {
@@ -57,7 +63,10 @@ export const getAttendanceReport = async (
   }
 
   return typedEnrollments.map((enrollment) => {
-    const counts = attByEnrollment.get(enrollment.id) ?? { attended: 0, absent: 0 }
+    const counts = attByEnrollment.get(enrollment.id) ?? {
+      attended: 0,
+      absent: 0,
+    }
     const total = counts.attended + counts.absent
     return {
       enrollmentId: enrollment.id,
@@ -69,7 +78,8 @@ export const getAttendanceReport = async (
       totalSessions: total,
       attendedCount: counts.attended,
       absentCount: counts.absent,
-      attendanceRate: total > 0 ? Math.round((counts.attended / total) * 100) : 0,
+      attendanceRate:
+        total > 0 ? Math.round((counts.attended / total) * 100) : 0,
     }
   })
 }

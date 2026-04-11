@@ -4,7 +4,11 @@ import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { CouponForm } from './components/coupon-form'
 import { type CouponFormValues } from './data/schema'
-import { useBranchesForCoupon, useCoupon, useUpdateCoupon } from './hooks/use-coupons'
+import {
+  useBranchesForCoupon,
+  useCoupon,
+  useUpdateCoupon,
+} from './hooks/use-coupons'
 
 const route = getRouteApi('/_authenticated/coupons/$couponId/edit')
 
@@ -15,7 +19,8 @@ export const CouponEdit = () => {
   const updateMutation = useUpdateCoupon()
 
   const { data: coupon, isLoading, isError } = useCoupon(id)
-  const { data: branches = [], isLoading: loadingBranches } = useBranchesForCoupon()
+  const { data: branches = [], isLoading: loadingBranches } =
+    useBranchesForCoupon()
 
   const handleSubmit = (values: CouponFormValues) => {
     updateMutation.mutate(
@@ -39,7 +44,9 @@ export const CouponEdit = () => {
         </Button>
         <div>
           <h2 className='text-2xl font-bold tracking-tight'>Editar Cupón</h2>
-          <p className='text-muted-foreground'>Actualiza los datos del cupón.</p>
+          <p className='text-muted-foreground'>
+            Actualiza los datos del cupón.
+          </p>
         </div>
       </div>
 
@@ -69,7 +76,9 @@ export const CouponEdit = () => {
               discountValue: coupon.discountValue,
               maxUses: coupon.maxUses != null ? String(coupon.maxUses) : '',
               validFrom: coupon.validFrom.slice(0, 10),
-              validUntil: coupon.validUntil ? coupon.validUntil.slice(0, 10) : '',
+              validUntil: coupon.validUntil
+                ? coupon.validUntil.slice(0, 10)
+                : '',
               isActive: coupon.isActive,
             }}
             branches={branches}

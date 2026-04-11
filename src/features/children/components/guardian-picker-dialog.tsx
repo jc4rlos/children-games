@@ -15,8 +15,8 @@ import {
   TableRow,
 } from '@boilerplate/ui'
 import { Search, UserCheck } from 'lucide-react'
-import { useGuardians } from '@/features/guardians/hooks/use-guardians'
 import { type Guardian } from '@/features/guardians/data/schema'
+import { useGuardians } from '@/features/guardians/hooks/use-guardians'
 
 const PAGE_SIZE = 8
 
@@ -109,7 +109,9 @@ export const GuardianPickerDialog = ({
                 <TableRow>
                   <TableHead>Nombre</TableHead>
                   <TableHead>Documento</TableHead>
-                  <TableHead className='hidden sm:table-cell'>Teléfono</TableHead>
+                  <TableHead className='hidden sm:table-cell'>
+                    Teléfono
+                  </TableHead>
                   <TableHead className='hidden sm:table-cell'>Email</TableHead>
                   <TableHead className='w-10' />
                 </TableRow>
@@ -171,7 +173,10 @@ export const GuardianPickerDialog = ({
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={5} className='h-20 text-center text-muted-foreground'>
+                    <TableCell
+                      colSpan={5}
+                      className='h-20 text-center text-muted-foreground'
+                    >
                       No se encontraron apoderados.
                     </TableCell>
                   </TableRow>

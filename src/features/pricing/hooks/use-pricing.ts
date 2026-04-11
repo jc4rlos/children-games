@@ -41,7 +41,8 @@ export const useBranchesForPricing = () =>
 export const useCreatePricingConfig = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (values: PricingConfigFormValues) => createPricingConfig(values),
+    mutationFn: (values: PricingConfigFormValues) =>
+      createPricingConfig(values),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pricing'] })
       toast.success('Configuración de precio creada.')
@@ -55,8 +56,13 @@ export const useCreatePricingConfig = () => {
 export const useUpdatePricingConfig = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: ({ id, values }: { id: number; values: PricingConfigFormValues }) =>
-      updatePricingConfig(id, values),
+    mutationFn: ({
+      id,
+      values,
+    }: {
+      id: number
+      values: PricingConfigFormValues
+    }) => updatePricingConfig(id, values),
     onSuccess: (updated) => {
       queryClient.invalidateQueries({ queryKey: ['pricing'] })
       queryClient.setQueryData(pricingQueryKeys.detail(updated.id), updated)

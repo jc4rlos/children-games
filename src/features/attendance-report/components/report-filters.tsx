@@ -62,7 +62,7 @@ export const ReportFilters = ({
           type='date'
           value={dateFrom}
           onChange={(e) => onDateFromChange(e.target.value)}
-          className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+          className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none'
         />
       </div>
 
@@ -72,7 +72,7 @@ export const ReportFilters = ({
           type='date'
           value={dateTo}
           onChange={(e) => onDateToChange(e.target.value)}
-          className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+          className='flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none'
         />
       </div>
 

@@ -61,11 +61,7 @@ export const GuardianForm = ({
               <FormItem>
                 <FormLabel>Número de documento</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder='12345678'
-                    autoComplete='off'
-                    {...field}
-                  />
+                  <Input placeholder='12345678' autoComplete='off' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

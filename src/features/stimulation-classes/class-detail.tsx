@@ -11,10 +11,10 @@ import {
 } from '@boilerplate/ui'
 import { ArrowLeft, Pencil } from 'lucide-react'
 import { Main } from '@/components/layout/main'
-import { classDayLabels } from './data/schema'
-import { useClassById, useEnrolledCounts } from './hooks/use-classes'
 import { AttendanceTab } from './components/attendance-tab'
 import { EnrolledChildrenTab } from './components/enrolled-children-tab'
+import { classDayLabels } from './data/schema'
+import { useClassById, useEnrolledCounts } from './hooks/use-classes'
 
 const route = getRouteApi('/_authenticated/stimulation-classes/$classId/')
 
@@ -54,7 +54,7 @@ export const ClassDetail = () => {
               {cls?.name ?? 'Clase'}
             </h2>
           )}
-          <p className='text-muted-foreground text-sm'>
+          <p className='text-sm text-muted-foreground'>
             Detalle de la clase de estimulación temprana
           </p>
         </div>
@@ -67,14 +67,12 @@ export const ClassDetail = () => {
       </div>
 
       {isError && (
-        <p className='text-sm text-destructive'>
-          No se pudo cargar la clase.
-        </p>
+        <p className='text-sm text-destructive'>No se pudo cargar la clase.</p>
       )}
 
       {isLoading ? (
         <Card>
-          <CardContent className='pt-6 space-y-3'>
+          <CardContent className='space-y-3 pt-6'>
             <Skeleton className='h-5 w-48' />
             <Skeleton className='h-4 w-64' />
             <Skeleton className='h-4 w-56' />
@@ -87,13 +85,13 @@ export const ClassDetail = () => {
             <CardContent className='pt-6'>
               <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Sucursal
                   </p>
                   <p className='font-medium'>{cls.branchName}</p>
                 </div>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Maestro
                   </p>
                   <p className='font-medium'>
@@ -101,7 +99,7 @@ export const ClassDetail = () => {
                   </p>
                 </div>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Horario
                   </p>
                   <p className='font-medium'>
@@ -110,7 +108,7 @@ export const ClassDetail = () => {
                   </p>
                 </div>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Rango de edad
                   </p>
                   <p className='font-medium'>
@@ -118,7 +116,7 @@ export const ClassDetail = () => {
                   </p>
                 </div>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Precio
                   </p>
                   <p className='font-medium'>
@@ -129,14 +127,14 @@ export const ClassDetail = () => {
                   </p>
                 </div>
                 <div>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Capacidad
                   </p>
                   <div className='space-y-1'>
                     <p className='font-medium'>
                       {enrolledCount} / {cls.capacity} inscritos
                     </p>
-                    <div className='h-2 w-full rounded-full bg-muted overflow-hidden'>
+                    <div className='h-2 w-full overflow-hidden rounded-full bg-muted'>
                       <div
                         className='h-full rounded-full bg-primary transition-all'
                         style={{
@@ -148,11 +146,11 @@ export const ClassDetail = () => {
                 </div>
               </div>
               {cls.description && (
-                <div className='mt-4 pt-4 border-t'>
-                  <p className='text-xs text-muted-foreground uppercase tracking-wide'>
+                <div className='mt-4 border-t pt-4'>
+                  <p className='text-xs tracking-wide text-muted-foreground uppercase'>
                     Descripción
                   </p>
-                  <p className='text-sm mt-1'>{cls.description}</p>
+                  <p className='mt-1 text-sm'>{cls.description}</p>
                 </div>
               )}
             </CardContent>

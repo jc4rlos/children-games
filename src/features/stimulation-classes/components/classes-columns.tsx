@@ -4,10 +4,7 @@ import { CheckCircle, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
-import {
-  classDayLabels,
-  type StimulationClass,
-} from '../data/schema'
+import { classDayLabels, type StimulationClass } from '../data/schema'
 import { ClassRowActions } from './class-row-actions'
 
 export const createClassColumns = (
@@ -50,7 +47,7 @@ export const createClassColumns = (
         <div className='ps-3'>
           <p className='font-medium'>{cls.name}</p>
           {cls.description && (
-            <p className='text-xs text-muted-foreground line-clamp-1'>
+            <p className='line-clamp-1 text-xs text-muted-foreground'>
               {cls.description}
             </p>
           )}

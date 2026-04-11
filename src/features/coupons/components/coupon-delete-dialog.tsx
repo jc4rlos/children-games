@@ -42,7 +42,7 @@ export const CouponDeleteDialog = ({
         <div className='space-y-4'>
           <p>
             ¿Estás seguro de que deseas eliminar el cupón{' '}
-            <span className='font-bold font-mono'>{coupon.code}</span>? Esta
+            <span className='font-mono font-bold'>{coupon.code}</span>? Esta
             acción no se puede deshacer.
           </p>
           <Alert variant='destructive'>

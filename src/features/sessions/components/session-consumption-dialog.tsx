@@ -20,7 +20,9 @@ import {
 } from '../hooks/use-consumption'
 
 const formatCurrency = (v: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(v)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    v
+  )
 
 type CartItem = { product: ProductOption; quantity: number }
 type View = 'products' | 'cart'
@@ -160,13 +162,13 @@ export const SessionConsumptionDialog = ({
               <div className='relative'>
                 <Search
                   size={15}
-                  className='absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground'
+                  className='absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground'
                 />
                 <Input
                   placeholder='Buscar producto...'
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className='pl-8 h-9'
+                  className='h-9 pl-8'
                 />
               </div>
             </div>
@@ -180,7 +182,7 @@ export const SessionConsumptionDialog = ({
               ) : (
                 Object.entries(byCategory).map(([category, items]) => (
                   <div key={category} className='mb-5'>
-                    <p className='mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground'>
+                    <p className='mb-2 flex items-center gap-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase'>
                       <span className='flex-1 border-t' />
                       {category}
                       <span className='flex-1 border-t' />
@@ -200,7 +202,7 @@ export const SessionConsumptionDialog = ({
                             )}
                           >
                             <div className='min-w-0 flex-1'>
-                              <p className='truncate text-sm font-medium leading-tight'>
+                              <p className='truncate text-sm leading-tight font-medium'>
                                 {p.name}
                               </p>
                               <p className='text-xs text-muted-foreground'>
@@ -212,7 +214,7 @@ export const SessionConsumptionDialog = ({
                                 )}
                               </p>
                             </div>
-                            <div className='flex items-center gap-1.5 shrink-0'>
+                            <div className='flex shrink-0 items-center gap-1.5'>
                               <button
                                 disabled={outOfStock || qty === 0}
                                 onClick={() => setQty(p, qty - 1)}
@@ -224,7 +226,9 @@ export const SessionConsumptionDialog = ({
                                 {qty || ''}
                               </span>
                               <button
-                                disabled={outOfStock || (p.stock > 0 && qty >= p.stock)}
+                                disabled={
+                                  outOfStock || (p.stock > 0 && qty >= p.stock)
+                                }
                                 onClick={() => setQty(p, qty + 1)}
                                 className='flex h-7 w-7 items-center justify-center rounded-full border bg-background hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40'
                               >
@@ -246,7 +250,8 @@ export const SessionConsumptionDialog = ({
                 <div className='flex items-center gap-3'>
                   <div className='flex-1 text-sm'>
                     <span className='text-muted-foreground'>
-                      {cart.length} producto{cart.length !== 1 ? 's' : ''} ·{' '}
+                      {cart.length} producto{cart.length !== 1 ? 's' : ''}{' '}
+                      ·{' '}
                     </span>
                     <span className='font-semibold text-teal-600 dark:text-teal-400'>
                       {formatCurrency(cartTotal)}
@@ -283,7 +288,7 @@ export const SessionConsumptionDialog = ({
               {/* Pending cart */}
               {cart.length > 0 && (
                 <div className='mb-4'>
-                  <p className='mb-2 text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400'>
+                  <p className='mb-2 text-xs font-semibold tracking-wider text-amber-600 uppercase dark:text-amber-400'>
                     Pendiente de confirmar
                   </p>
                   <div className='flex flex-col gap-1.5'>
@@ -321,7 +326,7 @@ export const SessionConsumptionDialog = ({
               {/* Registered consumptions */}
               {consumptions.length > 0 ? (
                 <div>
-                  <p className='mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground'>
+                  <p className='mb-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase'>
                     Ya registrado
                   </p>
                   <div className='flex flex-col gap-1.5'>
@@ -362,13 +367,17 @@ export const SessionConsumptionDialog = ({
                 {consumptions.length > 0 && (
                   <div className='flex justify-between text-muted-foreground'>
                     <span>Registrado</span>
-                    <span className='font-mono'>{formatCurrency(consumptionsTotal)}</span>
+                    <span className='font-mono'>
+                      {formatCurrency(consumptionsTotal)}
+                    </span>
                   </div>
                 )}
                 {cart.length > 0 && (
                   <div className='flex justify-between text-amber-600 dark:text-amber-400'>
                     <span>Pendiente</span>
-                    <span className='font-mono'>{formatCurrency(cartTotal)}</span>
+                    <span className='font-mono'>
+                      {formatCurrency(cartTotal)}
+                    </span>
                   </div>
                 )}
                 {(consumptions.length > 0 || cart.length > 0) && (
@@ -396,7 +405,9 @@ export const SessionConsumptionDialog = ({
                     onClick={handleConfirm}
                     disabled={addMutation.isPending}
                   >
-                    {addMutation.isPending ? 'Confirmando...' : 'Confirmar pendientes'}
+                    {addMutation.isPending
+                      ? 'Confirmando...'
+                      : 'Confirmar pendientes'}
                   </Button>
                 </div>
               )}

@@ -17,7 +17,10 @@ type CouponRowActionsProps = {
   onDelete: (coupon: Coupon) => void
 }
 
-export const CouponRowActions = ({ coupon, onDelete }: CouponRowActionsProps) => {
+export const CouponRowActions = ({
+  coupon,
+  onDelete,
+}: CouponRowActionsProps) => {
   const navigate = useNavigate()
 
   const handleEdit = () =>

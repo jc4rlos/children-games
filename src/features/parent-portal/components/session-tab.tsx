@@ -3,10 +3,15 @@ import { type ActiveSessionInfo } from '../data/parent-service'
 import { PortalCountdown } from './portal-countdown'
 
 const formatTime = (iso: string) =>
-  new Date(iso).toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' })
+  new Date(iso).toLocaleTimeString('es-PE', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    value
+  )
 
 type SessionTabProps = {
   session: ActiveSessionInfo | null | undefined
@@ -46,14 +51,17 @@ export const SessionTab = ({ session, isLoading }: SessionTabProps) => {
   const estimatedCost = session.isFreeSession
     ? 0
     : durationMinutes !== null
-      ? Math.max(session.minimumCharge, (durationMinutes / 60) * session.pricePerHour)
+      ? Math.max(
+          session.minimumCharge,
+          (durationMinutes / 60) * session.pricePerHour
+        )
       : null
 
   return (
     <div className='flex flex-col gap-4 p-4'>
       {/* Countdown card */}
       <div className='flex flex-col items-center rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 px-6 py-8 text-white shadow-lg'>
-        <p className='mb-4 text-sm font-medium uppercase tracking-wider text-teal-100'>
+        <p className='mb-4 text-sm font-medium tracking-wider text-teal-100 uppercase'>
           {session.isFreeSession ? '🎁 Sesión Gratuita' : '🎮 Sesión en curso'}
         </p>
         <PortalCountdown
@@ -64,7 +72,9 @@ export const SessionTab = ({ session, isLoading }: SessionTabProps) => {
 
       {/* Session details */}
       <div className='rounded-2xl border bg-card p-4 shadow-sm'>
-        <p className='mb-3 text-sm font-medium text-muted-foreground'>Detalles</p>
+        <p className='mb-3 text-sm font-medium text-muted-foreground'>
+          Detalles
+        </p>
         <div className='flex flex-col gap-3'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-2 text-muted-foreground'>
@@ -81,7 +91,9 @@ export const SessionTab = ({ session, isLoading }: SessionTabProps) => {
                   <Clock size={16} />
                   <span className='text-sm'>Salida programada</span>
                 </div>
-                <span className='font-semibold'>{formatTime(session.scheduledCheckout)}</span>
+                <span className='font-semibold'>
+                  {formatTime(session.scheduledCheckout)}
+                </span>
               </div>
 
               {durationMinutes !== null && (

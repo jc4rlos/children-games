@@ -3,7 +3,11 @@ import { type Table } from '@tanstack/react-table'
 import { Button, Input } from '@boilerplate/ui'
 import { DataTableFacetedFilter } from '@/components/data-table/faceted-filter'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
-import { sessionStatusLabels, sessionStatuses, type PlaySession } from '../data/schema'
+import {
+  sessionStatusLabels,
+  sessionStatuses,
+  type PlaySession,
+} from '../data/schema'
 
 type SessionsToolbarProps = {
   table: Table<PlaySession>

@@ -175,9 +175,9 @@ export const getClassesForSelect = async (): Promise<ClassOption[]> => {
 
   if (error) throw new Error(error.message)
 
-  return (data as unknown as { id: number; name: string; branch: { name: string } }[]).map(
-    (r) => ({ id: r.id, name: r.name, branchName: r.branch.name })
-  )
+  return (
+    data as unknown as { id: number; name: string; branch: { name: string } }[]
+  ).map((r) => ({ id: r.id, name: r.name, branchName: r.branch.name }))
 }
 
 export const getTeachersForSelect = async (): Promise<EmployeeOption[]> => {
@@ -209,7 +209,7 @@ export const getEnrolledCounts = async (
   if (error) throw new Error(error.message)
 
   const counts = new Map<number, number>()
-  for (const row of (data as unknown as { class_id: number }[])) {
+  for (const row of data as unknown as { class_id: number }[]) {
     counts.set(row.class_id, (counts.get(row.class_id) ?? 0) + 1)
   }
   return counts

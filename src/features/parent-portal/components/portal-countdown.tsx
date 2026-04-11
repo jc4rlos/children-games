@@ -7,7 +7,10 @@ type PortalCountdownProps = {
   scheduledCheckout: string | null
 }
 
-export const PortalCountdown = ({ checkIn, scheduledCheckout }: PortalCountdownProps) => {
+export const PortalCountdown = ({
+  checkIn,
+  scheduledCheckout,
+}: PortalCountdownProps) => {
   const [now, setNow] = useState(() => Date.now())
 
   useEffect(() => {
@@ -26,7 +29,7 @@ export const PortalCountdown = ({ checkIn, scheduledCheckout }: PortalCountdownP
       <div className='flex flex-col items-center gap-1'>
         <div
           className={cn(
-            'font-mono text-6xl font-bold tabular-nums tracking-tight',
+            'font-mono text-6xl font-bold tracking-tight tabular-nums',
             isOvertime
               ? 'text-amber-500'
               : isWarning
@@ -53,7 +56,7 @@ export const PortalCountdown = ({ checkIn, scheduledCheckout }: PortalCountdownP
   const elapsed = Math.floor((now - new Date(checkIn).getTime()) / 1000)
   return (
     <div className='flex flex-col items-center gap-1'>
-      <div className='font-mono text-6xl font-bold tabular-nums tracking-tight text-teal-600 dark:text-teal-400'>
+      <div className='font-mono text-6xl font-bold tracking-tight text-teal-600 tabular-nums dark:text-teal-400'>
         {formatElapsed(elapsed)}
       </div>
       <p className='text-sm font-medium text-muted-foreground'>tiempo jugado</p>

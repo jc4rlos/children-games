@@ -221,7 +221,11 @@ export const MenuItemDialog = ({
                 Cancelar
               </Button>
               <Button type='submit' disabled={isPending}>
-                {isPending ? 'Guardando...' : isEdit ? 'Guardar cambios' : 'Crear ítem'}
+                {isPending
+                  ? 'Guardando...'
+                  : isEdit
+                    ? 'Guardar cambios'
+                    : 'Crear ítem'}
               </Button>
             </DialogFooter>
           </form>

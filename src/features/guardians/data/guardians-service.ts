@@ -68,7 +68,9 @@ export const getGuardiansForSelect = async (): Promise<GuardianOption[]> => {
     .order('full_name', { ascending: true })
 
   if (error) throw new Error(error.message)
-  return (data as Pick<DbGuardian, 'id' | 'full_name' | 'document_number'>[]).map((g) => ({
+  return (
+    data as Pick<DbGuardian, 'id' | 'full_name' | 'document_number'>[]
+  ).map((g) => ({
     id: g.id,
     fullName: g.full_name,
     documentNumber: g.document_number,

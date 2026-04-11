@@ -21,7 +21,9 @@ export const StampsTab = ({ card, isLoading }: StampsTabProps) => {
     return (
       <div className='flex flex-col items-center justify-center gap-3 py-16 text-center'>
         <Star size={48} className='text-muted-foreground/30' />
-        <p className='text-muted-foreground'>Aún no tienes tarjeta de sellos.</p>
+        <p className='text-muted-foreground'>
+          Aún no tienes tarjeta de sellos.
+        </p>
         <p className='text-sm text-muted-foreground'>
           Se creará con tu primera sesión.
         </p>
@@ -30,7 +32,10 @@ export const StampsTab = ({ card, isLoading }: StampsTabProps) => {
   }
 
   const { stampsCount, stampsRequired, freeSessions, totalEarned } = card
-  const stamps = Array.from({ length: stampsRequired }, (_, i) => i < stampsCount)
+  const stamps = Array.from(
+    { length: stampsRequired },
+    (_, i) => i < stampsCount
+  )
   const progress = Math.round((stampsCount / stampsRequired) * 100)
 
   return (
@@ -98,11 +103,14 @@ export const StampsTab = ({ card, isLoading }: StampsTabProps) => {
       {/* Stats */}
       {totalEarned > 0 && (
         <div className='rounded-2xl border bg-card p-4 shadow-sm'>
-          <p className='text-sm font-medium text-muted-foreground'>Historial de premios</p>
+          <p className='text-sm font-medium text-muted-foreground'>
+            Historial de premios
+          </p>
           <p className='mt-1 text-2xl font-bold text-teal-600 dark:text-teal-400'>
             {totalEarned}
             <span className='ml-1 text-base font-normal text-muted-foreground'>
-              sesión{totalEarned !== 1 ? 'es' : ''} gratis ganada{totalEarned !== 1 ? 's' : ''}
+              sesión{totalEarned !== 1 ? 'es' : ''} gratis ganada
+              {totalEarned !== 1 ? 's' : ''}
             </span>
           </p>
         </div>

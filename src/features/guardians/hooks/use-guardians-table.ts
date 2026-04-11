@@ -64,7 +64,9 @@ export const useGuardiansTable = ({
   const handleSearch = () => {
     const next: ColumnFiltersState = [
       ...columnFilters.filter((f) => f.id !== 'fullName'),
-      ...(nameInput.trim() ? [{ id: 'fullName', value: nameInput.trim() }] : []),
+      ...(nameInput.trim()
+        ? [{ id: 'fullName', value: nameInput.trim() }]
+        : []),
     ]
     onColumnFiltersChange(next)
   }

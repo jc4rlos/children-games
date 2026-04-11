@@ -59,9 +59,7 @@ export const classFormSchema = z.object({
     .max(120, 'Máximo 120 meses'),
   capacity: z.coerce.number().min(1, 'La capacidad mínima es 1'),
   price: z.coerce.number().min(0, 'El precio no puede ser negativo'),
-  daysOfWeek: z
-    .array(z.enum(classDays))
-    .min(1, 'Selecciona al menos un día'),
+  daysOfWeek: z.array(z.enum(classDays)).min(1, 'Selecciona al menos un día'),
   startTime: z.string().min(1, 'La hora de inicio es requerida'),
   endTime: z.string().min(1, 'La hora de fin es requerida'),
   isActive: z.boolean(),

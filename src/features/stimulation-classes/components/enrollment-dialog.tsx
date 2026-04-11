@@ -41,8 +41,7 @@ export const EnrollmentDialog = ({
   const isFull = enrolledCount >= classInfo.capacity
 
   const handleSelectChild = (child: ChildSelectOption) => {
-    const enrolledBy =
-      enrolledById !== 'none' ? Number(enrolledById) : null
+    const enrolledBy = enrolledById !== 'none' ? Number(enrolledById) : null
     enrollMutation.mutate(
       { childId: child.id, enrolledBy },
       { onSuccess: () => onOpenChange(false) }
@@ -98,10 +97,7 @@ export const EnrollmentDialog = ({
             </div>
 
             <div className='flex justify-end gap-3'>
-              <Button
-                variant='outline'
-                onClick={() => handleOpenChange(false)}
-              >
+              <Button variant='outline' onClick={() => handleOpenChange(false)}>
                 Cancelar
               </Button>
               <Button

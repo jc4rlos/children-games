@@ -1,6 +1,6 @@
 import { Skeleton } from '@boilerplate/ui'
-import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { cn } from '@/lib/utils'
+import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { type AttendanceReportRow } from '../data/schema'
 
 type ReportTableProps = {
@@ -16,7 +16,7 @@ export const ReportTable = ({
 }: ReportTableProps) => {
   if (!classSelected) {
     return (
-      <div className='flex items-center justify-center rounded-md border py-16 text-muted-foreground text-sm'>
+      <div className='flex items-center justify-center rounded-md border py-16 text-sm text-muted-foreground'>
         Selecciona una clase para ver el reporte.
       </div>
     )
@@ -34,7 +34,7 @@ export const ReportTable = ({
 
   if (data.length === 0) {
     return (
-      <div className='flex items-center justify-center rounded-md border py-16 text-muted-foreground text-sm'>
+      <div className='flex items-center justify-center rounded-md border py-16 text-sm text-muted-foreground'>
         No hay alumnos inscritos activos en esta clase.
       </div>
     )
@@ -73,18 +73,22 @@ export const ReportTable = ({
             return (
               <tr
                 key={row.enrollmentId}
-                className='bg-background hover:bg-muted/40 transition-colors'
+                className='bg-background transition-colors hover:bg-muted/40'
               >
                 <td className='px-4 py-3'>
                   <div className='flex items-center gap-3'>
                     <img
                       src={avatarSrc}
                       alt={row.childName}
-                      className='h-9 w-9 rounded-full object-cover shrink-0'
+                      className='h-9 w-9 shrink-0 rounded-full object-cover'
                     />
                     <div>
-                      <p className='font-medium leading-tight'>{row.childName}</p>
-                      <p className='text-xs text-muted-foreground'>{row.childCode}</p>
+                      <p className='leading-tight font-medium'>
+                        {row.childName}
+                      </p>
+                      <p className='text-xs text-muted-foreground'>
+                        {row.childCode}
+                      </p>
                     </div>
                   </div>
                 </td>
@@ -98,7 +102,10 @@ export const ReportTable = ({
                   {row.absentCount}
                 </td>
                 <td className='px-4 py-3 text-center'>
-                  <AttendanceRateBadge rate={row.attendanceRate} total={row.totalSessions} />
+                  <AttendanceRateBadge
+                    rate={row.attendanceRate}
+                    total={row.totalSessions}
+                  />
                 </td>
               </tr>
             )
@@ -121,7 +128,11 @@ export const ReportTable = ({
               </td>
               <td className='px-4 py-3 text-center'>
                 <AttendanceRateBadge
-                  rate={totalSessions > 0 ? Math.round((totalAttended / totalSessions) * 100) : 0}
+                  rate={
+                    totalSessions > 0
+                      ? Math.round((totalAttended / totalSessions) * 100)
+                      : 0
+                  }
                   total={totalSessions}
                 />
               </td>

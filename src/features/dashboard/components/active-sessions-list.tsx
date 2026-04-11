@@ -9,7 +9,10 @@ type ActiveSessionsListProps = {
   isLoading: boolean
 }
 
-export const ActiveSessionsList = ({ data, isLoading }: ActiveSessionsListProps) => (
+export const ActiveSessionsList = ({
+  data,
+  isLoading,
+}: ActiveSessionsListProps) => (
   <div className='flex flex-col rounded-xl border bg-card shadow-sm'>
     <div className='flex items-center gap-2 border-b px-4 py-3'>
       <PlayCircle size={16} className='text-teal-600' />
@@ -26,7 +29,7 @@ export const ActiveSessionsList = ({ data, isLoading }: ActiveSessionsListProps)
         <div className='space-y-0 divide-y'>
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className='flex items-center gap-3 px-4 py-3'>
-              <Skeleton className='h-10 w-10 rounded-full shrink-0' />
+              <Skeleton className='h-10 w-10 shrink-0 rounded-full' />
               <div className='flex-1 space-y-1.5'>
                 <Skeleton className='h-3.5 w-32' />
                 <Skeleton className='h-3 w-20' />
@@ -44,25 +47,33 @@ export const ActiveSessionsList = ({ data, isLoading }: ActiveSessionsListProps)
         <div className='divide-y'>
           {data.map((session) => {
             const avatar =
-              session.childAvatar ?? getAvatarUrl(session.childCode, session.childGender)
-            const checkInTime = new Date(session.checkIn).toLocaleTimeString('es-PE', {
-              hour: '2-digit',
-              minute: '2-digit',
-            })
+              session.childAvatar ??
+              getAvatarUrl(session.childCode, session.childGender)
+            const checkInTime = new Date(session.checkIn).toLocaleTimeString(
+              'es-PE',
+              {
+                hour: '2-digit',
+                minute: '2-digit',
+              }
+            )
 
             return (
               <div
                 key={session.id}
-                className='flex items-center gap-3 px-4 py-3 hover:bg-muted/40 transition-colors'
+                className='flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/40'
               >
                 <img
                   src={avatar}
                   alt={session.childName}
-                  className='h-10 w-10 rounded-full object-cover shrink-0'
+                  className='h-10 w-10 shrink-0 rounded-full object-cover'
                 />
                 <div className='min-w-0 flex-1'>
-                  <p className='truncate font-medium leading-tight'>{session.childName}</p>
-                  <p className='text-xs text-muted-foreground'>Entrada: {checkInTime}</p>
+                  <p className='truncate leading-tight font-medium'>
+                    {session.childName}
+                  </p>
+                  <p className='text-xs text-muted-foreground'>
+                    Entrada: {checkInTime}
+                  </p>
                 </div>
                 <SessionTimer
                   checkIn={session.checkIn}

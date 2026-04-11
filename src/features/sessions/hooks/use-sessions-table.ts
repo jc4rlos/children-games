@@ -54,13 +54,10 @@ export const useSessionsTable = ({
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 20 },
     globalFilter: { enabled: false },
-    columnFilters: [
-      { columnId: 'status', searchKey: 'status', type: 'array' },
-    ],
+    columnFilters: [{ columnId: 'status', searchKey: 'status', type: 'array' }],
   })
 
-  const currentDate =
-    typeof search.date === 'string' ? search.date : TODAY
+  const currentDate = typeof search.date === 'string' ? search.date : TODAY
 
   const handleDateChange = (date: string) => {
     navigate({
@@ -73,9 +70,9 @@ export const useSessionsTable = ({
     onColumnFiltersChange([{ id: 'status', value: ['ACTIVE'] }])
   }
 
-  const statusValues =
-    (columnFilters.find((f) => f.id === 'status')?.value as string[] | undefined) ??
-    ['ACTIVE']
+  const statusValues = (columnFilters.find((f) => f.id === 'status')?.value as
+    | string[]
+    | undefined) ?? ['ACTIVE']
 
   const isFiltered =
     currentDate !== TODAY ||
@@ -88,7 +85,13 @@ export const useSessionsTable = ({
     data,
     columns,
     pageCount,
-    state: { sorting, pagination, rowSelection, columnFilters, columnVisibility },
+    state: {
+      sorting,
+      pagination,
+      rowSelection,
+      columnFilters,
+      columnVisibility,
+    },
     manualPagination: true,
     manualFiltering: true,
     enableRowSelection: true,

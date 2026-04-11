@@ -1,8 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { getBranchesForSelect } from '@/features/branches/data/branches-service'
-import { loyaltyQueryKeys } from '@/features/loyalty/hooks/use-loyalty'
 import { decrementFreeSession } from '@/features/loyalty/data/loyalty-service'
+import { loyaltyQueryKeys } from '@/features/loyalty/hooks/use-loyalty'
+import { type PlaySession, type SessionFormValues } from '../data/schema'
 import {
   closeSession,
   createSession,
@@ -13,7 +14,6 @@ import {
   getChildrenForSessionPicker,
   type SessionsParams,
 } from '../data/sessions-service'
-import { type PlaySession, type SessionFormValues } from '../data/schema'
 
 export const sessionQueryKeys = {
   list: (params: SessionsParams) => ['sessions', 'list', params] as const,
@@ -22,7 +22,8 @@ export const sessionQueryKeys = {
   employees: ['sessions', 'employees'] as const,
   pricing: (branchId: number) => ['sessions', 'pricing', branchId] as const,
   coupons: (branchId: number) => ['sessions', 'coupons', branchId] as const,
-  children: (name: string, page: number) => ['sessions', 'children', name, page] as const,
+  children: (name: string, page: number) =>
+    ['sessions', 'children', name, page] as const,
 }
 
 export const useSessions = (params: SessionsParams) =>
@@ -66,7 +67,8 @@ export const useCouponsForBranch = (branchId: number) =>
 export const useChildrenForPicker = (name: string, page: number) =>
   useQuery({
     queryKey: sessionQueryKeys.children(name, page),
-    queryFn: () => getChildrenForSessionPicker({ name: name || undefined, page }),
+    queryFn: () =>
+      getChildrenForSessionPicker({ name: name || undefined, page }),
     placeholderData: (prev) => prev,
   })
 
@@ -82,7 +84,9 @@ export const useCreateSession = () => {
     },
     onSuccess: (_, values) => {
       queryClient.invalidateQueries({ queryKey: ['sessions'] })
-      queryClient.invalidateQueries({ queryKey: loyaltyQueryKeys.card(values.childId) })
+      queryClient.invalidateQueries({
+        queryKey: loyaltyQueryKeys.card(values.childId),
+      })
       toast.success('Sesión iniciada.')
     },
     onError: (error: Error) => {
@@ -97,11 +101,15 @@ export const useCloseSession = () => {
     mutationFn: (session: PlaySession) => closeSession(session),
     onSuccess: (_, session) => {
       queryClient.invalidateQueries({ queryKey: ['sessions'] })
-      queryClient.invalidateQueries({ queryKey: loyaltyQueryKeys.card(session.childId) })
+      queryClient.invalidateQueries({
+        queryKey: loyaltyQueryKeys.card(session.childId),
+      })
       if (session.isFreeSession) {
         toast.success('Sesión gratuita cerrada.')
       } else {
-        toast.success('Sesión cerrada. ¡Se agregó 1 sello a la tarjeta de fidelidad!')
+        toast.success(
+          'Sesión cerrada. ¡Se agregó 1 sello a la tarjeta de fidelidad!'
+        )
       }
     },
     onError: (error: Error) => {

@@ -25,7 +25,10 @@ export const PricingToolbar = ({
         <DataTableFacetedFilter
           column={table.getColumn('branchId')}
           title='Sucursal'
-          options={branches.map((b) => ({ label: b.name, value: String(b.id) }))}
+          options={branches.map((b) => ({
+            label: b.name,
+            value: String(b.id),
+          }))}
         />
       </div>
 

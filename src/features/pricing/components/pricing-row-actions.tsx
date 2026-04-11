@@ -17,7 +17,10 @@ type PricingRowActionsProps = {
   onDelete: (config: PricingConfig) => void
 }
 
-export const PricingRowActions = ({ config, onDelete }: PricingRowActionsProps) => {
+export const PricingRowActions = ({
+  config,
+  onDelete,
+}: PricingRowActionsProps) => {
   const navigate = useNavigate()
 
   const handleEdit = () =>

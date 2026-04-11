@@ -3,7 +3,9 @@ import { cn } from '@/lib/utils'
 import { formatElapsed } from '../data/schema'
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    value
+  )
 
 type SessionTimerProps = {
   checkIn: string
@@ -33,7 +35,9 @@ export const SessionTimer = ({
     const isOvertime = remainingSeconds < 0
     const displaySeconds = Math.abs(remainingSeconds)
 
-    const durationMinutes = Math.round((scheduledMs - new Date(checkIn).getTime()) / 60_000)
+    const durationMinutes = Math.round(
+      (scheduledMs - new Date(checkIn).getTime()) / 60_000
+    )
     const hoursPlayed = durationMinutes / 60
     const cost = Math.max(minimumCharge, hoursPlayed * pricePerHour)
 
@@ -45,7 +49,7 @@ export const SessionTimer = ({
           )}
           <span
             className={cn(
-              'font-mono text-sm tabular-nums font-semibold',
+              'font-mono text-sm font-semibold tabular-nums',
               isOvertime
                 ? 'text-amber-500 dark:text-amber-400'
                 : remainingSeconds < 300
@@ -57,7 +61,9 @@ export const SessionTimer = ({
           </span>
         </div>
         {isOvertime && (
-          <span className='text-xs text-amber-500 font-medium'>tiempo extra</span>
+          <span className='text-xs font-medium text-amber-500'>
+            tiempo extra
+          </span>
         )}
         {!isOvertime && (
           <span className='text-xs text-muted-foreground'>restante</span>
@@ -78,7 +84,7 @@ export const SessionTimer = ({
 
   return (
     <div className='flex flex-col gap-0.5'>
-      <span className='font-mono text-sm tabular-nums text-foreground'>
+      <span className='font-mono text-sm text-foreground tabular-nums'>
         {formatElapsed(elapsed)}
       </span>
       {showCost && (

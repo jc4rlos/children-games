@@ -4,12 +4,16 @@ import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { PricingForm } from './components/pricing-form'
 import { type PricingConfigFormValues } from './data/schema'
-import { useBranchesForPricing, useCreatePricingConfig } from './hooks/use-pricing'
+import {
+  useBranchesForPricing,
+  useCreatePricingConfig,
+} from './hooks/use-pricing'
 
 export const PricingCreate = () => {
   const navigate = useNavigate()
   const createMutation = useCreatePricingConfig()
-  const { data: branches = [], isLoading: loadingBranches } = useBranchesForPricing()
+  const { data: branches = [], isLoading: loadingBranches } =
+    useBranchesForPricing()
 
   const handleSubmit = (values: PricingConfigFormValues) => {
     createMutation.mutate(values, {
@@ -31,7 +35,9 @@ export const PricingCreate = () => {
           <ArrowLeft size={18} />
         </Button>
         <div>
-          <h2 className='text-2xl font-bold tracking-tight'>Nueva Configuración</h2>
+          <h2 className='text-2xl font-bold tracking-tight'>
+            Nueva Configuración
+          </h2>
           <p className='text-muted-foreground'>
             Define el precio por hora y cargo mínimo para una sucursal.
           </p>

@@ -3,7 +3,9 @@ import { Activity, ShoppingBag, TrendingUp, Users } from 'lucide-react'
 import { type DailyKpis } from '../data/dashboard-service'
 
 const formatCurrency = (v: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(v)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    v
+  )
 
 type KpiCardProps = {
   label: string

@@ -78,7 +78,9 @@ export const getActiveSession = async (
   return {
     id: row.id,
     checkIn: row.check_in,
-    scheduledCheckout: (row as { scheduled_checkout?: string | null }).scheduled_checkout ?? null,
+    scheduledCheckout:
+      (row as { scheduled_checkout?: string | null }).scheduled_checkout ??
+      null,
     pricePerHour: row.pricing_config.price_per_hour,
     minimumCharge: row.pricing_config.minimum_charge,
     isFreeSession: row.is_free_session,

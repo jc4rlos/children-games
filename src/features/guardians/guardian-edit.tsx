@@ -37,7 +37,9 @@ export const GuardianEdit = () => {
           <ArrowLeft size={18} />
         </Button>
         <div>
-          <h2 className='text-2xl font-bold tracking-tight'>Editar Apoderado</h2>
+          <h2 className='text-2xl font-bold tracking-tight'>
+            Editar Apoderado
+          </h2>
           <p className='text-muted-foreground'>
             Actualiza los datos del apoderado.
           </p>

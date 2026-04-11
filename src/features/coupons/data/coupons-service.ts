@@ -39,7 +39,10 @@ export const getCoupons = async (
 
   if (code) query = query.ilike('code', `%${code}%`)
   if (discountType?.length)
-    query = query.in('discount_type', discountType as ('PERCENTAGE' | 'FIXED_AMOUNT')[])
+    query = query.in(
+      'discount_type',
+      discountType as ('PERCENTAGE' | 'FIXED_AMOUNT')[]
+    )
   if (isActive?.length === 1)
     query = query.eq('is_active', isActive[0] === 'true')
 
@@ -63,7 +66,9 @@ export const getCouponById = async (id: number): Promise<Coupon> => {
   return toCoupon(data as DbCouponWithBranch)
 }
 
-export const createCoupon = async (values: CouponFormValues): Promise<Coupon> => {
+export const createCoupon = async (
+  values: CouponFormValues
+): Promise<Coupon> => {
   const { data, error } = await supabase
     .from('coupon')
     .insert(toDbInsert(values))

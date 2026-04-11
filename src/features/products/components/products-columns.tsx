@@ -92,11 +92,7 @@ export const createProductColumns = (
     ),
     cell: ({ row }) => {
       const price = row.getValue('price') as number
-      return (
-        <span className='text-sm font-medium'>
-          S/ {price.toFixed(2)}
-        </span>
-      )
+      return <span className='text-sm font-medium'>S/ {price.toFixed(2)}</span>
     },
   },
   {

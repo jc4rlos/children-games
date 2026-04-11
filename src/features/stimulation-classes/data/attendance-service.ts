@@ -44,7 +44,7 @@ export const getAttendanceSheet = async (
   if (attError) throw new Error(attError.message)
 
   const attendanceMap = new Map<number, DbAttendance>()
-  for (const att of (attendances as unknown as DbAttendance[])) {
+  for (const att of attendances as unknown as DbAttendance[]) {
     attendanceMap.set(att.enrollment_id, att)
   }
 
@@ -70,17 +70,15 @@ export const upsertAttendance = async (
   attended: boolean,
   notedBy?: number
 ): Promise<void> => {
-  const { error } = await supabase
-    .from('class_attendance')
-    .upsert(
-      {
-        enrollment_id: enrollmentId,
-        class_date: classDate,
-        attended,
-        noted_by: notedBy ?? null,
-      },
-      { onConflict: 'enrollment_id,class_date' }
-    )
+  const { error } = await supabase.from('class_attendance').upsert(
+    {
+      enrollment_id: enrollmentId,
+      class_date: classDate,
+      attended,
+      noted_by: notedBy ?? null,
+    },
+    { onConflict: 'enrollment_id,class_date' }
+  )
 
   if (error) throw new Error(error.message)
 }
@@ -89,6 +87,8 @@ export const saveAttendanceBatch = async (
   records: { enrollmentId: number; classDate: string; attended: boolean }[]
 ): Promise<void> => {
   await Promise.all(
-    records.map((r) => upsertAttendance(r.enrollmentId, r.classDate, r.attended))
+    records.map((r) =>
+      upsertAttendance(r.enrollmentId, r.classDate, r.attended)
+    )
   )
 }

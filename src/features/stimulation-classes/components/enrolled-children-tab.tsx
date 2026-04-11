@@ -20,7 +20,9 @@ type EnrolledChildrenTabProps = {
   classInfo: { id: number; name: string; capacity: number }
 }
 
-export const EnrolledChildrenTab = ({ classInfo }: EnrolledChildrenTabProps) => {
+export const EnrolledChildrenTab = ({
+  classInfo,
+}: EnrolledChildrenTabProps) => {
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false)
 
   const { data: enrollments = [], isLoading } = useEnrollments(classInfo.id)
@@ -77,7 +79,9 @@ export const EnrolledChildrenTab = ({ classInfo }: EnrolledChildrenTabProps) => 
               enrollment.childAvatar ??
               getAvatarUrl(enrollment.childCode, enrollment.childGender)
             const age = calculateAge(enrollment.childBirthDate)
-            const enrolledDate = new Date(enrollment.enrolledAt).toLocaleDateString('es-PE')
+            const enrolledDate = new Date(
+              enrollment.enrolledAt
+            ).toLocaleDateString('es-PE')
 
             return (
               <div
@@ -89,8 +93,8 @@ export const EnrolledChildrenTab = ({ classInfo }: EnrolledChildrenTabProps) => 
                   alt={enrollment.childName}
                   className='h-10 w-10 rounded-full object-cover'
                 />
-                <div className='flex-1 min-w-0'>
-                  <p className='font-medium truncate'>{enrollment.childName}</p>
+                <div className='min-w-0 flex-1'>
+                  <p className='truncate font-medium'>{enrollment.childName}</p>
                   <p className='text-xs text-muted-foreground'>
                     {age} años · Inscrito el {enrolledDate}
                     {enrollment.enrolledByName &&
@@ -105,7 +109,7 @@ export const EnrolledChildrenTab = ({ classInfo }: EnrolledChildrenTabProps) => 
                 <Button
                   size='sm'
                   variant='outline'
-                  className='text-destructive hover:text-destructive shrink-0'
+                  className='shrink-0 text-destructive hover:text-destructive'
                   disabled={unenrollMutation.isPending}
                   onClick={() => unenrollMutation.mutate(enrollment.id)}
                 >

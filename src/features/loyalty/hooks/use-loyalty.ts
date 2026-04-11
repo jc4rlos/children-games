@@ -1,5 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { getOrCreateLoyaltyCard, getLoyaltyStamps } from '../data/loyalty-service'
+import {
+  getOrCreateLoyaltyCard,
+  getLoyaltyStamps,
+} from '../data/loyalty-service'
 
 export const loyaltyQueryKeys = {
   card: (childId: number) => ['loyalty', 'card', childId] as const,

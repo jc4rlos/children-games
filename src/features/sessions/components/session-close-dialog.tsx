@@ -3,14 +3,16 @@ import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
 import { AlertTriangle, Star } from 'lucide-react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
-import { useLoyaltyCard } from '@/features/loyalty/hooks/use-loyalty'
 import { LoyaltyStampsGrid } from '@/features/loyalty/components/loyalty-stamps-grid'
+import { useLoyaltyCard } from '@/features/loyalty/hooks/use-loyalty'
 import { formatElapsed, type PlaySession } from '../data/schema'
 import { useCloseSession } from '../hooks/use-sessions'
 import { SessionTimer } from './session-timer'
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    value
+  )
 
 type SessionCloseDialogProps = {
   open: boolean
@@ -31,7 +33,9 @@ export const SessionCloseDialog = ({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setElapsed(Math.floor((Date.now() - new Date(session.checkIn).getTime()) / 1000))
+      setElapsed(
+        Math.floor((Date.now() - new Date(session.checkIn).getTime()) / 1000)
+      )
     }, 1000)
     return () => clearInterval(interval)
   }, [session.checkIn])
@@ -77,7 +81,8 @@ export const SessionCloseDialog = ({
             <div>
               <p className='font-semibold'>{session.childName}</p>
               <p className='text-sm text-muted-foreground'>
-                Ingreso: {new Date(session.checkIn).toLocaleTimeString('es-PE', {
+                Ingreso:{' '}
+                {new Date(session.checkIn).toLocaleTimeString('es-PE', {
                   hour: '2-digit',
                   minute: '2-digit',
                 })}

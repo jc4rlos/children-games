@@ -1,4 +1,8 @@
-import { type ClassDay, type ClassEnrollment, type StimulationClass } from './schema'
+import {
+  type ClassDay,
+  type ClassEnrollment,
+  type StimulationClass,
+} from './schema'
 
 export type DbStimulationClass = {
   id: number
@@ -35,7 +39,9 @@ export type DbClassEnrollment = {
   enrolledEmployee: { first_name: string; last_name: string } | null
 }
 
-export const toStimulationClass = (row: DbStimulationClass): StimulationClass => ({
+export const toStimulationClass = (
+  row: DbStimulationClass
+): StimulationClass => ({
   id: row.id,
   branchId: row.branch_id,
   branchName: row.branch.name,

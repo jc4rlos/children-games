@@ -40,7 +40,14 @@ export const ClassesTable = ({
     handleSearch,
     handleReset,
     isFiltered,
-  } = useClassesTable({ data, total, search, navigate, onDelete, enrolledCounts })
+  } = useClassesTable({
+    data,
+    total,
+    search,
+    navigate,
+    onDelete,
+    enrolledCounts,
+  })
 
   return (
     <div className='flex flex-1 flex-col gap-4'>
@@ -106,10 +113,7 @@ export const ClassesTable = ({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={COLUMNS_COUNT}
-                  className='h-24 text-center'
-                >
+                <TableCell colSpan={COLUMNS_COUNT} className='h-24 text-center'>
                   Sin resultados.
                 </TableCell>
               </TableRow>

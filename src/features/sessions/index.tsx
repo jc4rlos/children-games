@@ -24,7 +24,8 @@ export const Sessions = () => {
   const navigate = route.useNavigate()
   const rootNavigate = useNavigate()
   const [sessionToClose, setSessionToClose] = useState<PlaySession | null>(null)
-  const [consumptionDialog, setConsumptionDialog] = useState<ConsumptionDialogState>(null)
+  const [consumptionDialog, setConsumptionDialog] =
+    useState<ConsumptionDialogState>(null)
 
   const date = typeof search.date === 'string' ? search.date : TODAY
   const status =

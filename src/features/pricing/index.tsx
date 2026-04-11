@@ -15,7 +15,9 @@ export const Pricing = () => {
   const search = route.useSearch()
   const navigate = route.useNavigate()
   const rootNavigate = useNavigate()
-  const [configToDelete, setConfigToDelete] = useState<PricingConfig | null>(null)
+  const [configToDelete, setConfigToDelete] = useState<PricingConfig | null>(
+    null
+  )
 
   const { data, isLoading, isError, error } = usePricingConfigs({
     page: search.page ?? 1,

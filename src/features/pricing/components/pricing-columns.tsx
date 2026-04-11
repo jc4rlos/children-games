@@ -6,7 +6,9 @@ import { type PricingConfig } from '../data/schema'
 import { PricingRowActions } from './pricing-row-actions'
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
+    value
+  )
 
 const formatDateTime = (iso: string) =>
   new Intl.DateTimeFormat('es-PE', {
@@ -20,7 +22,11 @@ const formatDateTime = (iso: string) =>
 const getPricingStatus = (validFrom: string, validUntil: string | null) => {
   const now = new Date()
   const from = new Date(validFrom)
-  if (now < from) return { label: 'Programado', className: 'text-blue-600 dark:text-blue-400' }
+  if (now < from)
+    return {
+      label: 'Programado',
+      className: 'text-blue-600 dark:text-blue-400',
+    }
   if (validUntil && now > new Date(validUntil))
     return { label: 'Expirado', className: 'text-muted-foreground' }
   return { label: 'Vigente', className: 'text-teal-600 dark:text-teal-400' }
@@ -93,7 +99,9 @@ export const createPricingColumns = (
       <DataTableColumnHeader column={column} title='Desde' />
     ),
     cell: ({ row }) => (
-      <span className='text-sm'>{formatDateTime(row.getValue('validFrom'))}</span>
+      <span className='text-sm'>
+        {formatDateTime(row.getValue('validFrom'))}
+      </span>
     ),
   },
   {
@@ -118,7 +126,9 @@ export const createPricingColumns = (
         row.original.validFrom,
         row.original.validUntil
       )
-      return <span className={cn('text-sm font-medium', className)}>{label}</span>
+      return (
+        <span className={cn('text-sm font-medium', className)}>{label}</span>
+      )
     },
   },
   {

@@ -16,6 +16,7 @@ import { Pencil, PlusCircle, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { Main } from '@/components/layout/main'
+import { MenuItemDialog } from './components/menu-item-dialog'
 import {
   createMenuItem,
   deleteMenuItem,
@@ -26,7 +27,6 @@ import {
   updateMenuItem,
   upsertRolePermission,
 } from './data/menu-service'
-import { MenuItemDialog } from './components/menu-item-dialog'
 
 const ROLES: { value: string; label: string }[] = [
   { value: 'ADMIN', label: 'Admin' },
@@ -41,7 +41,8 @@ export default function PermissionsPage() {
   const queryClient = useQueryClient()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null)
-  const [deletingItem, setDeletingItem] = useState<MenuItemWithPermissions | null>(null)
+  const [deletingItem, setDeletingItem] =
+    useState<MenuItemWithPermissions | null>(null)
 
   const { data: items = [], isLoading } = useQuery({
     queryKey: QUERY_KEY,
@@ -60,20 +61,23 @@ export default function PermissionsPage() {
     }) => upsertRolePermission(menuItemId, role, enabled),
     onMutate: async ({ menuItemId, role, enabled }) => {
       await queryClient.cancelQueries({ queryKey: QUERY_KEY })
-      const previous = queryClient.getQueryData<MenuItemWithPermissions[]>(QUERY_KEY)
-      queryClient.setQueryData<MenuItemWithPermissions[]>(QUERY_KEY, (old = []) =>
-        old.map((item) =>
-          item.id !== menuItemId
-            ? item
-            : {
-                ...item,
-                permissions: item.permissions.some((p) => p.role === role)
-                  ? item.permissions.map((p) =>
-                      p.role === role ? { ...p, enabled } : p
-                    )
-                  : [...item.permissions, { role, enabled }],
-              }
-        )
+      const previous =
+        queryClient.getQueryData<MenuItemWithPermissions[]>(QUERY_KEY)
+      queryClient.setQueryData<MenuItemWithPermissions[]>(
+        QUERY_KEY,
+        (old = []) =>
+          old.map((item) =>
+            item.id !== menuItemId
+              ? item
+              : {
+                  ...item,
+                  permissions: item.permissions.some((p) => p.role === role)
+                    ? item.permissions.map((p) =>
+                        p.role === role ? { ...p, enabled } : p
+                      )
+                    : [...item.permissions, { role, enabled }],
+                }
+          )
       )
       return { previous }
     },
@@ -196,7 +200,7 @@ export default function PermissionsPage() {
                 <TableRow key={item.id}>
                   <TableCell>
                     <div className='flex flex-col gap-0.5'>
-                      <span className='font-medium leading-tight'>
+                      <span className='leading-tight font-medium'>
                         {item.label}
                       </span>
                       {item.icon && (

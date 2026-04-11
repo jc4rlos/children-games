@@ -7,9 +7,15 @@ type LoyaltyStampsGridProps = {
   className?: string
 }
 
-export const LoyaltyStampsGrid = ({ card, className }: LoyaltyStampsGridProps) => {
+export const LoyaltyStampsGrid = ({
+  card,
+  className,
+}: LoyaltyStampsGridProps) => {
   const { stampsCount, stampsRequired, freeSessions, totalEarned } = card
-  const stamps = Array.from({ length: stampsRequired }, (_, i) => i < stampsCount)
+  const stamps = Array.from(
+    { length: stampsRequired },
+    (_, i) => i < stampsCount
+  )
 
   return (
     <div className={cn('rounded-lg border bg-muted/30 p-3', className)}>
@@ -46,7 +52,8 @@ export const LoyaltyStampsGrid = ({ card, className }: LoyaltyStampsGridProps) =
 
       {totalEarned > 0 && (
         <p className='mt-2 text-xs text-muted-foreground'>
-          {totalEarned} sesión{totalEarned !== 1 ? 'es' : ''} gratis ganada{totalEarned !== 1 ? 's' : ''} en total
+          {totalEarned} sesión{totalEarned !== 1 ? 'es' : ''} gratis ganada
+          {totalEarned !== 1 ? 's' : ''} en total
         </p>
       )}
     </div>

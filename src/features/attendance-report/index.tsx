@@ -2,7 +2,10 @@ import { getRouteApi } from '@tanstack/react-router'
 import { Main } from '@/components/layout/main'
 import { ReportFilters } from './components/report-filters'
 import { ReportTable } from './components/report-table'
-import { useAttendanceReport, useClassesForReport } from './hooks/use-attendance-report'
+import {
+  useAttendanceReport,
+  useClassesForReport,
+} from './hooks/use-attendance-report'
 
 const route = getRouteApi('/_authenticated/attendance-report/')
 
@@ -22,7 +25,11 @@ export const AttendanceReport = () => {
 
   const { data: classes = [] } = useClassesForReport()
 
-  const { data = [], isLoading } = useAttendanceReport({ classId, dateFrom, dateTo })
+  const { data = [], isLoading } = useAttendanceReport({
+    classId,
+    dateFrom,
+    dateTo,
+  })
 
   const isFiltered =
     classId > 0 || dateFrom !== DEFAULT_DATE_FROM || dateTo !== DEFAULT_DATE_TO
@@ -41,7 +48,11 @@ export const AttendanceReport = () => {
 
   const handleReset = () => {
     navigate({
-      search: { classId: 0, dateFrom: DEFAULT_DATE_FROM, dateTo: DEFAULT_DATE_TO },
+      search: {
+        classId: 0,
+        dateFrom: DEFAULT_DATE_FROM,
+        dateTo: DEFAULT_DATE_TO,
+      },
     })
   }
 
@@ -73,7 +84,9 @@ export const AttendanceReport = () => {
       {selectedClass && (
         <div className='flex items-center gap-2 text-sm text-muted-foreground'>
           <span>Clase:</span>
-          <span className='font-medium text-foreground'>{selectedClass.name}</span>
+          <span className='font-medium text-foreground'>
+            {selectedClass.name}
+          </span>
           <span>·</span>
           <span>{selectedClass.branchName}</span>
           <span>·</span>

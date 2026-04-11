@@ -15,7 +15,10 @@ const formatDate = (iso: string) =>
 
 const formatDiscount = (type: Coupon['discountType'], value: number) => {
   if (type === 'PERCENTAGE') return `${value}%`
-  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
+  return new Intl.NumberFormat('es-PE', {
+    style: 'currency',
+    currency: 'PEN',
+  }).format(value)
 }
 
 export const createCouponColumns = (
@@ -77,7 +80,11 @@ export const createCouponColumns = (
     ),
     cell: ({ row }) => (
       <span className='text-sm'>
-        {discountTypeLabels[row.getValue('discountType') as Coupon['discountType']]}
+        {
+          discountTypeLabels[
+            row.getValue('discountType') as Coupon['discountType']
+          ]
+        }
       </span>
     ),
     filterFn: (row, id, value) => value.includes(row.getValue(id)),

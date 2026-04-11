@@ -136,7 +136,12 @@ export const createChildColumns = (
       const required = child.loyaltyStampsRequired
       const free = child.loyaltyFreeSessions
 
-      if (count === null || count === undefined || required === null || required === undefined) {
+      if (
+        count === null ||
+        count === undefined ||
+        required === null ||
+        required === undefined
+      ) {
         return <span className='text-xs text-muted-foreground'>—</span>
       }
 

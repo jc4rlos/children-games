@@ -15,8 +15,7 @@ import { type ProductFormValues } from '../data/schema'
 export const productQueryKeys = {
   list: (params: ProductsParams) => ['products', 'list', params] as const,
   detail: (id: number) => ['products', id] as const,
-  forSelect: (branchId?: number) =>
-    ['products', 'select', branchId] as const,
+  forSelect: (branchId?: number) => ['products', 'select', branchId] as const,
   branches: ['products', 'branches'] as const,
   categories: ['products', 'categories'] as const,
 }
@@ -66,13 +65,8 @@ export const useCreateProduct = () => {
 export const useUpdateProduct = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: ({
-      id,
-      values,
-    }: {
-      id: number
-      values: ProductFormValues
-    }) => updateProduct(id, values),
+    mutationFn: ({ id, values }: { id: number; values: ProductFormValues }) =>
+      updateProduct(id, values),
     onSuccess: (updated) => {
       queryClient.invalidateQueries({ queryKey: ['products'] })
       queryClient.setQueryData(productQueryKeys.detail(updated.id), updated)

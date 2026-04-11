@@ -18,7 +18,12 @@ import {
   Textarea,
 } from '@boilerplate/ui'
 import { type BranchOption } from '@/features/branches/data/branches-service'
-import { couponFormSchema, discountTypeLabels, discountTypes, type CouponFormValues } from '../data/schema'
+import {
+  couponFormSchema,
+  discountTypeLabels,
+  discountTypes,
+  type CouponFormValues,
+} from '../data/schema'
 
 type CouponFormProps = {
   defaultValues: CouponFormValues

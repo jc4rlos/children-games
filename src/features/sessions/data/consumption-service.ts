@@ -23,7 +23,9 @@ export const getSessionConsumptions = async (
 ): Promise<SessionConsumption[]> => {
   const { data, error } = await supabase
     .from('session_consumption')
-    .select('id, play_session_id, product_id, quantity, unit_price, subtotal, added_at, product(name)')
+    .select(
+      'id, play_session_id, product_id, quantity, unit_price, subtotal, added_at, product(name)'
+    )
     .eq('play_session_id', playSessionId)
     .order('added_at', { ascending: true })
 
@@ -63,7 +65,9 @@ export const addSessionConsumption = async (
       quantity: payload.quantity,
       unit_price: payload.unitPrice,
     })
-    .select('id, play_session_id, product_id, quantity, unit_price, subtotal, added_at, product(name)')
+    .select(
+      'id, play_session_id, product_id, quantity, unit_price, subtotal, added_at, product(name)'
+    )
     .single()
 
   if (error) throw new Error(error.message)

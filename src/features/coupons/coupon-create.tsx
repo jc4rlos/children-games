@@ -9,7 +9,8 @@ import { useBranchesForCoupon, useCreateCoupon } from './hooks/use-coupons'
 export const CouponCreate = () => {
   const navigate = useNavigate()
   const createMutation = useCreateCoupon()
-  const { data: branches = [], isLoading: loadingBranches } = useBranchesForCoupon()
+  const { data: branches = [], isLoading: loadingBranches } =
+    useBranchesForCoupon()
 
   const handleSubmit = (values: CouponFormValues) => {
     createMutation.mutate(values, {

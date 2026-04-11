@@ -2,16 +2,16 @@ import { useState } from 'react'
 import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft, History, Search, Star, Timer, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { calculateAge } from '@/features/sessions/data/schema'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
+import { calculateAge } from '@/features/sessions/data/schema'
+import { HistoryTab } from './components/history-tab'
+import { SessionTab } from './components/session-tab'
+import { StampsTab } from './components/stamps-tab'
 import {
   useChildByCode,
   usePortalActiveSession,
   usePortalLoyalty,
 } from './hooks/use-parent-portal'
-import { HistoryTab } from './components/history-tab'
-import { SessionTab } from './components/session-tab'
-import { StampsTab } from './components/stamps-tab'
 
 type Tab = 'stamps' | 'session' | 'history'
 
@@ -32,11 +32,16 @@ export const ParentPortal = () => {
     (search.tab as Tab | undefined) ?? 'stamps'
   )
 
-  const { data: child, isLoading: childLoading, isFetching } = useChildByCode(activeCode)
-  const { data: loyalty, isLoading: loyaltyLoading } = usePortalLoyalty(child?.id ?? null)
-  const { data: activeSession, isLoading: sessionLoading } = usePortalActiveSession(
+  const {
+    data: child,
+    isLoading: childLoading,
+    isFetching,
+  } = useChildByCode(activeCode)
+  const { data: loyalty, isLoading: loyaltyLoading } = usePortalLoyalty(
     child?.id ?? null
   )
+  const { data: activeSession, isLoading: sessionLoading } =
+    usePortalActiveSession(child?.id ?? null)
 
   const hasSearched = activeCode.length >= 3
 
@@ -64,7 +69,7 @@ export const ParentPortal = () => {
   return (
     <div className='relative flex min-h-svh flex-col bg-background'>
       {/* Header */}
-      <div className='sticky top-0 z-10 bg-gradient-to-r from-teal-600 to-teal-500 px-4 pb-4 pt-safe-top shadow-md'>
+      <div className='pt-safe-top sticky top-0 z-10 bg-gradient-to-r from-teal-600 to-teal-500 px-4 pb-4 shadow-md'>
         <div className='flex items-center gap-2 pt-3'>
           {child && (
             <button
@@ -127,7 +132,9 @@ export const ParentPortal = () => {
             <div className='text-5xl'>🔍</div>
             <p className='text-lg font-semibold'>Código no encontrado</p>
             <p className='max-w-xs text-sm text-muted-foreground'>
-              Verifica que el código <span className='font-mono font-bold'>{activeCode}</span> sea correcto. Puedes encontrarlo en la tarjeta de tu niño.
+              Verifica que el código{' '}
+              <span className='font-mono font-bold'>{activeCode}</span> sea
+              correcto. Puedes encontrarlo en la tarjeta de tu niño.
             </p>
           </div>
         )}
@@ -139,13 +146,17 @@ export const ParentPortal = () => {
             <div>
               <h2 className='text-xl font-bold'>Portal de Padres</h2>
               <p className='mt-1 text-muted-foreground'>
-                Ingresa el código de tu niño para ver sus sellos, sesión activa e historial.
+                Ingresa el código de tu niño para ver sus sellos, sesión activa
+                e historial.
               </p>
             </div>
             <div className='rounded-2xl border bg-muted/40 p-4 text-left text-sm text-muted-foreground'>
-              <p className='font-semibold text-foreground'>¿Dónde encuentro el código?</p>
+              <p className='font-semibold text-foreground'>
+                ¿Dónde encuentro el código?
+              </p>
               <p className='mt-1'>
-                El código aparece en la tarjeta de registro de tu niño. Pregunta al personal si no lo tienes.
+                El código aparece en la tarjeta de registro de tu niño. Pregunta
+                al personal si no lo tienes.
               </p>
             </div>
           </div>
@@ -162,12 +173,16 @@ export const ParentPortal = () => {
                 className='h-14 w-14 rounded-full object-cover ring-2 ring-teal-200 dark:ring-teal-700'
               />
               <div className='min-w-0 flex-1'>
-                <p className='truncate font-bold text-lg leading-tight'>{child.fullName}</p>
+                <p className='truncate text-lg leading-tight font-bold'>
+                  {child.fullName}
+                </p>
                 <p className='text-sm text-muted-foreground'>
                   {calculateAge(child.birthDate)} años ·{' '}
                   {child.gender === 'FEMALE' ? 'Niña' : 'Niño'}
                 </p>
-                <p className='text-xs text-muted-foreground'>{child.branchName}</p>
+                <p className='text-xs text-muted-foreground'>
+                  {child.branchName}
+                </p>
               </div>
               <span className='shrink-0 rounded-lg bg-teal-50 px-2 py-1 font-mono text-xs font-bold text-teal-700 dark:bg-teal-950 dark:text-teal-300'>
                 {child.code}
@@ -180,7 +195,10 @@ export const ParentPortal = () => {
                 <StampsTab card={loyalty} isLoading={loyaltyLoading} />
               )}
               {activeTab === 'session' && (
-                <SessionTab session={activeSession} isLoading={sessionLoading} />
+                <SessionTab
+                  session={activeSession}
+                  isLoading={sessionLoading}
+                />
               )}
               {activeTab === 'history' && <HistoryTab childId={child.id} />}
             </div>
@@ -190,7 +208,7 @@ export const ParentPortal = () => {
 
       {/* Bottom nav — only shown when child is found */}
       {child && (
-        <div className='fixed bottom-0 left-0 right-0 z-20 border-t bg-background/95 pb-safe-bottom backdrop-blur-sm'>
+        <div className='pb-safe-bottom fixed right-0 bottom-0 left-0 z-20 border-t bg-background/95 backdrop-blur-sm'>
           <div className='flex'>
             {TABS.map(({ id, label, icon: Icon }) => (
               <button

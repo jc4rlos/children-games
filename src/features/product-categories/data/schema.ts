@@ -13,4 +13,6 @@ export const productCategoryFormSchema = z.object({
   isActive: z.boolean(),
 })
 
-export type ProductCategoryFormValues = z.infer<typeof productCategoryFormSchema>
+export type ProductCategoryFormValues = z.infer<
+  typeof productCategoryFormSchema
+>

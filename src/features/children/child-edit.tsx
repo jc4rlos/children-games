@@ -38,9 +38,7 @@ export const ChildEdit = () => {
         </Button>
         <div>
           <h2 className='text-2xl font-bold tracking-tight'>Editar Niño</h2>
-          <p className='text-muted-foreground'>
-            Actualiza los datos del niño.
-          </p>
+          <p className='text-muted-foreground'>Actualiza los datos del niño.</p>
         </div>
       </div>
 
