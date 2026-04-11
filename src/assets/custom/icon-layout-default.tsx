@@ -1,4 +1,4 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 export function IconLayoutDefault(props: SVGProps<SVGSVGElement>) {
   return (
@@ -8,6 +8,7 @@ export function IconLayoutDefault(props: SVGProps<SVGSVGElement>) {
       viewBox='0 0 79.86 51.14'
       {...props}
     >
+      <title>Default layout icon</title>
       <path
         d='M39.22 15.99h-8.16c-.79 0-1.43-.67-1.43-1.5s.64-1.5 1.43-1.5h8.16c.79 0 1.43.67 1.43 1.5s-.64 1.5-1.43 1.5z'
         opacity={0.75}

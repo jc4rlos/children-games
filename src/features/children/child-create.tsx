@@ -1,9 +1,9 @@
-import { useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { ChildForm } from './components/child-form'
-import { type ChildFormValues } from './data/schema'
+import type { ChildFormValues } from './data/schema'
 import { useCreateChild } from './hooks/use-children'
 
 export const ChildCreate = () => {

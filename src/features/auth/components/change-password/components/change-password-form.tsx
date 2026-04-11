@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from '@tanstack/react-router'
 import {
   Button,
   Form,
@@ -12,13 +7,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from '@tanstack/react-router'
 import { KeyRound, Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { useAuthStore } from '@/stores/auth-store'
+import { z } from 'zod'
+import { PasswordInput } from '@/components/password-input'
 import { supabase } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
-import { PasswordInput } from '@/components/password-input'
-import { updatePassword, getEmployeeByUserId } from '../../../auth-service'
+import { useAuthStore } from '@/stores/auth-store'
+import { getEmployeeByUserId, updatePassword } from '../../../auth-service'
 
 const formSchema = z
   .object({

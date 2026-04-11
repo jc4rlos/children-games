@@ -1,18 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
 import {
   type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
+import { useEffect, useMemo, useState } from 'react'
 import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { createProductColumns } from '../components/products-columns'
-import { type Product } from '../data/schema'
+import type { Product } from '../data/schema'
 
 type UseProductsTableParams = {
   data: Product[]

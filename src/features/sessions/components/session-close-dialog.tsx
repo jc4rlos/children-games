@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
 import { AlertTriangle, Star } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { LoyaltyStampsGrid } from '@/features/loyalty/components/loyalty-stamps-grid'

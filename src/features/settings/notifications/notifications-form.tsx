@@ -1,7 +1,3 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Link } from '@tanstack/react-router'
 import {
   Button,
   Checkbox,
@@ -16,6 +12,10 @@ import {
   RadioGroupItem,
   Switch,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Link } from '@tanstack/react-router'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { showSubmittedData } from '@/lib/show-submitted-data'
 
 const notificationsFormSchema = z.object({

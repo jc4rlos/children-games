@@ -1,14 +1,14 @@
 import {
-  Monitor,
+  Award,
   Bell,
+  Monitor,
   Palette,
   Settings,
-  Wrench,
-  UserCog,
   ShieldCheck,
-  Award,
+  UserCog,
+  Wrench,
 } from 'lucide-react'
-import { type SidebarData } from '../types'
+import type { SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {

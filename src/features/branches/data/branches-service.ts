@@ -1,7 +1,7 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
 import { toBranch, toDbInsert, toDbUpdate } from './branch-mapper'
-import { type Branch, type BranchFormValues } from './schema'
+import type { Branch, BranchFormValues } from './schema'
 
 type DbBranch = Database['public']['Tables']['branch']['Row']
 

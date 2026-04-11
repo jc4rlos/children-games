@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   Badge,
   Button,
@@ -12,7 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from '@boilerplate/ui'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Pencil, PlusCircle, Trash2 } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { Main } from '@/components/layout/main'

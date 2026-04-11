@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type PlaySession, type SessionFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { PlaySession, SessionFormValues } from './schema'
 
 type DbPlaySession = Database['public']['Tables']['play_session']['Row']
 type DbPlaySessionInsert =

@@ -1,8 +1,8 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
+import { cn } from '@/lib/utils'
 import { type Coupon, discountTypeLabels } from '../data/schema'
 import { CouponRowActions } from './coupon-row-actions'
 

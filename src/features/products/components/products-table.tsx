@@ -1,4 +1,3 @@
-import { flexRender } from '@tanstack/react-table'
 import {
   Table,
   TableBody,
@@ -7,11 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
-import { type NavigateFn } from '@/hooks/use-table-url-state'
+import { flexRender } from '@tanstack/react-table'
 import { DataTablePagination } from '@/components/data-table'
-import { type CategoryOption } from '@/features/product-categories/data/categories-service'
-import { type Product } from '../data/schema'
+import type { CategoryOption } from '@/features/product-categories/data/categories-service'
+import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
+import type { Product } from '../data/schema'
 import { useProductsTable } from '../hooks/use-products-table'
 import { ProductsToolbar } from './products-toolbar'
 

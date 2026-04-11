@@ -1,6 +1,6 @@
-import { type InputHTMLAttributes, type Ref, useState } from 'react'
 import { Button } from '@boilerplate/ui'
 import { Eye, EyeOff } from 'lucide-react'
+import { type InputHTMLAttributes, type Ref, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 type PasswordInputProps = Omit<

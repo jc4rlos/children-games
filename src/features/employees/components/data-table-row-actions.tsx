@@ -1,5 +1,3 @@
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { type Row } from '@tanstack/react-table'
 import {
   Button,
   DropdownMenu,
@@ -9,8 +7,10 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import type { Row } from '@tanstack/react-table'
 import { KeyRound, Pencil, Trash2 } from 'lucide-react'
-import { type Employee } from '../data/schema'
+import type { Employee } from '../data/schema'
 import { useEmployeesContext } from './employees-provider'
 
 type Props = { row: Row<Employee> }

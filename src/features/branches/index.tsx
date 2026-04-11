@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { BranchDeleteDialog } from './components/branch-delete-dialog'
 import { BranchesTable } from './components/branches-table'
 import { BranchesTableSkeleton } from './components/branches-table-skeleton'
-import { type Branch } from './data/schema'
+import type { Branch } from './data/schema'
 import { useBranches } from './hooks/use-branches'
 
 const route = getRouteApi('/_authenticated/branches/')

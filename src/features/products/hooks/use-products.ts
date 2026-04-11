@@ -3,14 +3,14 @@ import { toast } from 'sonner'
 import { getBranchesForSelect } from '@/features/branches/data/branches-service'
 import { getCategoriesForSelect } from '@/features/product-categories/data/categories-service'
 import {
-  type ProductsParams,
   createProduct,
   deleteProduct,
   getProductById,
   getProducts,
+  type ProductsParams,
   updateProduct,
 } from '../data/products-service'
-import { type ProductFormValues } from '../data/schema'
+import type { ProductFormValues } from '../data/schema'
 
 export const productQueryKeys = {
   list: (params: ProductsParams) => ['products', 'list', params] as const,

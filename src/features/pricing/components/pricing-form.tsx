@@ -1,5 +1,3 @@
-import { useForm, type Resolver } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -15,10 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@boilerplate/ui'
-import { type BranchOption } from '@/features/branches/data/branches-service'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { type Resolver, useForm } from 'react-hook-form'
+import type { BranchOption } from '@/features/branches/data/branches-service'
 import {
-  pricingConfigFormSchema,
   type PricingConfigFormValues,
+  pricingConfigFormSchema,
 } from '../data/schema'
 
 type PricingFormProps = {

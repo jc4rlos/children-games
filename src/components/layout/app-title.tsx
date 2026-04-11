@@ -1,11 +1,11 @@
-import { Link } from '@tanstack/react-router'
 import {
+  Button,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-  Button,
 } from '@boilerplate/ui'
+import { Link } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 

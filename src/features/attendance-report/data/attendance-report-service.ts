@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-import { type AttendanceReportParams, type AttendanceReportRow } from './schema'
+import type { AttendanceReportParams, AttendanceReportRow } from './schema'
 
 type DbEnrollment = {
   id: number

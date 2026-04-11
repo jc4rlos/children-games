@@ -1,9 +1,9 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import { useAuthStore } from '@/stores/auth-store'
-import { supabase } from '@/lib/supabase'
 import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
 import { getEmployeeByUserId } from '@/features/auth/auth-service'
 import { getMenuItemsForRole } from '@/features/permissions/data/menu-service'
+import { supabase } from '@/lib/supabase'
+import { useAuthStore } from '@/stores/auth-store'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async () => {

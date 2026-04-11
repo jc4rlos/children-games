@@ -1,11 +1,11 @@
 import { supabase } from '@/lib/supabase'
 import {
+  type DbCouponWithBranch,
   toCoupon,
   toDbInsert,
   toDbUpdate,
-  type DbCouponWithBranch,
 } from './coupon-mapper'
-import { type Coupon, type CouponFormValues } from './schema'
+import type { Coupon, CouponFormValues } from './schema'
 
 const SELECT_FIELDS =
   'id, branch_id, code, description, discount_type, discount_value, max_uses, uses_count, valid_from, valid_until, is_active, branch(name)'

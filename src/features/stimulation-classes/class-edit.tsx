@@ -1,9 +1,9 @@
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button, Skeleton } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { ClassForm } from './components/class-form'
-import { type ClassFormValues } from './data/schema'
+import type { ClassFormValues } from './data/schema'
 import { useClassById, useUpdateClass } from './hooks/use-classes'
 
 const route = getRouteApi('/_authenticated/stimulation-classes/$classId/edit')

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Button,
   Dialog,
@@ -15,7 +14,8 @@ import {
   TableRow,
 } from '@boilerplate/ui'
 import { Search, UserCheck } from 'lucide-react'
-import { type Guardian } from '@/features/guardians/data/schema'
+import { useState } from 'react'
+import type { Guardian } from '@/features/guardians/data/schema'
 import { useGuardians } from '@/features/guardians/hooks/use-guardians'
 
 const PAGE_SIZE = 8

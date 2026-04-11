@@ -1,18 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
 import {
   type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
+import { useEffect, useMemo, useState } from 'react'
 import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { createClassColumns } from '../components/classes-columns'
-import { type StimulationClass } from '../data/schema'
+import type { StimulationClass } from '../data/schema'
 
 type UseClassesTableParams = {
   data: StimulationClass[]

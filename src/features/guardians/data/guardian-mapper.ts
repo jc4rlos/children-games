@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type Guardian, type GuardianFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { Guardian, GuardianFormValues } from './schema'
 
 type DbGuardian = Database['public']['Tables']['guardian']['Row']
 type DbGuardianInsert = Database['public']['Tables']['guardian']['Insert']

@@ -1,5 +1,7 @@
-import { Link } from '@tanstack/react-router'
 import {
+  Avatar,
+  AvatarFallback,
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -8,13 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-  Avatar,
-  AvatarFallback,
-  Button,
 } from '@boilerplate/ui'
-import { useAuthStore } from '@/stores/auth-store'
-import useDialogState from '@/hooks/use-dialog-state'
+import { Link } from '@tanstack/react-router'
 import { SignOutDialog } from '@/components/sign-out-dialog'
+import useDialogState from '@/hooks/use-dialog-state'
+import { useAuthStore } from '@/stores/auth-store'
 
 export function ProfileDropdown() {
   const [open, setOpen] = useDialogState()

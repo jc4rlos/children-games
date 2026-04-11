@@ -1,5 +1,3 @@
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { useNavigate } from '@tanstack/react-router'
 import {
   Button,
   DropdownMenu,
@@ -9,8 +7,10 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { useNavigate } from '@tanstack/react-router'
 import { Pencil, Trash2 } from 'lucide-react'
-import { type Guardian } from '../data/schema'
+import type { Guardian } from '../data/schema'
 
 type GuardianRowActionsProps = {
   guardian: Guardian

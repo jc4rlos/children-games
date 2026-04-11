@@ -1,8 +1,8 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
+import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
-import { type PricingConfig } from '../data/schema'
+import { cn } from '@/lib/utils'
+import type { PricingConfig } from '../data/schema'
 import { PricingRowActions } from './pricing-row-actions'
 
 const formatCurrency = (value: number) =>

@@ -1,11 +1,4 @@
 import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CaretSortIcon,
-  EyeNoneIcon,
-} from '@radix-ui/react-icons'
-import { type Column } from '@tanstack/react-table'
-import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +6,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CaretSortIcon,
+  EyeNoneIcon,
+} from '@radix-ui/react-icons'
+import type { Column } from '@tanstack/react-table'
 import { cn } from '@/lib/utils'
 
 type DataTableColumnHeaderProps<TData, TValue> =

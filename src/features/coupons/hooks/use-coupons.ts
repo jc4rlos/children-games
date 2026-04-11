@@ -9,7 +9,7 @@ import {
   getCoupons,
   updateCoupon,
 } from '../data/coupons-service'
-import { type CouponFormValues } from '../data/schema'
+import type { CouponFormValues } from '../data/schema'
 
 export const couponQueryKeys = {
   list: (params: CouponsParams) => ['coupons', 'list', params] as const,

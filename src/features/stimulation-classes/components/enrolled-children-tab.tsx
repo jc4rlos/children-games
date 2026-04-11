@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { Button, Skeleton } from '@boilerplate/ui'
 import { UserPlus } from 'lucide-react'
+import { useState } from 'react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { calculateAge } from '@/features/sessions/data/schema'
 import { useEnrollments, useUnenrollChild } from '../hooks/use-enrollment'

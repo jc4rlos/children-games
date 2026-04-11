@@ -1,9 +1,5 @@
-import { Outlet } from '@tanstack/react-router'
 import { SidebarInset, SidebarProvider } from '@boilerplate/ui'
-import { getCookie } from '@/lib/cookies'
-import { cn } from '@/lib/utils'
-import { LayoutProvider } from '@/context/layout-provider'
-import { SearchProvider } from '@/context/search-provider'
+import { Outlet } from '@tanstack/react-router'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { AppSidebar } from '@/components/layout/app-sidebar'
 import { Header } from '@/components/layout/header'
@@ -11,6 +7,10 @@ import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { SkipToMain } from '@/components/skip-to-main'
 import { ThemeSwitch } from '@/components/theme-switch'
+import { LayoutProvider } from '@/context/layout-provider'
+import { SearchProvider } from '@/context/search-provider'
+import { getCookie } from '@/lib/cookies'
+import { cn } from '@/lib/utils'
 
 type AuthenticatedLayoutProps = {
   children?: React.ReactNode

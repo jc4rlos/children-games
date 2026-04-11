@@ -1,6 +1,6 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
+import type { Direction } from '@/context/direction-provider'
 import { cn } from '@/lib/utils'
-import { type Direction } from '@/context/direction-provider'
 
 type IconDirProps = SVGProps<SVGSVGElement> & {
   dir: Direction
@@ -15,6 +15,7 @@ export function IconDir({ dir, className, ...props }: IconDirProps) {
       className={cn(dir === 'rtl' && 'rotate-y-180', className)}
       {...props}
     >
+      <title>Direction icon {dir}</title>
       <path
         d='M23.42.51h51.92c2.21 0 4 1.79 4 4v42.18c0 2.21-1.79 4-4 4H23.42s-.04-.02-.04-.04V.55s.02-.04.04-.04z'
         opacity={0.15}

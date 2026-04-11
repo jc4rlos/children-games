@@ -1,6 +1,6 @@
-import { Star, Gift } from 'lucide-react'
+import { Gift, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { type LoyaltyCard } from '../data/schema'
+import type { LoyaltyCard } from '../data/schema'
 
 type LoyaltyStampsGridProps = {
   card: LoyaltyCard

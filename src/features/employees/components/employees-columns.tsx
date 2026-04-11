@@ -1,9 +1,9 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
+import { cn } from '@/lib/utils'
 import { type Employee, employeeRoleLabels } from '../data/schema'
 import { DataTableRowActions } from './data-table-row-actions'
 
@@ -96,7 +96,7 @@ export const employeesColumns: ColumnDef<Employee>[] = [
       const date = row.getValue('hireDate') as string
       return (
         <span className='text-muted-foreground'>
-          {new Date(date + 'T00:00:00').toLocaleDateString('es', {
+          {new Date(`${date}T00:00:00`).toLocaleDateString('es', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',

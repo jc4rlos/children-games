@@ -1,4 +1,3 @@
-import { flexRender } from '@tanstack/react-table'
 import {
   Table,
   TableBody,
@@ -7,11 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
-import { type NavigateFn } from '@/hooks/use-table-url-state'
+import { flexRender } from '@tanstack/react-table'
 import { DataTablePagination } from '@/components/data-table'
-import { type BranchOption } from '@/features/branches/data/branches-service'
-import { type PricingConfig } from '../data/schema'
+import type { BranchOption } from '@/features/branches/data/branches-service'
+import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
+import type { PricingConfig } from '../data/schema'
 import { usePricingTable } from '../hooks/use-pricing-table'
 import { PricingToolbar } from './pricing-toolbar'
 

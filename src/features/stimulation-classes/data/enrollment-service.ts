@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import { type DbClassEnrollment, toClassEnrollment } from './class-mapper'
-import { type ClassEnrollment } from './schema'
+import type { ClassEnrollment } from './schema'
 
 const ENROLLMENT_SELECT = [
   'id, class_id, child_id, enrolled_at, is_active',

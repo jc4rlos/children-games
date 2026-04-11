@@ -1,9 +1,9 @@
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button, Skeleton } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { GuardianForm } from './components/guardian-form'
-import { type GuardianFormValues } from './data/schema'
+import type { GuardianFormValues } from './data/schema'
 import { useGuardian, useUpdateGuardian } from './hooks/use-guardians'
 
 const route = getRouteApi('/_authenticated/guardians/$guardianId/edit')

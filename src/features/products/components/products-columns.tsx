@@ -1,10 +1,10 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Badge, Checkbox } from '@boilerplate/ui'
+import type { ColumnDef } from '@tanstack/react-table'
 import { AlertCircle, CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
-import { type Product } from '../data/schema'
+import { cn } from '@/lib/utils'
+import type { Product } from '../data/schema'
 import { ProductRowActions } from './product-row-actions'
 
 export const createProductColumns = (

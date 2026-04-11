@@ -5,7 +5,7 @@ import {
   toClassEnrollment,
   toStimulationClass,
 } from './class-mapper'
-import { type ClassFormValues, type StimulationClass } from './schema'
+import type { ClassFormValues, StimulationClass } from './schema'
 
 const SELECT_FIELDS = [
   'id, branch_id, teacher_id, name, description',
@@ -215,5 +215,5 @@ export const getEnrolledCounts = async (
   return counts
 }
 
-export { toClassEnrollment }
 export type { DbClassEnrollment }
+export { toClassEnrollment }

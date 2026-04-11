@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Button,
   Dialog,
@@ -15,9 +14,10 @@ import {
   TableRow,
 } from '@boilerplate/ui'
 import { Search, UserCheck } from 'lucide-react'
+import { useState } from 'react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { calculateAge } from '../data/schema'
-import { type ChildSelectOption } from '../data/sessions-service'
+import type { ChildSelectOption } from '../data/sessions-service'
 import { useChildrenForPicker } from '../hooks/use-sessions'
 
 const PAGE_SIZE = 8

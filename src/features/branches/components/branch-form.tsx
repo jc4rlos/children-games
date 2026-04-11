@@ -1,5 +1,3 @@
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -11,7 +9,9 @@ import {
   Input,
   Switch,
 } from '@boilerplate/ui'
-import { branchFormSchema, type BranchFormValues } from '../data/schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { type BranchFormValues, branchFormSchema } from '../data/schema'
 
 type BranchFormProps = {
   defaultValues: BranchFormValues

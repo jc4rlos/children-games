@@ -1,5 +1,5 @@
-import z from 'zod'
 import { createFileRoute } from '@tanstack/react-router'
+import z from 'zod'
 import { StimulationClasses } from '@/features/stimulation-classes'
 
 const searchSchema = z.object({

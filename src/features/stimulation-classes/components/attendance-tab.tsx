@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { Button, Skeleton } from '@boilerplate/ui'
 import { CalendarDays, Save } from 'lucide-react'
+import { useState } from 'react'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
-import { type ClassAttendanceRecord } from '../data/schema'
+import type { ClassAttendanceRecord } from '../data/schema'
 import { useAttendanceSheet, useSaveAttendance } from '../hooks/use-attendance'
 import { useEnrollments } from '../hooks/use-enrollment'
 
@@ -27,7 +27,7 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
 
   const getAttended = (record: ClassAttendanceRecord): boolean | null => {
     if (localAttendance.has(record.enrollmentId)) {
-      return localAttendance.get(record.enrollmentId)!
+      return localAttendance.get(record.enrollmentId) ?? record.attended
     }
     return record.attended
   }
@@ -35,7 +35,7 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
   const toggle = (enrollmentId: number, current: boolean | null) => {
     setLocalAttendance((prev) => {
       const next = new Map(prev)
-      next.set(enrollmentId, current === true ? false : true)
+      next.set(enrollmentId, current !== true)
       return next
     })
   }
@@ -73,8 +73,11 @@ export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap items-center justify-between gap-3'>
         <div className='flex items-center gap-2'>
-          <label className='text-sm font-medium'>Fecha</label>
+          <label htmlFor='date' className='text-sm font-medium'>
+            Fecha
+          </label>
           <input
+            id='date'
             type='date'
             value={selectedDate}
             onChange={(e) => handleDateChange(e.target.value)}

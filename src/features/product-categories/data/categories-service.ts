@@ -1,7 +1,7 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
 import { toDbInsert, toDbUpdate, toProductCategory } from './category-mapper'
-import { type ProductCategory, type ProductCategoryFormValues } from './schema'
+import type { ProductCategory, ProductCategoryFormValues } from './schema'
 
 type DbProductCategory = Database['public']['Tables']['product_category']['Row']
 

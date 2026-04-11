@@ -7,10 +7,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "biome lint --write",
+    "lint:check": "biome lint",
     "preview": "vite preview",
-    "format:check": "prettier --check .",
-    "format": "prettier --write .",
+    "format": "biome format --write",
+    "format:check": "biome format",
+    "check": "biome check --write",
     "knip": "knip",
     "gen:types": "npx supabase gen types typescript --project-id xxxxxxxx --schema public > src/lib/database.types.ts"
   },
@@ -43,25 +45,16 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@tanstack/eslint-plugin-query": "^5.95.2",
+    "@biomejs/biome": "^2.2.6",
     "@tanstack/react-query-devtools": "^5.95.2",
     "@tanstack/react-router-devtools": "^1.166.11",
     "@tanstack/router-plugin": "^1.167.5",
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.3.0",
-    "eslint": "^10.1.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
     "knip": "^6.0.6",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "~6.0.2",
-    "typescript-eslint": "^8.57.2",
     "vite": "^8.0.3"
   }
 }

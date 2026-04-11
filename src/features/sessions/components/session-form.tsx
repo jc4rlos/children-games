@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import { useForm, useWatch } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Alert,
   AlertDescription,
@@ -19,18 +16,21 @@ import {
   Switch,
   Textarea,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertTriangle, Clock, Gift, Search, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useState } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import { getAvatarUrl } from '@/features/children/data/avatar-utils'
 import { LoyaltyStampsGrid } from '@/features/loyalty/components/loyalty-stamps-grid'
 import { useLoyaltyCard } from '@/features/loyalty/hooks/use-loyalty'
+import { cn } from '@/lib/utils'
 import {
   calculateAge,
   durationOptions,
-  sessionFormSchema,
   type SessionFormValues,
+  sessionFormSchema,
 } from '../data/schema'
-import { type ChildSelectOption } from '../data/sessions-service'
+import type { ChildSelectOption } from '../data/sessions-service'
 import {
   useBranchesForSession,
   useCouponsForBranch,

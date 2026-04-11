@@ -1,5 +1,5 @@
-import { Outlet } from '@tanstack/react-router'
 import { Separator } from '@boilerplate/ui'
+import { Outlet } from '@tanstack/react-router'
 import { Main } from '@/components/layout/main'
 
 export const Settings = () => (

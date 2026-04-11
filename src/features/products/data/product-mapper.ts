@@ -1,5 +1,5 @@
-import { type Database } from '@/lib/database.types'
-import { type Product, type ProductFormValues } from './schema'
+import type { Database } from '@/lib/database.types'
+import type { Product, ProductFormValues } from './schema'
 
 type DbProduct = Database['public']['Tables']['product']['Row']
 type DbProductInsert = Database['public']['Tables']['product']['Insert']

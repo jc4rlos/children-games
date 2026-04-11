@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   Alert,
   AlertDescription,
@@ -21,6 +16,8 @@ import {
   Input,
   Separator,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   AlertTriangle,
   KeyRound,
@@ -28,14 +25,17 @@ import {
   ShieldOff,
   UserCheck,
 } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { isAdminConfigured } from '@/lib/supabase-admin'
+import { z } from 'zod'
 import { PasswordInput } from '@/components/password-input'
+import { isAdminConfigured } from '@/lib/supabase-admin'
 import {
   linkEmployeeAccess,
   unlinkEmployeeAccess,
 } from '../data/employees-service'
-import { type Employee } from '../data/schema'
+import type { Employee } from '../data/schema'
 
 const formSchema = z.object({
   email: z.email('Email inválido.'),
@@ -78,7 +78,8 @@ export const EmployeeAccessDialog = ({
   })
 
   const unlinkMutation = useMutation({
-    mutationFn: () => unlinkEmployeeAccess(employee.id, employee.authUserId!),
+    mutationFn: () =>
+      unlinkEmployeeAccess(employee.id, employee.authUserId as string),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['employees'] })
       toast.success('Acceso eliminado correctamente.')

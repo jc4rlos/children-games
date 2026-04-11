@@ -1,5 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
-import { type Table } from '@tanstack/react-table'
 import {
   Badge,
   Button,
@@ -8,7 +6,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@boilerplate/ui'
+import type { Table } from '@tanstack/react-table'
 import { X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 type DataTableBulkActionsProps<TData> = {
@@ -37,17 +37,14 @@ export function DataTableBulkActions<TData>({
   const toolbarRef = useRef<HTMLDivElement>(null)
   const [announcement, setAnnouncement] = useState('')
 
-  // Announce selection changes to screen readers
   useEffect(() => {
     if (selectedCount > 0) {
       const message = `${selectedCount} ${entityName}${selectedCount > 1 ? 's' : ''} selected. Bulk actions toolbar is available.`
 
-      // Use queueMicrotask to defer state update and avoid cascading renders
       queueMicrotask(() => {
         setAnnouncement(message)
       })
 
-      // Clear announcement after a delay
       const timer = setTimeout(() => setAnnouncement(''), 3000)
       return () => clearTimeout(timer)
     }
@@ -61,8 +58,8 @@ export function DataTableBulkActions<TData>({
     const buttons = toolbarRef.current?.querySelectorAll('button')
     if (!buttons) return
 
-    const currentIndex = Array.from(buttons).findIndex(
-      (button) => button === document.activeElement
+    const currentIndex = Array.from(buttons).indexOf(
+      document.activeElement as HTMLButtonElement
     )
 
     switch (event.key) {
@@ -88,12 +85,8 @@ export function DataTableBulkActions<TData>({
         buttons[buttons.length - 1]?.focus()
         break
       case 'Escape': {
-        // Check if the Escape key came from a dropdown trigger or content
-        // We can't check dropdown state because Radix UI closes it before our handler runs
         const target = event.target as HTMLElement
         const activeElement = document.activeElement as HTMLElement
-
-        // Check if the event target or currently focused element is a dropdown trigger
         const isFromDropdownTrigger =
           target?.getAttribute('data-slot') === 'dropdown-menu-trigger' ||
           activeElement?.getAttribute('data-slot') ===
@@ -101,17 +94,14 @@ export function DataTableBulkActions<TData>({
           target?.closest('[data-slot="dropdown-menu-trigger"]') ||
           activeElement?.closest('[data-slot="dropdown-menu-trigger"]')
 
-        // Check if the focused element is inside dropdown content (which is portaled)
         const isFromDropdownContent =
           activeElement?.closest('[data-slot="dropdown-menu-content"]') ||
           target?.closest('[data-slot="dropdown-menu-content"]')
 
         if (isFromDropdownTrigger || isFromDropdownContent) {
-          // Escape was meant for the dropdown - don't clear selection
           return
         }
 
-        // Escape was meant for the toolbar - clear selection
         event.preventDefault()
         handleClearSelection()
         break
@@ -125,7 +115,6 @@ export function DataTableBulkActions<TData>({
 
   return (
     <>
-      {/* Live region for screen reader announcements */}
       <div
         aria-live='polite'
         aria-atomic='true'

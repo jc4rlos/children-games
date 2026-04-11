@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react'
 import {
   Popover,
   PopoverContent,
@@ -8,6 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@boilerplate/ui'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 type LongTextProps = {

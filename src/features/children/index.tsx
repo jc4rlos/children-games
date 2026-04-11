@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { ChildDeleteDialog } from './components/child-delete-dialog'
 import { ChildrenTable } from './components/children-table'
 import { ChildrenTableSkeleton } from './components/children-table-skeleton'
-import { type Child } from './data/schema'
+import type { Child } from './data/schema'
 import { useChildren } from './hooks/use-children'
 
 const route = getRouteApi('/_authenticated/children/')

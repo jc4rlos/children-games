@@ -1,9 +1,9 @@
-import { useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { useNavigate } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { Main } from '@/components/layout/main'
 import { GuardianForm } from './components/guardian-form'
-import { type GuardianFormValues } from './data/schema'
+import type { GuardianFormValues } from './data/schema'
 import { useCreateGuardian } from './hooks/use-guardians'
 
 export const GuardianCreate = () => {

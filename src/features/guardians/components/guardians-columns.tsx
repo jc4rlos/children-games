@@ -1,9 +1,9 @@
-import { type ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@boilerplate/ui'
-import { cn } from '@/lib/utils'
+import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
-import { type Guardian } from '../data/schema'
+import { cn } from '@/lib/utils'
+import type { Guardian } from '../data/schema'
 import { GuardianRowActions } from './guardian-row-actions'
 
 export const createGuardianColumns = (

@@ -1,4 +1,4 @@
-import { type SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 export function IconLayoutCompact(props: SVGProps<SVGSVGElement>) {
   return (
@@ -8,6 +8,7 @@ export function IconLayoutCompact(props: SVGProps<SVGSVGElement>) {
       viewBox='0 0 79.86 51.14'
       {...props}
     >
+      <title>Compact layout icon</title>
       <rect
         x={5.84}
         y={5.2}

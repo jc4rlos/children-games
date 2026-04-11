@@ -3,15 +3,15 @@ import { toast } from 'sonner'
 import { getBranchesForSelect } from '@/features/branches/data/branches-service'
 import { decrementFreeSession } from '@/features/loyalty/data/loyalty-service'
 import { loyaltyQueryKeys } from '@/features/loyalty/hooks/use-loyalty'
-import { type PlaySession, type SessionFormValues } from '../data/schema'
+import type { PlaySession, SessionFormValues } from '../data/schema'
 import {
   closeSession,
   createSession,
+  getChildrenForSessionPicker,
   getCouponsForBranch,
   getEmployeesForSelect,
   getPricingConfigsForBranch,
   getSessions,
-  getChildrenForSessionPicker,
   type SessionsParams,
 } from '../data/sessions-service'
 

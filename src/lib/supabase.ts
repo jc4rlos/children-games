@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { type Database } from './database.types'
+import type { Database } from './database.types'
 
 export type DbBranch = Database['public']['Tables']['branch']['Row']
 export type DbEmployee = Database['public']['Tables']['employee']['Row']

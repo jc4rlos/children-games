@@ -1,8 +1,5 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
+  Button,
   Form,
   FormControl,
   FormField,
@@ -10,10 +7,13 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Button,
 } from '@boilerplate/ui'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight, Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import { cn } from '@/lib/utils'
 import { sendPasswordResetEmail } from '../../../auth-service'
 

@@ -1,5 +1,3 @@
-import { useForm, type Resolver } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Form,
@@ -16,9 +14,11 @@ import {
   SelectValue,
   Switch,
 } from '@boilerplate/ui'
-import { type BranchOption } from '@/features/branches/data/branches-service'
-import { type CategoryOption } from '@/features/product-categories/data/categories-service'
-import { productFormSchema, type ProductFormValues } from '../data/schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { type Resolver, useForm } from 'react-hook-form'
+import type { BranchOption } from '@/features/branches/data/branches-service'
+import type { CategoryOption } from '@/features/product-categories/data/categories-service'
+import { type ProductFormValues, productFormSchema } from '../data/schema'
 
 type ProductFormProps = {
   defaultValues: ProductFormValues

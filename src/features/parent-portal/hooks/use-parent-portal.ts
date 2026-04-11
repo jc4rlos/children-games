@@ -25,7 +25,7 @@ export const useChildByCode = (code: string) =>
 export const usePortalLoyalty = (childId: number | null) =>
   useQuery({
     queryKey: portalQueryKeys.loyalty(childId ?? 0),
-    queryFn: () => getLoyaltyCard(childId!),
+    queryFn: () => getLoyaltyCard(childId as number),
     enabled: (childId ?? 0) > 0,
     staleTime: 30_000,
   })
@@ -33,7 +33,7 @@ export const usePortalLoyalty = (childId: number | null) =>
 export const usePortalActiveSession = (childId: number | null) =>
   useQuery({
     queryKey: portalQueryKeys.activeSession(childId ?? 0),
-    queryFn: () => getActiveSession(childId!),
+    queryFn: () => getActiveSession(childId as number),
     enabled: (childId ?? 0) > 0,
     refetchInterval: 30_000,
   })
@@ -41,7 +41,7 @@ export const usePortalActiveSession = (childId: number | null) =>
 export const usePortalHistory = (childId: number | null, page: number) =>
   useQuery({
     queryKey: portalQueryKeys.history(childId ?? 0, page),
-    queryFn: () => getSessionHistory(childId!, page),
+    queryFn: () => getSessionHistory(childId as number, page),
     enabled: (childId ?? 0) > 0,
     placeholderData: (prev) => prev,
   })

@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { CategoriesTable } from './components/categories-table'
 import { CategoriesTableSkeleton } from './components/categories-table-skeleton'
 import { CategoryDeleteDialog } from './components/category-delete-dialog'
-import { type ProductCategory } from './data/schema'
+import type { ProductCategory } from './data/schema'
 import { useCategories } from './hooks/use-categories'
 
 const route = getRouteApi('/_authenticated/product-categories/')

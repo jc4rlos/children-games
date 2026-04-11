@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { Button } from '@boilerplate/ui'
+import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Main } from '@/components/layout/main'
 import { PricingDeleteDialog } from './components/pricing-delete-dialog'
 import { PricingTable } from './components/pricing-table'
 import { PricingTableSkeleton } from './components/pricing-table-skeleton'
-import { type PricingConfig } from './data/schema'
+import type { PricingConfig } from './data/schema'
 import { useBranchesForPricing, usePricingConfigs } from './hooks/use-pricing'
 
 const route = getRouteApi('/_authenticated/pricing/')

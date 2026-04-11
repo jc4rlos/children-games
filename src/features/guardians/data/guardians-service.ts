@@ -1,7 +1,7 @@
-import { type Database } from '@/lib/database.types'
+import type { Database } from '@/lib/database.types'
 import { supabase } from '@/lib/supabase'
-import { toGuardian, toDbInsert, toDbUpdate } from './guardian-mapper'
-import { type Guardian, type GuardianFormValues } from './schema'
+import { toDbInsert, toDbUpdate, toGuardian } from './guardian-mapper'
+import type { Guardian, GuardianFormValues } from './schema'
 
 type DbGuardian = Database['public']['Tables']['guardian']['Row']
 

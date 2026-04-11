@@ -5,14 +5,14 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@boilerplate/ui'
-import { useAuthStore } from '@/stores/auth-store'
-import { resolveIcon } from '@/lib/icon-map'
 import { useLayout } from '@/context/layout-provider'
+import { resolveIcon } from '@/lib/icon-map'
+import { useAuthStore } from '@/stores/auth-store'
 import { sidebarData } from './data/sidebar-data'
 import { NavGroup } from './nav-group'
 import { NavUser } from './nav-user'
 import { TeamSwitcher } from './team-switcher'
-import { type NavGroup as NavGroupType, type NavItem } from './types'
+import type { NavGroup as NavGroupType, NavItem } from './types'
 
 function useDynamicNavGroup(): NavGroupType | null {
   const menuItems = useAuthStore((s) => s.auth.menuItems)
