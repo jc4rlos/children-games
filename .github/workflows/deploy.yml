@@ -34,10 +34,12 @@ jobs:
           VITE_DISABLE_AUTH: ${{ vars.VITE_DISABLE_AUTH }}
           VITE_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
 
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          packageManager: npm
           command: pages deploy dist --project-name=children-games-web-app
