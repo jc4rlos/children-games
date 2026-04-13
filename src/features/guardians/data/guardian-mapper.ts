@@ -1,9 +1,9 @@
-import type { Database } from "@/lib/database.types";
-import type { Guardian, GuardianFormValues } from "./schema";
+import type { Database } from '@/lib/database.types'
+import type { Guardian, GuardianFormValues } from './schema'
 
-type DbGuardian = Database["public"]["Tables"]["guardian"]["Row"];
-type DbGuardianInsert = Database["public"]["Tables"]["guardian"]["Insert"];
-type DbGuardianUpdate = Database["public"]["Tables"]["guardian"]["Update"];
+type DbGuardian = Database['public']['Tables']['guardian']['Row']
+type DbGuardianInsert = Database['public']['Tables']['guardian']['Insert']
+type DbGuardianUpdate = Database['public']['Tables']['guardian']['Update']
 
 export const toGuardian = (row: DbGuardian): Guardian => ({
   id: row.id,
@@ -12,16 +12,16 @@ export const toGuardian = (row: DbGuardian): Guardian => ({
   phone: row.phone,
   email: row.email,
   code: row.code,
-});
+})
 
 export const toDbInsert = (values: GuardianFormValues): DbGuardianInsert => ({
   full_name: values.fullName,
   document_number: values.documentNumber,
   phone: values.phone || null,
   email: values.email || null,
-  code: "",
-  created_by: "system",
-});
+  code: '',
+  created_by: 'system',
+})
 
 export const toDbUpdate = (values: GuardianFormValues): DbGuardianUpdate => ({
   full_name: values.fullName,
@@ -29,4 +29,4 @@ export const toDbUpdate = (values: GuardianFormValues): DbGuardianUpdate => ({
   phone: values.phone || null,
   email: values.email || null,
   updated_at: new Date().toISOString(),
-});
+})
