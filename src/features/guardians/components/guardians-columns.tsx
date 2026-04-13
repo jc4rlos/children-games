@@ -7,7 +7,8 @@ import { IconWhatsapp } from '@/assets/brand-icons'
 import type { Guardian } from '../data/schema'
 import { GuardianRowActions } from './guardian-row-actions'
 
-const PORTAL_BASE_URL = import.meta.env.VITE_PORTAL_URL ?? window.location.origin
+const PORTAL_BASE_URL =
+  import.meta.env.VITE_PORTAL_URL ?? window.location.origin
 
 export const createGuardianColumns = (
   onDelete: (guardian: Guardian) => void
@@ -111,7 +112,9 @@ export const createGuardianColumns = (
         : null
 
       if (!whatsappUrl) {
-        return <span className='text-xs text-muted-foreground'>Sin teléfono</span>
+        return (
+          <span className='text-xs text-muted-foreground'>Sin teléfono</span>
+        )
       }
 
       return (

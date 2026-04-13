@@ -51,7 +51,8 @@ export const AttendanceTab = ({ childId }: AttendanceTabProps) => {
   return (
     <div className='flex flex-col gap-3 p-4'>
       <p className='text-sm text-muted-foreground'>
-        {total} asistencia{total !== 1 ? 's' : ''} registrada{total !== 1 ? 's' : ''}
+        {total} asistencia{total !== 1 ? 's' : ''} registrada
+        {total !== 1 ? 's' : ''}
       </p>
 
       {attendances.map((a, idx) => (
@@ -67,11 +68,7 @@ export const AttendanceTab = ({ childId }: AttendanceTabProps) => {
                 : 'bg-muted text-muted-foreground'
             )}
           >
-            {a.attended ? (
-              <Check size={18} />
-            ) : (
-              <X size={18} />
-            )}
+            {a.attended ? <Check size={18} /> : <X size={18} />}
           </div>
 
           <div className='min-w-0 flex-1'>
@@ -114,7 +111,9 @@ export const AttendanceTab = ({ childId }: AttendanceTabProps) => {
             disabled={page === totalPages}
             className={cn(
               'flex h-9 w-9 items-center justify-center rounded-full border',
-              page === totalPages ? 'cursor-not-allowed opacity-40' : 'hover:bg-accent'
+              page === totalPages
+                ? 'cursor-not-allowed opacity-40'
+                : 'hover:bg-accent'
             )}
           >
             <ChevronRight size={16} />

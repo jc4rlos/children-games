@@ -1,23 +1,23 @@
-import { SidebarInset, SidebarProvider } from "@boilerplate/ui";
-import { Outlet } from "@tanstack/react-router";
-import { ConfigDrawer } from "@/components/config-drawer";
-import { AppSidebar } from "@/components/layout/app-sidebar";
-import { Header } from "@/components/layout/header";
-import { ProfileDropdown } from "@/components/profile-dropdown";
-import { Search } from "@/components/search";
-import { SkipToMain } from "@/components/skip-to-main";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { LayoutProvider } from "@/context/layout-provider";
-import { SearchProvider } from "@/context/search-provider";
-import { getCookie } from "@/lib/cookies";
-import { cn } from "@/lib/utils";
+import { SidebarInset, SidebarProvider } from '@boilerplate/ui'
+import { Outlet } from '@tanstack/react-router'
+import { ConfigDrawer } from '@/components/config-drawer'
+import { AppSidebar } from '@/components/layout/app-sidebar'
+import { Header } from '@/components/layout/header'
+import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Search } from '@/components/search'
+import { SkipToMain } from '@/components/skip-to-main'
+import { ThemeSwitch } from '@/components/theme-switch'
+import { LayoutProvider } from '@/context/layout-provider'
+import { SearchProvider } from '@/context/search-provider'
+import { getCookie } from '@/lib/cookies'
+import { cn } from '@/lib/utils'
 
 type AuthenticatedLayoutProps = {
-  children?: React.ReactNode;
-};
+  children?: React.ReactNode
+}
 
 export function AuthenticatedLayout({ children }: AuthenticatedLayoutProps) {
-  const defaultOpen = getCookie("sidebar_state") !== "false";
+  const defaultOpen = getCookie('sidebar_state') !== 'false'
   return (
     <SearchProvider>
       <LayoutProvider>
@@ -26,14 +26,14 @@ export function AuthenticatedLayout({ children }: AuthenticatedLayoutProps) {
           <AppSidebar />
           <SidebarInset
             className={cn(
-              "@container/content",
-              "has-data-[layout=fixed]:h-svh",
-              "peer-data-[variant=inset]:has-data-[layout=fixed]:h-[calc(100svh-(var(--spacing)*4))]",
+              '@container/content',
+              'has-data-[layout=fixed]:h-svh',
+              'peer-data-[variant=inset]:has-data-[layout=fixed]:h-[calc(100svh-(var(--spacing)*4))]'
             )}
           >
             <Header fixed>
               <Search />
-              <div className="ms-auto flex items-center space-x-4">
+              <div className='ms-auto flex items-center space-x-4'>
                 <ThemeSwitch />
                 <ConfigDrawer />
                 <ProfileDropdown />
@@ -44,5 +44,5 @@ export function AuthenticatedLayout({ children }: AuthenticatedLayoutProps) {
         </SidebarProvider>
       </LayoutProvider>
     </SearchProvider>
-  );
+  )
 }

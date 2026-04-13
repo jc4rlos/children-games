@@ -7,23 +7,23 @@ import {
   type SortingState,
   useReactTable,
   type VisibilityState,
-} from "@tanstack/react-table";
-import { useEffect, useMemo, useState } from "react";
-import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
-import { createSessionColumns } from "../components/sessions-columns";
-import type { PlaySession } from "../data/schema";
+} from '@tanstack/react-table'
+import { useEffect, useMemo, useState } from 'react'
+import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
+import { createSessionColumns } from '../components/sessions-columns'
+import type { PlaySession } from '../data/schema'
 
-const TODAY = new Date().toLocaleDateString("sv-SE");
+const TODAY = new Date().toLocaleDateString('sv-SE')
 
 type UseSessionsTableParams = {
-  data: PlaySession[];
-  total: number;
-  search: Record<string, unknown>;
-  navigate: NavigateFn;
-  onClose: (session: PlaySession) => void;
-  onAddConsumption: (session: PlaySession) => void;
-  onViewCart: (session: PlaySession) => void;
-};
+  data: PlaySession[]
+  total: number
+  search: Record<string, unknown>
+  navigate: NavigateFn
+  onClose: (session: PlaySession) => void
+  onAddConsumption: (session: PlaySession) => void
+  onViewCart: (session: PlaySession) => void
+}
 
 export const useSessionsTable = ({
   data,
@@ -34,16 +34,16 @@ export const useSessionsTable = ({
   onAddConsumption,
   onViewCart,
 }: UseSessionsTableParams) => {
-  const [rowSelection, setRowSelection] = useState({});
+  const [rowSelection, setRowSelection] = useState({})
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     status: false,
-  });
-  const [sorting, setSorting] = useState<SortingState>([]);
+  })
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const columns = useMemo(
     () => createSessionColumns(onClose, onAddConsumption, onViewCart),
-    [onClose, onAddConsumption, onViewCart],
-  );
+    [onClose, onAddConsumption, onViewCart]
+  )
 
   const {
     columnFilters,
@@ -56,31 +56,31 @@ export const useSessionsTable = ({
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 20 },
     globalFilter: { enabled: false },
-    columnFilters: [{ columnId: "status", searchKey: "status", type: "array" }],
-  });
+    columnFilters: [{ columnId: 'status', searchKey: 'status', type: 'array' }],
+  })
 
-  const currentDate = typeof search.date === "string" ? search.date : TODAY;
+  const currentDate = typeof search.date === 'string' ? search.date : TODAY
 
   const handleDateChange = (date: string) => {
     navigate({
       search: (prev: Record<string, unknown>) => ({ ...prev, date, page: 1 }),
-    });
-  };
+    })
+  }
 
   const handleReset = () => {
-    handleDateChange(TODAY);
-    onColumnFiltersChange([{ id: "status", value: ["ACTIVE"] }]);
-  };
+    handleDateChange(TODAY)
+    onColumnFiltersChange([{ id: 'status', value: ['ACTIVE'] }])
+  }
 
-  const statusValues = (columnFilters.find((f) => f.id === "status")?.value as
+  const statusValues = (columnFilters.find((f) => f.id === 'status')?.value as
     | string[]
-    | undefined) ?? ["ACTIVE"];
+    | undefined) ?? ['ACTIVE']
 
   const isFiltered =
     currentDate !== TODAY ||
-    !(statusValues.length === 1 && statusValues[0] === "ACTIVE");
+    !(statusValues.length === 1 && statusValues[0] === 'ACTIVE')
 
-  const pageCount = Math.ceil(total / (pagination?.pageSize ?? 20));
+  const pageCount = Math.ceil(total / (pagination?.pageSize ?? 20))
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
@@ -107,11 +107,11 @@ export const useSessionsTable = ({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-  });
+  })
 
   useEffect(() => {
-    ensurePageInRange(pageCount);
-  }, [pageCount, ensurePageInRange]);
+    ensurePageInRange(pageCount)
+  }, [pageCount, ensurePageInRange])
 
   return {
     table,
@@ -119,5 +119,5 @@ export const useSessionsTable = ({
     handleDateChange,
     handleReset,
     isFiltered,
-  };
-};
+  }
+}

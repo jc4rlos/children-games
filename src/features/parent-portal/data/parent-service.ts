@@ -167,9 +167,7 @@ export const getChildrenByGuardianId = async (
   if (!data) return []
 
   return (
-    data as Array<
-      typeof data[number] & { branch: { name: string } }
-    >
+    data as Array<(typeof data)[number] & { branch: { name: string } }>
   ).map((row) => ({
     id: row.id,
     fullName: row.full_name,

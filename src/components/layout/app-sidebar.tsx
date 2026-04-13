@@ -4,26 +4,26 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@boilerplate/ui";
-import { useLayout } from "@/context/layout-provider";
-import { resolveIcon } from "@/lib/icon-map";
-import { useAuthStore } from "@/stores/auth-store";
-import { sidebarData } from "./data/sidebar-data";
-import { NavGroup } from "./nav-group";
-import { NavUser } from "./nav-user";
-import { TeamSwitcher } from "./team-switcher";
-import type { NavGroup as NavGroupType, NavItem } from "./types";
+} from '@boilerplate/ui'
+import { useLayout } from '@/context/layout-provider'
+import { resolveIcon } from '@/lib/icon-map'
+import { useAuthStore } from '@/stores/auth-store'
+import { sidebarData } from './data/sidebar-data'
+import { NavGroup } from './nav-group'
+import { NavUser } from './nav-user'
+import { TeamSwitcher } from './team-switcher'
+import type { NavGroup as NavGroupType, NavItem } from './types'
 
 export function useDynamicNavGroup(): NavGroupType | null {
-  const menuItems = useAuthStore((s) => s.auth.menuItems);
-  if (!menuItems.length) return null;
+  const menuItems = useAuthStore((s) => s.auth.menuItems)
+  if (!menuItems.length) return null
 
-  const topLevel = menuItems.filter((i) => i.parentId === null);
-  const childrenOf = (id: number) => menuItems.filter((i) => i.parentId === id);
+  const topLevel = menuItems.filter((i) => i.parentId === null)
+  const childrenOf = (id: number) => menuItems.filter((i) => i.parentId === id)
 
   const items: NavItem[] = topLevel.map((item) => {
-    const children = childrenOf(item.id);
-    const Icon = resolveIcon(item.icon);
+    const children = childrenOf(item.id)
+    const Icon = resolveIcon(item.icon)
     if (children.length) {
       return {
         title: item.label,
@@ -33,20 +33,20 @@ export function useDynamicNavGroup(): NavGroupType | null {
           url: child.path as never,
           icon: resolveIcon(child.icon),
         })),
-      };
+      }
     }
-    return { title: item.label, url: item.path as never, icon: Icon };
-  });
+    return { title: item.label, url: item.path as never, icon: Icon }
+  })
 
-  return { title: "Menú", items };
+  return { title: 'Menú', items }
 }
 
 export function AppSidebar() {
-  const { collapsible, variant } = useLayout();
-  const dynamicGroup = useDynamicNavGroup();
-  const { auth } = useAuthStore();
-  const email = auth.user?.email ?? "";
-  const initials = email.slice(0, 2).toUpperCase();
+  const { collapsible, variant } = useLayout()
+  const dynamicGroup = useDynamicNavGroup()
+  const { auth } = useAuthStore()
+  const email = auth.user?.email ?? ''
+  const initials = email.slice(0, 2).toUpperCase()
 
   return (
     <Sidebar collapsible={collapsible} variant={variant}>
@@ -62,7 +62,7 @@ export function AppSidebar() {
       <SidebarFooter>
         <NavUser
           user={{
-            name: auth.user?.role ?? "Usuario",
+            name: auth.user?.role ?? 'Usuario',
             email: email,
             avatar: initials,
           }}
@@ -70,5 +70,5 @@ export function AppSidebar() {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  );
+  )
 }
