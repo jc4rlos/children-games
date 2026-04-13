@@ -67,5 +67,5 @@ export const toDbUpdate = (
   avatar: getAvatarUrl(code, values.gender),
   notes: values.notes || null,
   is_active: values.isActive,
-  updated_at: new Date().toISOString(),
+  updated_at: new Date().toLocaleDateString('sv-SE'),
 })

@@ -6,18 +6,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
 } from '@boilerplate/ui'
 import { AlertTriangle } from 'lucide-react'
 import { useState } from 'react'
 import { ChildSessionPickerDialog } from '@/features/sessions/components/child-session-picker-dialog'
 import type { ChildSelectOption } from '@/features/sessions/data/sessions-service'
-import { useTeachersForClass } from '../hooks/use-classes'
 import { useEnrollChild } from '../hooks/use-enrollment'
+import { useAuthStore } from '@/stores/auth-store'
 
 type EnrollmentDialogProps = {
   open: boolean
@@ -33,25 +28,20 @@ export const EnrollmentDialog = ({
   enrolledCount,
 }: EnrollmentDialogProps) => {
   const [pickerOpen, setPickerOpen] = useState(false)
-  const [enrolledById, setEnrolledById] = useState<string>('none')
 
-  const { data: employees = [] } = useTeachersForClass()
   const enrollMutation = useEnrollChild(classInfo.id)
+  const { auth } = useAuthStore()
 
   const isFull = enrolledCount >= classInfo.capacity
 
   const handleSelectChild = (child: ChildSelectOption) => {
-    const enrolledBy = enrolledById !== 'none' ? Number(enrolledById) : null
     enrollMutation.mutate(
-      { childId: child.id, enrolledBy },
+      { childId: child.id, enrolledBy: auth.user?.employeeId ?? 0 },
       { onSuccess: () => onOpenChange(false) }
     )
   }
 
   const handleOpenChange = (next: boolean) => {
-    if (!next) {
-      setEnrolledById('none')
-    }
     onOpenChange(next)
   }
 
@@ -78,25 +68,6 @@ export const EnrollmentDialog = ({
                 </AlertDescription>
               </Alert>
             )}
-
-            <div className='space-y-2'>
-              <label htmlFor='enrolled-by' className='text-sm font-medium'>
-                Registrado por
-              </label>
-              <Select value={enrolledById} onValueChange={setEnrolledById}>
-                <SelectTrigger id='enrolled-by'>
-                  <SelectValue placeholder='Sin especificar' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='none'>Sin especificar</SelectItem>
-                  {employees.map((e) => (
-                    <SelectItem key={e.id} value={String(e.id)}>
-                      {e.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
 
             <div className='flex justify-end gap-3'>
               <Button variant='outline' onClick={() => handleOpenChange(false)}>

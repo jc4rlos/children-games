@@ -13,7 +13,7 @@ import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { createSessionColumns } from '../components/sessions-columns'
 import type { PlaySession } from '../data/schema'
 
-const TODAY = new Date().toISOString().slice(0, 10)
+const TODAY = new Date().toLocaleDateString('sv-SE')
 
 type UseSessionsTableParams = {
   data: PlaySession[]
@@ -35,7 +35,9 @@ export const useSessionsTable = ({
   onViewCart,
 }: UseSessionsTableParams) => {
   const [rowSelection, setRowSelection] = useState({})
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    status: false,
+  })
   const [sorting, setSorting] = useState<SortingState>([])
 
   const columns = useMemo(

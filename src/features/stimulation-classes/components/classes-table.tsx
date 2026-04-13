@@ -8,7 +8,6 @@ import {
 } from '@boilerplate/ui'
 import { flexRender } from '@tanstack/react-table'
 import { DataTablePagination } from '@/components/data-table'
-import type { NavigateFn } from '@/hooks/use-table-url-state'
 import { cn } from '@/lib/utils'
 import type { StimulationClass } from '../data/schema'
 import { useClassesTable } from '../hooks/use-classes-table'
@@ -20,7 +19,6 @@ type ClassesTableProps = {
   data: StimulationClass[]
   total: number
   search: Record<string, unknown>
-  navigate: NavigateFn
   onDelete: (cls: StimulationClass) => void
   enrolledCounts: Map<number, number>
 }
@@ -29,7 +27,6 @@ export const ClassesTable = ({
   data,
   total,
   search,
-  navigate,
   onDelete,
   enrolledCounts,
 }: ClassesTableProps) => {
@@ -44,7 +41,6 @@ export const ClassesTable = ({
     data,
     total,
     search,
-    navigate,
     onDelete,
     enrolledCounts,
   })

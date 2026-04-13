@@ -14,7 +14,7 @@ import { NavUser } from './nav-user'
 import { TeamSwitcher } from './team-switcher'
 import type { NavGroup as NavGroupType, NavItem } from './types'
 
-function useDynamicNavGroup(): NavGroupType | null {
+export function useDynamicNavGroup(): NavGroupType | null {
   const menuItems = useAuthStore((s) => s.auth.menuItems)
   if (!menuItems.length) return null
 

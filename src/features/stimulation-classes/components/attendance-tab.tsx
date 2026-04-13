@@ -10,7 +10,7 @@ type AttendanceTabProps = {
   classId: number
 }
 
-const today = () => new Date().toISOString().slice(0, 10)
+const today = () => new Date().toLocaleDateString('sv-SE')
 
 export const AttendanceTab = ({ classId }: AttendanceTabProps) => {
   const [selectedDate, setSelectedDate] = useState(today)

@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import z from 'zod'
 import { Sessions } from '@/features/sessions'
 
-const today = new Date().toISOString().slice(0, 10)
+const today = new Date().toLocaleDateString('sv-SE')
 
 const sessionsSearchSchema = z.object({
   page: z.number().optional().catch(1),

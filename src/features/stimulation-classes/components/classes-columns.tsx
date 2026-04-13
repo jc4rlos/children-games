@@ -1,15 +1,17 @@
-import { Checkbox } from '@boilerplate/ui'
+import { Button, Checkbox } from '@boilerplate/ui'
 import type { ColumnDef } from '@tanstack/react-table'
-import { CheckCircle, XCircle } from 'lucide-react'
+import { CheckCircle, Eye, XCircle } from 'lucide-react'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
 import { cn } from '@/lib/utils'
 import { classDayLabels, type StimulationClass } from '../data/schema'
+import { ClassEnrollmentCell } from './class-enrollment-cell'
 import { ClassRowActions } from './class-row-actions'
 
 export const createClassColumns = (
   onDelete: (cls: StimulationClass) => void,
-  enrolledCounts: Map<number, number>
+  enrolledCounts: Map<number, number>,
+  navigate: (opts: { to: string; params: Record<string, string> }) => void
 ): ColumnDef<StimulationClass>[] => [
   {
     id: 'select',
@@ -137,25 +139,10 @@ export const createClassColumns = (
       )
     },
   },
-  {
-    accessorKey: 'price',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Precio' />
-    ),
-    cell: ({ row }) => {
-      const price = row.getValue('price') as number
-      return (
-        <span className='text-sm'>
-          {new Intl.NumberFormat('es-PE', {
-            style: 'currency',
-            currency: 'PEN',
-          }).format(price)}
-        </span>
-      )
-    },
-  },
+
   {
     accessorKey: 'isActive',
+
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Estado' />
     ),
@@ -174,6 +161,40 @@ export const createClassColumns = (
       )
     },
     filterFn: (row, id, value) => value.includes(String(row.getValue(id))),
+  },
+  {
+    id: 'enroll',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Inscripción' />
+    ),
+    cell: ({ row }) => {
+      const cls = row.original
+      const enrolled = enrolledCounts.get(cls.id) ?? 0
+      return <ClassEnrollmentCell cls={cls} enrolledCount={enrolled} />
+    },
+    enableSorting: false,
+  },
+
+  {
+    id: 'view-detail',
+    header: 'Ver detalle',
+    cell: ({ row }) => (
+      <Button
+        variant='ghost'
+        size='sm'
+        className='gap-1'
+        onClick={() =>
+          navigate({
+            to: '/stimulation-classes/$classId',
+            params: { classId: String(row.original.id) },
+          })
+        }
+      >
+        <Eye size={14} />
+        Ver
+      </Button>
+    ),
+    meta: { className: 'w-28' },
   },
   {
     id: 'actions',

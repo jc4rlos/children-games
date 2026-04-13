@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { formatElapsed } from '../data/schema'
+import { CircularProgress } from './circular-progress'
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(
@@ -35,44 +36,39 @@ export const SessionTimer = ({
     const isOvertime = remainingSeconds < 0
     const displaySeconds = Math.abs(remainingSeconds)
 
-    const durationMinutes = Math.round(
-      (scheduledMs - new Date(checkIn).getTime()) / 60_000
-    )
-    const hoursPlayed = durationMinutes / 60
-    const cost = Math.max(minimumCharge, hoursPlayed * pricePerHour)
-
     return (
-      <div className='flex flex-col gap-0.5'>
-        <div className='flex items-center gap-1'>
-          {isOvertime && (
-            <span className='text-xs font-medium text-amber-500'>+</span>
-          )}
-          <span
-            className={cn(
-              'font-mono text-sm font-semibold tabular-nums',
-              isOvertime
-                ? 'text-amber-500 dark:text-amber-400'
-                : remainingSeconds < 300
-                  ? 'text-orange-500 dark:text-orange-400'
-                  : 'text-teal-600 dark:text-teal-400'
+      <div className='flex justify-between'>
+        <div className='flex flex-col gap-0.5'>
+          <div className='flex items-center gap-1'>
+            {isOvertime && (
+              <span className='text-xs font-medium text-amber-500'>+</span>
             )}
-          >
-            {formatElapsed(displaySeconds)}
-          </span>
+            <span
+              className={cn(
+                'font-mono text-sm font-semibold tabular-nums',
+                isOvertime
+                  ? 'text-amber-500 dark:text-amber-400'
+                  : remainingSeconds < 300
+                    ? 'text-orange-500 dark:text-orange-400'
+                    : 'text-teal-600 dark:text-teal-400'
+              )}
+            >
+              {formatElapsed(displaySeconds)}
+            </span>
+          </div>
+          {isOvertime && (
+            <span className='text-xs font-medium text-amber-500'>
+              tiempo extra
+            </span>
+          )}
+          {!isOvertime && (
+            <span className='text-xs text-muted-foreground'>restante</span>
+          )}
         </div>
-        {isOvertime && (
-          <span className='text-xs font-medium text-amber-500'>
-            tiempo extra
-          </span>
-        )}
-        {!isOvertime && (
-          <span className='text-xs text-muted-foreground'>restante</span>
-        )}
-        {showCost && (
-          <span className='font-mono text-xs font-medium text-muted-foreground'>
-            {formatCurrency(cost)}
-          </span>
-        )}
+        <CircularProgress
+          checkIn={checkIn}
+          scheduledCheckout={scheduledCheckout}
+        />
       </div>
     )
   }

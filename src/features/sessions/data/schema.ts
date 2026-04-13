@@ -17,9 +17,6 @@ export const durationOptions = [
   { value: 180, label: '3 horas' },
   { value: 240, label: '4 horas' },
   { value: 300, label: '5 horas' },
-  { value: 360, label: '6 horas' },
-  { value: 480, label: '8 horas' },
-  { value: 600, label: '10 horas' },
 ] as const
 
 export const playSessionSchema = z.object({

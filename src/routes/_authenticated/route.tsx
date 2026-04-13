@@ -32,6 +32,8 @@ export const Route = createFileRoute('/_authenticated')({
         email: session.user.email ?? '',
         role: employee.role,
         exp: (session.expires_at ?? 0) * 1000,
+        branchId: employee.branchId,
+        branchName: employee.branchName,
       }
 
       const [menuItems] = await Promise.all([

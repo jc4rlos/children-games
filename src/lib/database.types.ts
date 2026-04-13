@@ -348,6 +348,7 @@ export type Database = {
       }
       guardian: {
         Row: {
+          code: string
           created_at: string
           created_by: string
           deleted_at: string | null
@@ -360,6 +361,7 @@ export type Database = {
           updated_by: string | null
         }
         Insert: {
+          code: string
           created_at?: string
           created_by: string
           deleted_at?: string | null
@@ -372,6 +374,7 @@ export type Database = {
           updated_by?: string | null
         }
         Update: {
+          code?: string
           created_at?: string
           created_by?: string
           deleted_at?: string | null

@@ -5,7 +5,7 @@ import type { Guardian, GuardianFormValues } from './schema'
 
 type DbGuardian = Database['public']['Tables']['guardian']['Row']
 
-const SELECT_FIELDS = 'id, full_name, document_number, phone, email'
+const SELECT_FIELDS = 'id, full_name, document_number, phone, email, code'
 
 export type GuardiansParams = {
   page: number

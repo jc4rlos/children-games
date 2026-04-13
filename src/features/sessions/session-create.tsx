@@ -5,10 +5,14 @@ import { Main } from '@/components/layout/main'
 import { SessionForm } from './components/session-form'
 import type { SessionFormValues } from './data/schema'
 import { useCreateSession } from './hooks/use-sessions'
+import { useAuthStore } from '@/stores/auth-store'
 
 export const SessionCreate = () => {
   const navigate = useNavigate()
   const createMutation = useCreateSession()
+  const {
+    auth: { user },
+  } = useAuthStore()
 
   const handleSubmit = (values: SessionFormValues) => {
     createMutation.mutate(values, {
@@ -41,11 +45,11 @@ export const SessionCreate = () => {
         <SessionForm
           defaultValues={{
             childId: 0,
-            branchId: 0,
+            branchId: user?.branchId ?? 0,
             pricingId: 0,
             durationMinutes: 0,
             couponId: null,
-            registeredById: 0,
+            registeredById: user?.employeeId ?? 0,
             isFreeSession: false,
             notes: '',
           }}

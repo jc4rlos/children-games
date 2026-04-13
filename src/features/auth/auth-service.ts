@@ -6,6 +6,8 @@ export type AuthEmployee = {
   role: string
   firstName: string
   lastName: string
+  branchId: number | null
+  branchName: string | null
 }
 
 export const signInWithPassword = async (email: string, password: string) => {
@@ -38,7 +40,7 @@ export const getEmployeeByUserId = async (
 ): Promise<AuthEmployee> => {
   const { data, error } = await supabase
     .from('employee')
-    .select('id, role, first_name, last_name')
+    .select('id, role, first_name, last_name, branch_id, branch(name)')
     .eq('auth_user_id', userId)
     .is('deleted_at', null)
     .maybeSingle()
@@ -49,11 +51,15 @@ export const getEmployeeByUserId = async (
       'Este usuario no tiene un empleado asociado. Contacta al administrador.'
     )
 
+  const branch = data.branch as { name: string } | null
+
   return {
     id: data.id,
     role: data.role,
     firstName: data.first_name,
     lastName: data.last_name,
+    branchId: data.branch_id,
+    branchName: branch?.name ?? null,
   }
 }
 

@@ -165,7 +165,7 @@ export const getPricingConfigsForBranch = async (
 export const getCouponsForBranch = async (
   branchId: number
 ): Promise<CouponOption[]> => {
-  const today = new Date().toISOString().slice(0, 10)
+  const today = new Date().toLocaleDateString('sv-SE')
   const { data, error } = await supabase
     .from('coupon')
     .select('id, code, discount_type, discount_value')

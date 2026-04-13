@@ -1,6 +1,6 @@
 import { Badge, Button } from '@boilerplate/ui'
 import type { ColumnDef } from '@tanstack/react-table'
-import { LogOut, ShoppingCart } from 'lucide-react'
+import { LogOut, PackageSearch, ShoppingCart } from 'lucide-react'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { ChildAvatar } from '@/features/children/components/child-avatar'
 import type { Child } from '@/features/children/data/schema'
@@ -12,7 +12,7 @@ import {
   type SessionStatus,
   sessionStatusLabels,
 } from '../data/schema'
-import { SessionTimer } from './session-timer'
+import { SessionTimer } from './session-close-dialog'
 
 const formatTime = (iso: string) =>
   new Date(iso).toLocaleTimeString('es-PE', {
@@ -110,6 +110,17 @@ export const createSessionColumns = (
     ),
     cell: ({ row }) => {
       const checkOut = row.getValue('checkOut') as string | null
+      const status = row.getValue('status') as SessionStatus
+
+      if (status === 'ACTIVE') {
+        const scheduled = row.original.scheduledCheckout
+        return (
+          <span className='text-sm text-muted-foreground'>
+            {scheduled ? formatTime(scheduled) : '—'}
+          </span>
+        )
+      }
+
       return (
         <span className='text-sm text-muted-foreground'>
           {checkOut ? formatTime(checkOut) : '—'}
@@ -119,7 +130,9 @@ export const createSessionColumns = (
   },
   {
     id: 'elapsed',
-    header: 'Tiempo restante',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Tiempo restante' />
+    ),
     cell: ({ row }) => {
       const s = row.original
       if (s.status === 'ACTIVE') {
@@ -201,6 +214,7 @@ export const createSessionColumns = (
       )
     },
     filterFn: (row, id, value) => value.includes(row.getValue(id)),
+    enableHiding: true,
   },
   {
     id: 'actions',
@@ -215,8 +229,7 @@ export const createSessionColumns = (
             className='h-8 gap-1'
             onClick={() => onAddConsumption(s)}
           >
-            <ShoppingCart size={13} />
-            Agregar
+            <PackageSearch size={13} />
           </Button>
           <Button
             size='sm'
@@ -225,7 +238,7 @@ export const createSessionColumns = (
             onClick={() => onViewCart(s)}
           >
             <ShoppingCart size={13} />
-            Carrito
+
             {s.consumptionsCount > 0 && (
               <span className='absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white'>
                 {s.consumptionsCount}
@@ -239,7 +252,7 @@ export const createSessionColumns = (
             onClick={() => onClose(s)}
           >
             <LogOut size={13} />
-            Cerrar
+            Finalizar
           </Button>
         </div>
       )

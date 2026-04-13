@@ -6,6 +6,7 @@ export const guardianSchema = z.object({
   documentNumber: z.string(),
   phone: z.string().nullable(),
   email: z.string().nullable(),
+  code: z.string(),
 })
 
 export type Guardian = z.infer<typeof guardianSchema>

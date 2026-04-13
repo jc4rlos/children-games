@@ -11,6 +11,7 @@ export const toGuardian = (row: DbGuardian): Guardian => ({
   documentNumber: row.document_number,
   phone: row.phone,
   email: row.email,
+  code: row.code,
 })
 
 export const toDbInsert = (values: GuardianFormValues): DbGuardianInsert => ({
@@ -18,6 +19,7 @@ export const toDbInsert = (values: GuardianFormValues): DbGuardianInsert => ({
   document_number: values.documentNumber,
   phone: values.phone || null,
   email: values.email || null,
+  code: '',
   created_by: 'system',
 })
 

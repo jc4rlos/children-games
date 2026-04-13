@@ -12,7 +12,7 @@ import { useSessions } from './hooks/use-sessions'
 
 const route = getRouteApi('/_authenticated/sessions/')
 
-const TODAY = new Date().toISOString().slice(0, 10)
+const TODAY = new Date().toLocaleDateString('sv-SE')
 
 type ConsumptionDialogState = {
   session: PlaySession

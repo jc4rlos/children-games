@@ -11,6 +11,8 @@ export interface AuthUser {
   email: string
   role: string
   exp: number
+  branchId: number | null
+  branchName: string | null
 }
 
 interface AuthState {

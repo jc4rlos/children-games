@@ -34,6 +34,8 @@ export function useSignIn({ redirectTo }: UseSignInOptions = {}) {
         email: session.user.email ?? email,
         role: employee.role,
         exp: (session.expires_at ?? 0) * 1000,
+        branchId: employee.branchId,
+        branchName: employee.branchName,
       })
       auth.setAccessToken(session.access_token)
 

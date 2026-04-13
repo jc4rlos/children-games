@@ -14,7 +14,7 @@ import type { Guardian } from '../data/schema'
 import { useGuardiansTable } from '../hooks/use-guardians-table'
 import { GuardiansToolbar } from './guardians-toolbar'
 
-const COLUMNS_COUNT = 6
+const COLUMNS_COUNT = 8
 
 type GuardiansTableProps = {
   data: Guardian[]
