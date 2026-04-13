@@ -30,6 +30,18 @@ export type SessionHistoryItem = {
   isFreeSession: boolean
 }
 
+export type GuardianPublicInfo = {
+  id: number
+  fullName: string
+  code: string
+}
+
+export type AttendanceHistoryItem = {
+  classDate: string
+  attended: boolean
+  className: string
+}
+
 export const getChildByCode = async (
   code: string
 ): Promise<ChildPublicInfo | null> => {
@@ -117,6 +129,89 @@ export const getSessionHistory = async (
       totalAmount: row.total_amount,
       status: row.status as 'CLOSED' | 'FREE',
       isFreeSession: row.is_free_session,
+    })),
+    total: count ?? 0,
+  }
+}
+
+export const getGuardianByCode = async (
+  code: string
+): Promise<GuardianPublicInfo | null> => {
+  const { data } = await supabase
+    .from('guardian')
+    .select('id, full_name, code')
+    .eq('code', code.toUpperCase().trim())
+    .is('deleted_at', null)
+    .maybeSingle()
+
+  if (!data) return null
+
+  return {
+    id: data.id,
+    fullName: data.full_name,
+    code: data.code,
+  }
+}
+
+export const getChildrenByGuardianId = async (
+  guardianId: number
+): Promise<ChildPublicInfo[]> => {
+  const { data } = await supabase
+    .from('child')
+    .select('id, full_name, avatar, gender, birth_date, code, branch(name)')
+    .eq('guardian_id', guardianId)
+    .eq('is_active', true)
+    .is('deleted_at', null)
+    .order('full_name', { ascending: true })
+
+  if (!data) return []
+
+  return (
+    data as Array<
+      typeof data[number] & { branch: { name: string } }
+    >
+  ).map((row) => ({
+    id: row.id,
+    fullName: row.full_name,
+    avatar: row.avatar,
+    gender: row.gender as 'MALE' | 'FEMALE',
+    birthDate: row.birth_date,
+    code: row.code,
+    branchName: row.branch.name,
+  }))
+}
+
+export const getChildAttendanceHistory = async (
+  childId: number,
+  page = 1,
+  pageSize = 10
+): Promise<{ data: AttendanceHistoryItem[]; total: number }> => {
+  const from = (page - 1) * pageSize
+  const to = from + pageSize - 1
+
+  const { data, count } = await supabase
+    .from('class_attendance')
+    .select(
+      'class_date, attended, class_enrollment!inner(stimulation_class(name))',
+      { count: 'exact' }
+    )
+    .eq('class_enrollment.child_id', childId)
+    .order('class_date', { ascending: false })
+    .range(from, to)
+
+  if (!data) return { data: [], total: count ?? 0 }
+
+  return {
+    data: (
+      data as Array<{
+        class_date: string
+        attended: boolean
+        class_enrollment: { stimulation_class: { name: string } }
+      }>
+    ).map((row) => ({
+      classDate: row.class_date,
+      attended: row.attended,
+      className: row.class_enrollment.stimulation_class.name,
     })),
     total: count ?? 0,
   }

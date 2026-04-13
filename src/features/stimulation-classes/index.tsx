@@ -13,7 +13,6 @@ const route = getRouteApi('/_authenticated/stimulation-classes/')
 
 export const StimulationClasses = () => {
   const search = route.useSearch()
-  const navigate = route.useNavigate()
   const rootNavigate = useNavigate()
   const [classToDelete, setClassToDelete] = useState<StimulationClass | null>(
     null
@@ -64,7 +63,6 @@ export const StimulationClasses = () => {
             data={data?.data ?? []}
             total={data?.total ?? 0}
             search={search}
-            navigate={navigate}
             onDelete={setClassToDelete}
             enrolledCounts={enrolledCounts}
           />

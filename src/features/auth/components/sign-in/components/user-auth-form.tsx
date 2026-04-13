@@ -7,17 +7,17 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@boilerplate/ui'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2, LogIn } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { PasswordInput } from '@/components/password-input'
-import { cn } from '@/lib/utils'
-import { useSignIn } from '../hooks/useSignIn'
-import { type FormValues, formSchema } from './user-auth-form.schema'
+} from "@boilerplate/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2, LogIn } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { PasswordInput } from "@/components/password-input";
+import { cn } from "@/lib/utils";
+import { useSignIn } from "../hooks/useSignIn";
+import { type FormValues, formSchema } from "./user-auth-form.schema";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  redirectTo?: string
+  redirectTo?: string;
 }
 
 export function UserAuthForm({
@@ -25,32 +25,32 @@ export function UserAuthForm({
   redirectTo,
   ...props
 }: UserAuthFormProps) {
-  const { isLoading, signIn } = useSignIn({ redirectTo })
+  const { isLoading, signIn } = useSignIn({ redirectTo });
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { email: '', password: '' },
-  })
+    defaultValues: { email: "", password: "" },
+  });
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(signIn)}
-        className={cn('grid gap-3', className)}
+        className={cn("grid gap-4", className)}
         {...props}
       >
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="font-medium">Correo electrónico</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='tu@email.com'
-                  type='email'
-                  autoComplete='email'
-                  className='h-11'
+                  placeholder="tu@email.com"
+                  type="email"
+                  autoComplete="email"
+                  className="h-11 rounded-lg"
                   {...field}
                 />
               </FormControl>
@@ -60,14 +60,15 @@ export function UserAuthForm({
         />
         <FormField
           control={form.control}
-          name='password'
+          name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Contraseña</FormLabel>
+              <FormLabel className="font-medium">Contraseña</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder='••••••••'
-                  autoComplete='current-password'
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                  className="h-11 rounded-lg"
                   {...field}
                 />
               </FormControl>
@@ -75,15 +76,20 @@ export function UserAuthForm({
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={isLoading}>
+        <Button
+          className="mt-2 h-12 gap-2 rounded-lg bg-linear-to-r from-teal-500 to-teal-600 text-base font-semibold text-white shadow-md transition-all hover:from-teal-600 hover:to-teal-700 hover:shadow-lg disabled:opacity-70"
+          disabled={isLoading}
+        >
           {isLoading ? (
-            <Loader2 className='animate-spin' />
+            <Loader2 className="size-5 animate-spin" />
           ) : (
-            <LogIn size={16} />
+            <>
+              <LogIn className="size-5" />
+              Ingresar al sistema
+            </>
           )}
-          Ingresar
         </Button>
       </form>
     </Form>
-  )
+  );
 }

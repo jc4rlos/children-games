@@ -10,6 +10,7 @@ import {
   type VisibilityState,
 } from '@tanstack/react-table'
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
 import { createClassColumns } from '../components/classes-columns'
 import type { StimulationClass } from '../data/schema'
@@ -18,7 +19,6 @@ type UseClassesTableParams = {
   data: StimulationClass[]
   total: number
   search: Record<string, unknown>
-  navigate: NavigateFn
   onDelete: (cls: StimulationClass) => void
   enrolledCounts: Map<number, number>
 }
@@ -27,7 +27,6 @@ export const useClassesTable = ({
   data,
   total,
   search,
-  navigate,
   onDelete,
   enrolledCounts,
 }: UseClassesTableParams) => {
@@ -35,10 +34,15 @@ export const useClassesTable = ({
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [sorting, setSorting] = useState<SortingState>([])
 
+  const routerNavigate = useNavigate()
   const columns = useMemo(
-    () => createClassColumns(onDelete, enrolledCounts),
-    [onDelete, enrolledCounts]
+    () => createClassColumns(onDelete, enrolledCounts, routerNavigate),
+    [onDelete, enrolledCounts, routerNavigate]
   )
+
+  const navigate: NavigateFn = (opts) => {
+    routerNavigate(opts as any)
+  }
 
   const {
     columnFilters,

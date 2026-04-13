@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: '14.5'
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -66,7 +66,7 @@ export type Database = {
           created_by: string
           deleted_at: string | null
           full_name: string
-          gender: Database['public']['Enums']['gender']
+          gender: Database["public"]["Enums"]["gender"]
           guardian_id: number
           id: number
           is_active: boolean
@@ -83,7 +83,7 @@ export type Database = {
           created_by: string
           deleted_at?: string | null
           full_name: string
-          gender: Database['public']['Enums']['gender']
+          gender: Database["public"]["Enums"]["gender"]
           guardian_id: number
           id?: number
           is_active?: boolean
@@ -100,7 +100,7 @@ export type Database = {
           created_by?: string
           deleted_at?: string | null
           full_name?: string
-          gender?: Database['public']['Enums']['gender']
+          gender?: Database["public"]["Enums"]["gender"]
           guardian_id?: number
           id?: number
           is_active?: boolean
@@ -110,18 +110,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'child_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "child_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'child_guardian_id_fkey'
-            columns: ['guardian_id']
+            foreignKeyName: "child_guardian_id_fkey"
+            columns: ["guardian_id"]
             isOneToOne: false
-            referencedRelation: 'guardian'
-            referencedColumns: ['id']
+            referencedRelation: "guardian"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -152,18 +152,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'class_attendance_enrollment_id_fkey'
-            columns: ['enrollment_id']
+            foreignKeyName: "class_attendance_enrollment_id_fkey"
+            columns: ["enrollment_id"]
             isOneToOne: false
-            referencedRelation: 'class_enrollment'
-            referencedColumns: ['id']
+            referencedRelation: "class_enrollment"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'class_attendance_noted_by_fkey'
-            columns: ['noted_by']
+            foreignKeyName: "class_attendance_noted_by_fkey"
+            columns: ["noted_by"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -194,25 +194,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'class_enrollment_child_id_fkey'
-            columns: ['child_id']
+            foreignKeyName: "class_enrollment_child_id_fkey"
+            columns: ["child_id"]
             isOneToOne: false
-            referencedRelation: 'child'
-            referencedColumns: ['id']
+            referencedRelation: "child"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'class_enrollment_class_id_fkey'
-            columns: ['class_id']
+            foreignKeyName: "class_enrollment_class_id_fkey"
+            columns: ["class_id"]
             isOneToOne: false
-            referencedRelation: 'stimulation_class'
-            referencedColumns: ['id']
+            referencedRelation: "stimulation_class"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'class_enrollment_enrolled_by_fkey'
-            columns: ['enrolled_by']
+            foreignKeyName: "class_enrollment_enrolled_by_fkey"
+            columns: ["enrolled_by"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -224,7 +224,7 @@ export type Database = {
           created_by: string
           deleted_at: string | null
           description: string | null
-          discount_type: Database['public']['Enums']['discount_type']
+          discount_type: Database["public"]["Enums"]["discount_type"]
           discount_value: number
           id: number
           is_active: boolean
@@ -242,7 +242,7 @@ export type Database = {
           created_by: string
           deleted_at?: string | null
           description?: string | null
-          discount_type: Database['public']['Enums']['discount_type']
+          discount_type: Database["public"]["Enums"]["discount_type"]
           discount_value: number
           id?: number
           is_active?: boolean
@@ -260,7 +260,7 @@ export type Database = {
           created_by?: string
           deleted_at?: string | null
           description?: string | null
-          discount_type?: Database['public']['Enums']['discount_type']
+          discount_type?: Database["public"]["Enums"]["discount_type"]
           discount_value?: number
           id?: number
           is_active?: boolean
@@ -273,11 +273,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'coupon_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "coupon_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -296,7 +296,7 @@ export type Database = {
           is_active: boolean
           last_name: string
           phone: string | null
-          role: Database['public']['Enums']['employee_role']
+          role: Database["public"]["Enums"]["employee_role"]
           updated_at: string | null
           updated_by: string | null
         }
@@ -314,7 +314,7 @@ export type Database = {
           is_active?: boolean
           last_name: string
           phone?: string | null
-          role: Database['public']['Enums']['employee_role']
+          role: Database["public"]["Enums"]["employee_role"]
           updated_at?: string | null
           updated_by?: string | null
         }
@@ -332,22 +332,23 @@ export type Database = {
           is_active?: boolean
           last_name?: string
           phone?: string | null
-          role?: Database['public']['Enums']['employee_role']
+          role?: Database["public"]["Enums"]["employee_role"]
           updated_at?: string | null
           updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'employee_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "employee_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
         ]
       }
       guardian: {
         Row: {
+          code: string
           created_at: string
           created_by: string
           deleted_at: string | null
@@ -360,6 +361,7 @@ export type Database = {
           updated_by: string | null
         }
         Insert: {
+          code: string
           created_at?: string
           created_by: string
           deleted_at?: string | null
@@ -372,6 +374,7 @@ export type Database = {
           updated_by?: string | null
         }
         Update: {
+          code?: string
           created_at?: string
           created_by?: string
           deleted_at?: string | null
@@ -415,11 +418,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'loyalty_card_child_id_fkey'
-            columns: ['child_id']
+            foreignKeyName: "loyalty_card_child_id_fkey"
+            columns: ["child_id"]
             isOneToOne: true
-            referencedRelation: 'child'
-            referencedColumns: ['id']
+            referencedRelation: "child"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -447,18 +450,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'fk_stamp_session'
-            columns: ['play_session_id']
+            foreignKeyName: "fk_stamp_session"
+            columns: ["play_session_id"]
             isOneToOne: false
-            referencedRelation: 'play_session'
-            referencedColumns: ['id']
+            referencedRelation: "play_session"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'loyalty_stamp_loyalty_card_id_fkey'
-            columns: ['loyalty_card_id']
+            foreignKeyName: "loyalty_stamp_loyalty_card_id_fkey"
+            columns: ["loyalty_card_id"]
             isOneToOne: false
-            referencedRelation: 'loyalty_card'
-            referencedColumns: ['id']
+            referencedRelation: "loyalty_card"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -498,11 +501,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'menu_item_parent_id_fkey'
-            columns: ['parent_id']
+            foreignKeyName: "menu_item_parent_id_fkey"
+            columns: ["parent_id"]
             isOneToOne: false
-            referencedRelation: 'menu_item'
-            referencedColumns: ['id']
+            referencedRelation: "menu_item"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -511,27 +514,27 @@ export type Database = {
           enabled: boolean
           id: number
           menu_item_id: number
-          role: Database['public']['Enums']['employee_role']
+          role: Database["public"]["Enums"]["employee_role"]
         }
         Insert: {
           enabled?: boolean
           id?: number
           menu_item_id: number
-          role: Database['public']['Enums']['employee_role']
+          role: Database["public"]["Enums"]["employee_role"]
         }
         Update: {
           enabled?: boolean
           id?: number
           menu_item_id?: number
-          role?: Database['public']['Enums']['employee_role']
+          role?: Database["public"]["Enums"]["employee_role"]
         }
         Relationships: [
           {
-            foreignKeyName: 'menu_role_permission_menu_item_id_fkey'
-            columns: ['menu_item_id']
+            foreignKeyName: "menu_role_permission_menu_item_id_fkey"
+            columns: ["menu_item_id"]
             isOneToOne: false
-            referencedRelation: 'menu_item'
-            referencedColumns: ['id']
+            referencedRelation: "menu_item"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -556,7 +559,7 @@ export type Database = {
           products_subtotal: number | null
           registered_by: number
           scheduled_checkout: string | null
-          status: Database['public']['Enums']['session_status']
+          status: Database["public"]["Enums"]["session_status"]
           total_amount: number | null
           updated_at: string | null
           updated_by: string | null
@@ -581,7 +584,7 @@ export type Database = {
           products_subtotal?: number | null
           registered_by: number
           scheduled_checkout?: string | null
-          status?: Database['public']['Enums']['session_status']
+          status?: Database["public"]["Enums"]["session_status"]
           total_amount?: number | null
           updated_at?: string | null
           updated_by?: string | null
@@ -606,53 +609,53 @@ export type Database = {
           products_subtotal?: number | null
           registered_by?: number
           scheduled_checkout?: string | null
-          status?: Database['public']['Enums']['session_status']
+          status?: Database["public"]["Enums"]["session_status"]
           total_amount?: number | null
           updated_at?: string | null
           updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'play_session_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "play_session_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'play_session_child_id_fkey'
-            columns: ['child_id']
+            foreignKeyName: "play_session_child_id_fkey"
+            columns: ["child_id"]
             isOneToOne: false
-            referencedRelation: 'child'
-            referencedColumns: ['id']
+            referencedRelation: "child"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'play_session_closed_by_fkey'
-            columns: ['closed_by']
+            foreignKeyName: "play_session_closed_by_fkey"
+            columns: ["closed_by"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'play_session_coupon_id_fkey'
-            columns: ['coupon_id']
+            foreignKeyName: "play_session_coupon_id_fkey"
+            columns: ["coupon_id"]
             isOneToOne: false
-            referencedRelation: 'coupon'
-            referencedColumns: ['id']
+            referencedRelation: "coupon"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'play_session_pricing_id_fkey'
-            columns: ['pricing_id']
+            foreignKeyName: "play_session_pricing_id_fkey"
+            columns: ["pricing_id"]
             isOneToOne: false
-            referencedRelation: 'pricing_config'
-            referencedColumns: ['id']
+            referencedRelation: "pricing_config"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'play_session_registered_by_fkey'
-            columns: ['registered_by']
+            foreignKeyName: "play_session_registered_by_fkey"
+            columns: ["registered_by"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -701,11 +704,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'pricing_config_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "pricing_config_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -754,18 +757,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'product_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "product_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'product_category_id_fkey'
-            columns: ['category_id']
+            foreignKeyName: "product_category_id_fkey"
+            columns: ["category_id"]
             isOneToOne: false
-            referencedRelation: 'product_category'
-            referencedColumns: ['id']
+            referencedRelation: "product_category"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -835,25 +838,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'session_consumption_added_by_fkey'
-            columns: ['added_by']
+            foreignKeyName: "session_consumption_added_by_fkey"
+            columns: ["added_by"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'session_consumption_play_session_id_fkey'
-            columns: ['play_session_id']
+            foreignKeyName: "session_consumption_play_session_id_fkey"
+            columns: ["play_session_id"]
             isOneToOne: false
-            referencedRelation: 'play_session'
-            referencedColumns: ['id']
+            referencedRelation: "play_session"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'session_consumption_product_id_fkey'
-            columns: ['product_id']
+            foreignKeyName: "session_consumption_product_id_fkey"
+            columns: ["product_id"]
             isOneToOne: false
-            referencedRelation: 'product'
-            referencedColumns: ['id']
+            referencedRelation: "product"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -865,7 +868,7 @@ export type Database = {
           capacity: number
           created_at: string
           created_by: string
-          day_of_week: Database['public']['Enums']['class_day'][]
+          day_of_week: Database["public"]["Enums"]["class_day"][]
           deleted_at: string | null
           description: string | null
           end_time: string
@@ -885,7 +888,7 @@ export type Database = {
           capacity?: number
           created_at?: string
           created_by: string
-          day_of_week: Database['public']['Enums']['class_day'][]
+          day_of_week: Database["public"]["Enums"]["class_day"][]
           deleted_at?: string | null
           description?: string | null
           end_time: string
@@ -905,7 +908,7 @@ export type Database = {
           capacity?: number
           created_at?: string
           created_by?: string
-          day_of_week?: Database['public']['Enums']['class_day'][]
+          day_of_week?: Database["public"]["Enums"]["class_day"][]
           deleted_at?: string | null
           description?: string | null
           end_time?: string
@@ -920,18 +923,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'stimulation_class_branch_id_fkey'
-            columns: ['branch_id']
+            foreignKeyName: "stimulation_class_branch_id_fkey"
+            columns: ["branch_id"]
             isOneToOne: false
-            referencedRelation: 'branch'
-            referencedColumns: ['id']
+            referencedRelation: "branch"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'stimulation_class_teacher_id_fkey'
-            columns: ['teacher_id']
+            foreignKeyName: "stimulation_class_teacher_id_fkey"
+            columns: ["teacher_id"]
             isOneToOne: false
-            referencedRelation: 'employee'
-            referencedColumns: ['id']
+            referencedRelation: "employee"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -943,11 +946,11 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      class_day: 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
-      discount_type: 'PERCENTAGE' | 'FIXED_AMOUNT'
-      employee_role: 'ADMIN' | 'SUPERVISOR' | 'RECEPTIONIST' | 'TEACHER'
-      gender: 'MALE' | 'FEMALE'
-      session_status: 'ACTIVE' | 'CLOSED' | 'FREE'
+      class_day: "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN"
+      discount_type: "PERCENTAGE" | "FIXED_AMOUNT"
+      employee_role: "ADMIN" | "SUPERVISOR" | "RECEPTIONIST" | "TEACHER"
+      gender: "MALE" | "FEMALE"
+      session_status: "ACTIVE" | "CLOSED" | "FREE"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -955,33 +958,33 @@ export type Database = {
   }
 }
 
-type DatabaseWithoutInternals = Omit<Database, '__InternalSupabase'>
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
 
-type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, 'public'>]
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
-    | keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Views'])
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Views'])[TableName] extends {
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
     ? R
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] &
-        DefaultSchema['Views'])
-    ? (DefaultSchema['Tables'] &
-        DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
         Row: infer R
       }
       ? R
@@ -990,23 +993,23 @@ export type Tables<
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables']
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Insert: infer I
       }
       ? I
@@ -1015,23 +1018,23 @@ export type TablesInsert<
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables']
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Update: infer U
       }
       ? U
@@ -1040,46 +1043,46 @@ export type TablesUpdate<
 
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema['Enums']
+    | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
-    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema['CompositeTypes']
+    | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
-    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
 
 export const Constants = {
   public: {
     Enums: {
-      class_day: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
-      discount_type: ['PERCENTAGE', 'FIXED_AMOUNT'],
-      employee_role: ['ADMIN', 'SUPERVISOR', 'RECEPTIONIST', 'TEACHER'],
-      gender: ['MALE', 'FEMALE'],
-      session_status: ['ACTIVE', 'CLOSED', 'FREE'],
+      class_day: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+      discount_type: ["PERCENTAGE", "FIXED_AMOUNT"],
+      employee_role: ["ADMIN", "SUPERVISOR", "RECEPTIONIST", "TEACHER"],
+      gender: ["MALE", "FEMALE"],
+      session_status: ["ACTIVE", "CLOSED", "FREE"],
     },
   },
 } as const

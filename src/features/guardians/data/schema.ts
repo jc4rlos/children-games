@@ -2,6 +2,7 @@ import { z } from 'zod'
 
 export const guardianSchema = z.object({
   id: z.number(),
+  code: z.string(),
   fullName: z.string(),
   documentNumber: z.string(),
   phone: z.string().nullable(),

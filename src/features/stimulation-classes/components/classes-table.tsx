@@ -5,31 +5,28 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@boilerplate/ui'
-import { flexRender } from '@tanstack/react-table'
-import { DataTablePagination } from '@/components/data-table'
-import type { NavigateFn } from '@/hooks/use-table-url-state'
-import { cn } from '@/lib/utils'
-import type { StimulationClass } from '../data/schema'
-import { useClassesTable } from '../hooks/use-classes-table'
-import { ClassesToolbar } from './classes-toolbar'
+} from "@boilerplate/ui";
+import { flexRender } from "@tanstack/react-table";
+import { DataTablePagination } from "@/components/data-table";
+import { cn } from "@/lib/utils";
+import type { StimulationClass } from "../data/schema";
+import { useClassesTable } from "../hooks/use-classes-table";
+import { ClassesToolbar } from "./classes-toolbar";
 
-const COLUMNS_COUNT = 10
+const COLUMNS_COUNT = 10;
 
 type ClassesTableProps = {
-  data: StimulationClass[]
-  total: number
-  search: Record<string, unknown>
-  navigate: NavigateFn
-  onDelete: (cls: StimulationClass) => void
-  enrolledCounts: Map<number, number>
-}
+  data: StimulationClass[];
+  total: number;
+  search: Record<string, unknown>;
+  onDelete: (cls: StimulationClass) => void;
+  enrolledCounts: Map<number, number>;
+};
 
 export const ClassesTable = ({
   data,
   total,
   search,
-  navigate,
   onDelete,
   enrolledCounts,
 }: ClassesTableProps) => {
@@ -44,13 +41,12 @@ export const ClassesTable = ({
     data,
     total,
     search,
-    navigate,
     onDelete,
     enrolledCounts,
-  })
+  });
 
   return (
-    <div className='flex flex-1 flex-col gap-4'>
+    <div className="flex flex-1 flex-col gap-4">
       <ClassesToolbar
         table={table}
         nameInput={nameInput}
@@ -60,26 +56,26 @@ export const ClassesTable = ({
         isFiltered={isFiltered}
       />
 
-      <div className='overflow-hidden rounded-md border'>
+      <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className='group/row'>
+              <TableRow key={headerGroup.id} className="group/row">
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
                     colSpan={header.colSpan}
                     className={cn(
-                      'bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted',
+                      "bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted",
                       header.column.columnDef.meta?.className,
-                      header.column.columnDef.meta?.thClassName
+                      header.column.columnDef.meta?.thClassName,
                     )}
                   >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 ))}
@@ -91,21 +87,21 @@ export const ClassesTable = ({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                  className='group/row'
+                  data-state={row.getIsSelected() && "selected"}
+                  className="group/row"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
                       className={cn(
-                        'bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted',
+                        "bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted",
                         cell.column.columnDef.meta?.className,
-                        cell.column.columnDef.meta?.tdClassName
+                        cell.column.columnDef.meta?.tdClassName,
                       )}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
@@ -113,7 +109,7 @@ export const ClassesTable = ({
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={COLUMNS_COUNT} className='h-24 text-center'>
+                <TableCell colSpan={COLUMNS_COUNT} className="h-24 text-center">
                   Sin resultados.
                 </TableCell>
               </TableRow>
@@ -122,7 +118,7 @@ export const ClassesTable = ({
         </Table>
       </div>
 
-      <DataTablePagination table={table} className='mt-auto' />
+      <DataTablePagination table={table} className="mt-auto" />
     </div>
-  )
-}
+  );
+};

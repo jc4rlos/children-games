@@ -6,69 +6,71 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@boilerplate/ui'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from '@tanstack/react-router'
-import { KeyRound, Loader2 } from 'lucide-react'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
-import { z } from 'zod'
-import { PasswordInput } from '@/components/password-input'
-import { supabase } from '@/lib/supabase'
-import { cn } from '@/lib/utils'
-import { useAuthStore } from '@/stores/auth-store'
-import { getEmployeeByUserId, updatePassword } from '../../../auth-service'
+} from "@boilerplate/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "@tanstack/react-router";
+import { KeyRound, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+import { PasswordInput } from "@/components/password-input";
+import { supabase } from "@/lib/supabase";
+import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/stores/auth-store";
+import { getEmployeeByUserId, updatePassword } from "../../../auth-service";
 
 const formSchema = z
   .object({
-    password: z.string().min(8, 'Mínimo 8 caracteres.'),
-    confirm: z.string().min(1, 'Confirma la contraseña.'),
+    password: z.string().min(8, "Mínimo 8 caracteres."),
+    confirm: z.string().min(1, "Confirma la contraseña."),
   })
   .refine((v) => v.password === v.confirm, {
-    message: 'Las contraseñas no coinciden.',
-    path: ['confirm'],
-  })
+    message: "Las contraseñas no coinciden.",
+    path: ["confirm"],
+  });
 
-type FormValues = z.infer<typeof formSchema>
+type FormValues = z.infer<typeof formSchema>;
 
 export function ChangePasswordForm({ className }: { className?: string }) {
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
-  const { auth } = useAuthStore()
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { auth } = useAuthStore();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { password: '', confirm: '' },
-  })
+    defaultValues: { password: "", confirm: "" },
+  });
 
   async function onSubmit({ password }: FormValues) {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      await updatePassword(password)
+      await updatePassword(password);
 
       const {
         data: { session },
-      } = await supabase.auth.getSession()
-      if (!session) throw new Error('Sesión no encontrada.')
+      } = await supabase.auth.getSession();
+      if (!session) throw new Error("Sesión no encontrada.");
 
-      const employee = await getEmployeeByUserId(session.user.id)
+      const employee = await getEmployeeByUserId(session.user.id);
       auth.setUser({
         employeeId: employee.id,
-        email: session.user.email ?? '',
+        email: session.user.email ?? "",
         role: employee.role,
         exp: (session.expires_at ?? 0) * 1000,
-      })
-      auth.setAccessToken(session.access_token)
+        branchId: employee.branchId,
+        branchName: employee.branchName,
+      });
+      auth.setAccessToken(session.access_token);
 
-      toast.success('Contraseña actualizada. Bienvenido.')
-      navigate({ to: '/', replace: true })
+      toast.success("Contraseña actualizada. Bienvenido.");
+      navigate({ to: "/", replace: true });
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : 'Error al cambiar la contraseña.'
-      )
+        err instanceof Error ? err.message : "Error al cambiar la contraseña.",
+      );
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
@@ -76,18 +78,18 @@ export function ChangePasswordForm({ className }: { className?: string }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn('grid gap-3', className)}
+        className={cn("grid gap-3", className)}
       >
         <FormField
           control={form.control}
-          name='password'
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nueva contraseña</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder='Mínimo 8 caracteres'
-                  autoComplete='new-password'
+                  placeholder="Mínimo 8 caracteres"
+                  autoComplete="new-password"
                   {...field}
                 />
               </FormControl>
@@ -97,14 +99,14 @@ export function ChangePasswordForm({ className }: { className?: string }) {
         />
         <FormField
           control={form.control}
-          name='confirm'
+          name="confirm"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Confirmar contraseña</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder='Repite la contraseña'
-                  autoComplete='new-password'
+                  placeholder="Repite la contraseña"
+                  autoComplete="new-password"
                   {...field}
                 />
               </FormControl>
@@ -112,9 +114,9 @@ export function ChangePasswordForm({ className }: { className?: string }) {
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={isLoading}>
+        <Button className="mt-2" disabled={isLoading}>
           {isLoading ? (
-            <Loader2 className='animate-spin' />
+            <Loader2 className="animate-spin" />
           ) : (
             <KeyRound size={16} />
           )}
@@ -122,5 +124,5 @@ export function ChangePasswordForm({ className }: { className?: string }) {
         </Button>
       </form>
     </Form>
-  )
+  );
 }

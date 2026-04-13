@@ -13,11 +13,17 @@ export const toGuardian = (row: DbGuardian): Guardian => ({
   email: row.email,
 })
 
+const generateCode = (): string => {
+  const num = Math.floor(Math.random() * 9000000) + 1000000
+  return `GUARD-${num}`
+}
+
 export const toDbInsert = (values: GuardianFormValues): DbGuardianInsert => ({
   full_name: values.fullName,
   document_number: values.documentNumber,
   phone: values.phone || null,
   email: values.email || null,
+  code: generateCode(),
   created_by: 'system',
 })
 
